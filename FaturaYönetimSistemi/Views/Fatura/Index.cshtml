@@ -1,0 +1,58 @@
+﻿@using EntityLayer.Concrete
+@model List<Fatura>
+
+@{
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+@if (Model is not null)
+{
+    <div class="w3-container pl-3 pt-3 mt-3 mb-3 bg-success text-white" id="jeans">
+        <p>@Model.Count adet Fatura listelendi.</p>
+    </div>
+}
+else
+{
+    <div class="w3-container pl-3 pt-3 mt-3 mb-3 bg-danger text-white" id="jeans">
+        <p>Herhangi bir Fatura bulunamadı.</p>
+    </div>
+}
+
+    <table class="table table-bordered table-striped p-5">
+        <tr>
+            <th>Fatura Tarihi</th>
+            <th>Fatura Son Ödeme Tarihi</th>
+            <th>Fatura Ücreti</th>
+            <th>Fatura Sahibi</th>
+            <th>Fatura Durumu</th>
+            <th>Fatura Tipi</th>
+        </tr>
+        <tbody id="myTable">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@(((DateTime)item.FaturaTarihi).ToString("dd-MMM-yyyy"))</td>
+                    <td>@(((DateTime)item.FaturaSonOdemeTarihi).ToString("dd-MMM-yyyy"))</td>
+                    <td>@item.FaturaTutarı TL</td>
+                    <td>@item.Kullanıcı.KullanıcıIsım @item.Kullanıcı.KullanıcıSoyisim</td>
+                    <td>
+                        @if (@item.FaturaOdendiMi)
+                        {
+                            <p class="text-success">Ödendi</p>
+                        }
+                        else
+                        {
+                            <p class="text-danger">Ödenmedi</p>
+                        }
+                    </td>
+                    <td>@item.FaturaTipi</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+
+
+
+
