@@ -16,6 +16,8 @@ namespace EntityLayer.Concrete
         public string KullanıcıAraçBilgisi { get; set; }
         public List<Fatura> KullanıcıFaturalar { get; set; }
         public List<Aidat> KullanıcıAidatlar { get; set; }
+
         public int DaireId { get; set; }
+        public Daire KullanıcıDaire { get; set; }
     }
 }

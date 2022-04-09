@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EntityLayer.Concrete
 {
@@ -13,8 +12,7 @@ namespace EntityLayer.Concrete
         public string DaireTipi { get; set; }
         public string DaireKatı { get; set; }
 
-        [ForeignKey("KullanıcıId")]
-        public int KullanıcıId { get; set; }
+
         public Kullanıcı Kullanıcı { get; set; }
     }
 }
