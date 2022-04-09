@@ -1,4 +1,4 @@
-# Fatura Yonetim Sistemi
+# Fatura Yonetim Sistemi (In Progress)
 -Bir sitede yöneticisiniz. Sitenizde yer alan dairelerin aidat ve ortak kullanım elektrik, su ve doğalgaz faturalarının yönetimini bir sistem üzerinden yapacaksınız. İki tip kullanıcınız var.
 
 1-Admin/Yönetici
