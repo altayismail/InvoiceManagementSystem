@@ -6,7 +6,7 @@ namespace EntityLayer.Concrete
     public class Kullanıcı
     {
         [Key]
-        public int Id { get; set; }
+        public int KullanıcıId { get; set; }
         public string KullanıcıIsım { get; set; }
         public string KullanıcıSoyisim { get; set; }
         public string KullanıcıTCNo { get; set; }
@@ -18,6 +18,5 @@ namespace EntityLayer.Concrete
         public List<Aidat> KullanıcıAidatlar { get; set; }
 
         public int DaireId { get; set; }
-        public Daire KullanıcıDaire { get; set; }
     }
 }

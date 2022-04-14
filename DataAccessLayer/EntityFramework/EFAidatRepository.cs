@@ -14,7 +14,7 @@ namespace DataAccessLayer.EntityFramework
         {
             using(var context = new Context())
             {
-                return context.Aidatlar.Include(x => x.Kullanıcı).ToList();
+                return context.Aidatlar.Include(x => x.AidatKullanıcı).ToList();
             }
         }
     }

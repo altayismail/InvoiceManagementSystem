@@ -32,7 +32,7 @@ else
             <td>@(((DateTime)item.AidatTarihi).ToString("dd-MMM-yyyy"))</td>
             <td>@(((DateTime)item.AidatSonOdemeTarihi).ToString("dd-MMM-yyyy"))</td>
             <td>@item.AidatUcreti TL</td>
-            <td>@item.Kullanıcı.KullanıcıIsım @item.Kullanıcı.KullanıcıSoyisim</td>
+            <td>@item.AidatKullanıcı.KullanıcıIsım @item.AidatKullanıcı.KullanıcıSoyisim</td>
             <td>
                 @if (@item.AidatOdendiMi)
                 {

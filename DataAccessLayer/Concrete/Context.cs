@@ -16,5 +16,6 @@ namespace DataAccessLayer.Concrete
         public DbSet<Kullanıcı> Kullanıcılar { get; set; }
         public DbSet<Mesaj> Mesajlar { get; set; }
         public DbSet<Yonetici> Yoneticiler { get; set; }
+        public DbSet<Iletisim> Iletisim { get; set; }
     }
 }

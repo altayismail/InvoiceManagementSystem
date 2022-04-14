@@ -21,7 +21,7 @@ namespace DataAccessLayer.Migrations
 
             modelBuilder.Entity("EntityLayer.Concrete.Aidat", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("AidatId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -41,7 +41,7 @@ namespace DataAccessLayer.Migrations
                     b.Property<int>("KullanıcıId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("AidatId");
 
                     b.HasIndex("KullanıcıId");
 
@@ -50,7 +50,7 @@ namespace DataAccessLayer.Migrations
 
             modelBuilder.Entity("EntityLayer.Concrete.Daire", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("DaireId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -64,6 +64,9 @@ namespace DataAccessLayer.Migrations
                     b.Property<string>("DaireKatı")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("DaireKullanıcıKullanıcıId")
+                        .HasColumnType("int");
+
                     b.Property<int>("DaireNo")
                         .HasColumnType("int");
 
@@ -73,19 +76,16 @@ namespace DataAccessLayer.Migrations
                     b.Property<int>("KullanıcıId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("KullanıcıId1")
-                        .HasColumnType("int");
+                    b.HasKey("DaireId");
 
-                    b.HasKey("Id");
-
-                    b.HasIndex("KullanıcıId1");
+                    b.HasIndex("DaireKullanıcıKullanıcıId");
 
                     b.ToTable("Daireler");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.Fatura", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("FaturaId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -108,16 +108,43 @@ namespace DataAccessLayer.Migrations
                     b.Property<int>("KullanıcıId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("FaturaId");
 
                     b.HasIndex("KullanıcıId");
 
                     b.ToTable("Faturalar");
                 });
 
+            modelBuilder.Entity("EntityLayer.Concrete.Iletisim", b =>
+                {
+                    b.Property<int>("IletisimId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("IletisimEmail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IletisimIsım")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IletisimKonu")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IletisimMesaj")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IletisimSoyisim")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("IletisimId");
+
+                    b.ToTable("Iletisim");
+                });
+
             modelBuilder.Entity("EntityLayer.Concrete.Kullanıcı", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("KullanıcıId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -146,14 +173,14 @@ namespace DataAccessLayer.Migrations
                     b.Property<string>("KullanıcıTelefonNo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("KullanıcıId");
 
                     b.ToTable("Kullanıcılar");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.Mesaj", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("MesajId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -173,7 +200,7 @@ namespace DataAccessLayer.Migrations
                     b.Property<int?>("YoneticiId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("MesajId");
 
                     b.HasIndex("KullanıcıId");
 
@@ -184,7 +211,7 @@ namespace DataAccessLayer.Migrations
 
             modelBuilder.Entity("EntityLayer.Concrete.Yonetici", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("YoneticiId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -204,55 +231,55 @@ namespace DataAccessLayer.Migrations
                     b.Property<string>("YoneticiTelefonNo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("YoneticiId");
 
                     b.ToTable("Yoneticiler");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.Aidat", b =>
                 {
-                    b.HasOne("EntityLayer.Concrete.Kullanıcı", "Kullanıcı")
+                    b.HasOne("EntityLayer.Concrete.Kullanıcı", "AidatKullanıcı")
                         .WithMany("KullanıcıAidatlar")
                         .HasForeignKey("KullanıcıId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Kullanıcı");
+                    b.Navigation("AidatKullanıcı");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.Daire", b =>
                 {
-                    b.HasOne("EntityLayer.Concrete.Kullanıcı", "Kullanıcı")
+                    b.HasOne("EntityLayer.Concrete.Kullanıcı", "DaireKullanıcı")
                         .WithMany()
-                        .HasForeignKey("KullanıcıId1");
+                        .HasForeignKey("DaireKullanıcıKullanıcıId");
 
-                    b.Navigation("Kullanıcı");
+                    b.Navigation("DaireKullanıcı");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.Fatura", b =>
                 {
-                    b.HasOne("EntityLayer.Concrete.Kullanıcı", "Kullanıcı")
+                    b.HasOne("EntityLayer.Concrete.Kullanıcı", "FaturaKullanıcı")
                         .WithMany("KullanıcıFaturalar")
                         .HasForeignKey("KullanıcıId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Kullanıcı");
+                    b.Navigation("FaturaKullanıcı");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.Mesaj", b =>
                 {
-                    b.HasOne("EntityLayer.Concrete.Kullanıcı", "Kullanıcı")
+                    b.HasOne("EntityLayer.Concrete.Kullanıcı", "MesajKullanıcı")
                         .WithMany()
                         .HasForeignKey("KullanıcıId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("EntityLayer.Concrete.Yonetici", null)
-                        .WithMany("Mesajlar")
+                        .WithMany("YoneticiMesajlar")
                         .HasForeignKey("YoneticiId");
 
-                    b.Navigation("Kullanıcı");
+                    b.Navigation("MesajKullanıcı");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.Kullanıcı", b =>
@@ -264,7 +291,7 @@ namespace DataAccessLayer.Migrations
 
             modelBuilder.Entity("EntityLayer.Concrete.Yonetici", b =>
                 {
-                    b.Navigation("Mesajlar");
+                    b.Navigation("YoneticiMesajlar");
                 });
 #pragma warning restore 612, 618
         }

@@ -34,7 +34,7 @@ else
                     <td>@(((DateTime)item.FaturaTarihi).ToString("dd-MMM-yyyy"))</td>
                     <td>@(((DateTime)item.FaturaSonOdemeTarihi).ToString("dd-MMM-yyyy"))</td>
                     <td>@item.FaturaTutarı TL</td>
-                    <td>@item.Kullanıcı.KullanıcıIsım @item.Kullanıcı.KullanıcıSoyisim</td>
+                    <td>@item.FaturaKullanıcı.KullanıcıIsım @item.FaturaKullanıcı.KullanıcıSoyisim</td>
                     <td>
                         @if (@item.FaturaOdendiMi)
                         {
