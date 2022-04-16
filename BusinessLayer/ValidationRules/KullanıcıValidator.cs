@@ -15,7 +15,11 @@ namespace BusinessLayer.ValidationRules
                 MinimumLength(2).WithMessage("Kullanıcı soyismi en az 2 harf uzunluğunda olmaladır.").
                 MaximumLength(30).WithMessage("Kullanıcı soyismi maksimum 30 karakterden oluşmalı.");
 
-            RuleFor(x => x.KullanıcıEmail).NotEmpty().WithMessage("Kullanıcı e-maili boş geçilemez.");
+            RuleFor(x => x.KullanıcıEmail).NotEmpty().WithMessage("Email kısmı boş bırakılamaz.").
+                Matches("@").WithMessage("Email '@' sembolünü içermelidir.").
+                Matches(".com").WithMessage("Email '.com' kısmını içermelidir.").
+                MaximumLength(30).WithMessage("Email en fazla 30 karakterden oluşmalıdır.").
+                MinimumLength(15).WithMessage("Email en az 15 karakterden oluşmalıdır.");
 
             RuleFor(x => x.KullanıcıTCNo).NotEmpty().WithMessage("Kullanıcı şifresi boş geçilemez.").
                 Length(11).WithMessage("TC kimlik numarası 11 haneli olmalıdır.");

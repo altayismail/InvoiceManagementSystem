@@ -14,14 +14,15 @@ namespace BusinessLayer.Concrete
         {
             _faturaDal = faturaDal;
         }
-        public void AddFatura(Fatura fatura)
+
+        public void AddT(Fatura t)
         {
-            throw new NotImplementedException();
+            _faturaDal.Add(t);
         }
 
-        public void DeleteFatura(Fatura fatura)
+        public void DeleteT(Fatura t)
         {
-            throw new NotImplementedException();
+            _faturaDal.Delete(t);
         }
 
         public List<Fatura> GetAllQuery()
@@ -39,9 +40,9 @@ namespace BusinessLayer.Concrete
             return _faturaDal.GetQueryById(id);
         }
 
-        public void UpdateFatura(Fatura fatura)
+        public void UpdateT(Fatura t)
         {
-            throw new NotImplementedException();
+            _faturaDal.Update(t);
         }
     }
 }

@@ -1,0 +1,53 @@
+﻿@using EntityLayer.Concrete
+@model List<Aidat>
+
+@{
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<header class="w3-container w3-xlarge w3-padding">
+    <p class="w3-center">Aidatlarım</p>
+</header>
+<hr />
+
+@if (Model is not null)
+{
+    <div class="w3-container pl-3 pt-3 mt-3 mb-3 bg-success text-white" id="jeans">
+        <p>@Model.Count adet Aidat listelendi.</p>
+    </div>
+}
+else
+{
+    <div class="w3-container pl-3 pt-3 mt-3 mb-3 bg-danger text-white" id="jeans">
+        <p>Herhangi bir Aidat bulunamadı.</p>
+    </div>
+}
+
+<table class="table table-bordered table-striped p-5">
+    <tr>
+        <th>Aidat Tarihi</th>
+        <th>Aidat Son Ödeme Tarihi</th>
+        <th>Aidat Ücreti</th>
+        <th>Aidat Sahibi</th>
+        <th>Aidat Durumu</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@(((DateTime)item.AidatTarihi).ToString("dd-MMM-yyyy"))</td>
+            <td>@(((DateTime)item.AidatSonOdemeTarihi).ToString("dd-MMM-yyyy"))</td>
+            <td>@item.AidatUcreti TL</td>
+            <td>@item.AidatKullanıcı.KullanıcıIsım @item.AidatKullanıcı.KullanıcıSoyisim</td>
+            <td>
+                @if (@item.AidatOdendiMi)
+                {
+                    <p class="text-success">Ödendi</p>
+                }
+                else
+                {
+                    <p class="text-danger">Ödenmedi</p>
+                }
+            </td>
+        </tr>
+    }
+</table>

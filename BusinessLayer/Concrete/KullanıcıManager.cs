@@ -1,6 +1,7 @@
 ﻿using BusinessLayer.Abstract;
 using DataAccessLayer.Abstract;
 using EntityLayer.Concrete;
+using System.Collections.Generic;
 
 namespace BusinessLayer.Concrete
 {
@@ -11,9 +12,30 @@ namespace BusinessLayer.Concrete
         {
             _kullanıcıDal = kullanıcıDal;
         }
-        public void AddKullanıcı(Kullanıcı kullanıcı)
+
+        public void AddT(Kullanıcı t)
         {
-            _kullanıcıDal.Add(kullanıcı);
+            _kullanıcıDal.Add(t);
+        }
+
+        public void DeleteT(Kullanıcı t)
+        {
+            _kullanıcıDal.Delete(t);
+        }
+
+        public List<Kullanıcı> GetAllQuery()
+        {
+            return _kullanıcıDal.GetAllQuery();
+        }
+
+        public Kullanıcı GetQueryById(int id)
+        {
+            return _kullanıcıDal.GetQueryById(id);
+        }
+
+        public void UpdateT(Kullanıcı t)
+        {
+            _kullanıcıDal.Update(t);
         }
     }
 }

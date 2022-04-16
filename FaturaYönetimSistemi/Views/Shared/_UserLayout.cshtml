@@ -29,14 +29,15 @@
             <h3 class="w3-wide"><b>Fatura Yönetim Sistemi</b></h3>
         </div>
         <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
-            <a href="/Fatura" class="w3-bar-item w3-button">Faturalarım</a>
-            <a href="/Aidat" class="w3-bar-item w3-button">Aidatlarım</a>
+            <a href="/Home/KullanıcıIndex" class="w3-bar-item w3-button">Ana Sayfa</a>
+            <a href="/Fatura/KullanıcıGetAllFaturas" class="w3-bar-item w3-button">Faturalarım</a>
+            <a href="/Aidat/KullanıcıGetAllAidats" class="w3-bar-item w3-button">Aidatlarım</a>
             <a href="#" class="w3-bar-item w3-button">Ödeme Yap</a>
             <a href="#" class="w3-bar-item w3-button">Mesaj Gönder</a>
         </div>
 
         <a href="/Home/Contact" class="w3-bar-item w3-button w3-padding">İletişim</a>
-        <a href="/Home/About" class="w3-bar-item w3-button w3-padding">Uygulama Hakkında</a>
+        <a href="/Home/KullanıcıAbout" class="w3-bar-item w3-button w3-padding">Uygulama Hakkında</a>
     </nav>
 
     <!-- Top menu on small screens -->
@@ -53,6 +54,7 @@
 
         <!-- Push down content on small screens -->
         <div class="w3-hide-large" style="margin-top:83px"></div>
+
 
         <div class="w3-container">
             @RenderBody()

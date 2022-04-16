@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Concrete;
 using BusinessLayer.ValidationRules;
+using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
@@ -9,23 +10,61 @@ namespace FaturaYönetimSistemi.Controllers
 {
     public class KullanıcıController : Controller
     {
-        KullanıcıManager manager = new KullanıcıManager(new EFKullanıcıRepostory());
+        KullanıcıManager manager = new KullanıcıManager(new EFKullanıcıRepository());
+
+        public IActionResult GetAllKullanıcıs()
+        {
+            return View(manager.GetAllQuery());
+        }
+
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult AddKullanıcı()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult Index(Kullanıcı kullanıcı)
+        public IActionResult AddKullanıcı(Kullanıcı kullanıcı)
         {
             KullanıcıValidator validator = new();
             ValidationResult validationResult = validator.Validate(kullanıcı);
             if (validationResult.IsValid)
             {
                 kullanıcı.KullanıcıSifre = PasswordGenerator();
-                manager.AddKullanıcı(kullanıcı);
-                return RedirectToAction("Index", "Kullanıcı");
+                manager.AddT(kullanıcı);
+                return RedirectToAction("GetAllKullanıcıs", "Kullanıcı");
+            }
+            else
+            {
+                foreach (var item in validationResult.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
+            return View();
+        }
+
+        public IActionResult DeleteKullanıcı(int id)
+        {
+            var kullanıcı = manager.GetQueryById(id);
+            manager.DeleteT(kullanıcı);
+            return RedirectToAction("GetAllKullanıcıs");
+        }
+        [HttpGet]
+        public IActionResult UpdateKullanıcı(int id)
+        {
+            var kullanıcı = manager.GetQueryById(id);
+            return View(kullanıcı);
+        }
+        [HttpPost]
+        public IActionResult UpdateKullanıcı(Kullanıcı kullanıcı)
+        {
+            KullanıcıValidator validator = new KullanıcıValidator();
+            ValidationResult validationResult = validator.Validate(kullanıcı);
+            if (validationResult.IsValid)
+            {
+                manager.UpdateT(kullanıcı);
+                return RedirectToAction("GetAllKullanıcıs");
             }
             else
             {

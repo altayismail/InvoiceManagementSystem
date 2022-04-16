@@ -14,14 +14,14 @@ namespace BusinessLayer.Concrete
             _aidatDal = aidatDal;
         }
 
-        public void AddAidat(Aidat aidat)
+        public void AddT(Aidat t)
         {
-            _aidatDal.Add(aidat);
+            _aidatDal.Add(t);
         }
 
-        public void DeleteAidat(Aidat aidat)
+        public void DeleteT(Aidat t)
         {
-            _aidatDal.Delete(aidat);
+            _aidatDal.Delete(t);
         }
 
         public List<Aidat> GetAllQuery()
@@ -39,9 +39,9 @@ namespace BusinessLayer.Concrete
             return _aidatDal.GetQueryById(id);
         }
 
-        public void UpdateAidat(Aidat aidat)
+        public void UpdateT(Aidat t)
         {
-            _aidatDal.Update(aidat);
+            _aidatDal.Update(t);
         }
     }
 }

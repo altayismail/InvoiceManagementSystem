@@ -1,0 +1,45 @@
+﻿@using EntityLayer.Concrete
+@model Kullanıcı
+@{
+    ViewData["Title"] = "KullanıcıUpdate";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<header class="w3-container w3-xlarge w3-padding">
+    <p class="w3-center">Kullanıcı Düzenle</p>
+</header>
+<hr />
+
+@using (Html.BeginForm("KullanıcıUpdate", "Kullanıcı", FormMethod.Post))
+{
+    @Html.Label("Id")
+    @Html.TextBoxFor(x => x.KullanıcıId, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.KullanıcıId,"", new { @class = "text-danger"})
+    <br />
+    @Html.Label("İsim")
+    @Html.TextBoxFor(x => x.KullanıcıIsım, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.KullanıcıIsım, "", new { @class = "text-danger" })
+    <br />
+    @Html.Label("Soyisim")
+    @Html.TextBoxFor(x => x.KullanıcıSoyisim, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.KullanıcıSoyisim, "", new { @class = "text-danger" })
+    <br />
+    @Html.Label("TC Kimlik No")
+    @Html.TextBoxFor(x => x.KullanıcıTCNo, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.KullanıcıTCNo, "", new { @class = "text-danger" })
+    <br />
+    @Html.Label("Email")
+    @Html.TextBoxFor(x => x.KullanıcıEmail, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.KullanıcıEmail, "", new { @class = "text-danger" })
+    <br />
+    @Html.Label("Araç Bilgisi")
+    @Html.TextBoxFor(x => x.KullanıcıAraçBilgisi, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.KullanıcıAraçBilgisi, "", new { @class = "text-danger" })
+    <br />
+    @Html.Label("Daire No")
+    @Html.TextBoxFor(x => x.DaireId, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.DaireId,"", new { @class = "text-danger"})
+    <br />
+    <button class="btn btn-warning">Düzenle</button>
+}
+

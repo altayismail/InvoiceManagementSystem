@@ -1,0 +1,60 @@
+﻿@using EntityLayer.Concrete
+@model List<Kullanıcı>
+@{
+    ViewData["Title"] = "GetAllKullanıcı";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<header class="w3-container w3-xlarge w3-padding">
+    <p class="w3-center">Kullanıcılar</p>
+</header>
+
+
+@if (Model is not null)
+{
+    <div class="w3-container pl-3 pt-3 mt-3 mb-3 bg-success text-white" id="jeans">
+        <p>@Model.Count adet Kullanıcı listelendi.</p>
+    </div>
+}
+else
+{
+    <div class="w3-container pl-3 pt-3 mt-3 mb-3 bg-danger text-white" id="jeans">
+        <p>Kullanıcı bulunamadı.</p>
+    </div>
+}
+
+<table class="table table-bordered table-striped p-5">
+    <tr>
+        <th>İsim</th>
+        <th>Soyisim</th>
+        <th>TC Kimlik No</th>
+        <th>Email</th>
+        <th>Araç Bilgisi</th>
+        <th>Daire No</th>
+        <th>Düzenle</th>
+        <th>Sil</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>@item.KullanıcıIsım</td>
+    <td>@item.KullanıcıSoyisim</td>
+    <td>@item.KullanıcıTCNo</td>
+    <td>@item.KullanıcıEmail</td>
+    <td>
+        @if (@item.KullanıcıAraçBilgisi is null)
+        {
+            <p>Yok</p>
+        }
+        else
+        {
+            <p>@item.KullanıcıAraçBilgisi</p>
+        }
+    </td>
+    <td>@item.DaireId</td>
+    <td><a href="/Kullanıcı/KullanıcıUpdate/@item.KullanıcıId" class="btn btn-outline-warning text-dark">Düzenle</a></td>
+    <td><a href="/Kullanıcı/KullanıcıDelete/@item.KullanıcıId" class="btn btn-outline-danger text-dark">Sil</a></td>
+</tr>
+    }
+</table>
+

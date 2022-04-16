@@ -1,0 +1,42 @@
+﻿@using EntityLayer.Concrete
+@model Aidat
+@{
+    ViewData["Title"] = "AidatAdd";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<header class="w3-container w3-xlarge w3-padding">
+    <p class="w3-center">Aidat Ekle</p>
+</header>
+<hr />
+
+@using (Html.BeginForm("AidatAdd", "Aidat", FormMethod.Post))
+{
+    <div class="d-flex flex-row col-md-12">
+        <div class="col-md-6">
+            @Html.LabelFor(model => model.AidatTarihi, "Aidat Tarihi")
+            @Html.TextBoxFor(model => model.AidatTarihi, new { @type = "date", @class = "form-control datepicker" })
+            @Html.ValidationMessageFor(model => model.AidatTarihi, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-6">
+            @Html.LabelFor(model => model.AidatSonOdemeTarihi, "Aidat Son Ödeme Tarihi")
+            @Html.TextBoxFor(model => model.AidatSonOdemeTarihi, new { @type = "date", @class = "form-control datepicker" })
+            @Html.ValidationMessageFor(model => model.AidatSonOdemeTarihi, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <div class="d-flex flex-row col-md-12">
+        <div class="col-md-6">
+            @Html.LabelFor(model => model.AidatUcreti, "Aidat Ücreti")
+            @Html.TextBoxFor(model => model.AidatUcreti, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.AidatUcreti, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-6">
+            @Html.LabelFor(model => model.KullanıcıId, "Kullanıcılar")
+            @Html.DropDownListFor(model => model.KullanıcıId, (List<SelectListItem>)ViewBag.kullanıcılar,new { @class="form-control"})
+            @Html.ValidationMessageFor(model => model.KullanıcıId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <button type="submit" style="margin-left:30px" class="btn btn-primary">Aidat Ekle</button>
+}

@@ -2,8 +2,7 @@
 
 namespace BusinessLayer.Abstract
 {
-    public interface IKullanıcıService
+    public interface IKullanıcıService : IGenericService<Kullanıcı>
     {
-        void AddKullanıcı(Kullanıcı kullanıcı);
     }
 }

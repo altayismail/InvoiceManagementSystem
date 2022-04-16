@@ -24,6 +24,8 @@ namespace FaturaYönetimSistemi
         {
             services.AddControllersWithViews();
 
+            services.AddSession();
+
             services.AddMvc(config => 
             {
                 var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();

@@ -36,7 +36,7 @@ namespace FaturaYönetimSistemi.Controllers
                 var userIndetity = new ClaimsIdentity(claims,"a");
                 ClaimsPrincipal principal = new ClaimsPrincipal(userIndetity);
                 await HttpContext.SignInAsync(principal);
-                return RedirectToAction("Index", "KullanıcıGiris");
+                return RedirectToAction("KullanıcıIndex", "Home");
             }
             else
             {

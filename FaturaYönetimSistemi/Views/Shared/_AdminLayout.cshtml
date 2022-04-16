@@ -34,44 +34,40 @@
             <h3 class="w3-wide"><b>Fatura Yönetim Sistemi</b></h3>
         </div>
         <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
+            <a href="/Home/AdminIndex" class="w3-bar-item w3-button">Ana Sayfa</a>
             <a onclick="myAccFunc()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
                 Kullanıcı İşlemleri <i class="fa fa-caret-down"></i>
             </a>
             <div id="demoAcc" class="w3-bar-block w3-hide w3-padding-large w3-medium w3-show">
-                <a href="/Kullanıcı/Index" class="w3-bar-item w3-button">Kullanıcı Ekle</a>
-                <a href="#" class="w3-bar-item w3-button">Kullanıcı Sil</a>
-                <a href="#" class="w3-bar-item w3-button">Kullanıcı Güncelle</a>
-                <a href="#" class="w3-bar-item w3-button">Kullanıcıları Listele</a>
+                <a href="/Kullanıcı/GetAllKullanıcıs" class="w3-bar-item w3-button">Kullanıcıları Listele/Düzenle/Sil</a>
+                <a href="/Kullanıcı/AddKullanıcı" class="w3-bar-item w3-button">Kullanıcı Ekle</a>
             </div>
             <a onclick="myAccFunc1()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn1">
                 Daire İşlemleri <i class="fa fa-caret-down"></i>
             </a>
             <div id="demoAcc1" class="w3-bar-block w3-hide w3-padding-large w3-medium w3-show">
-                <a href="#" class="w3-bar-item w3-button">Daire Bilgisi Sil</a>
-                <a href="#" class="w3-bar-item w3-button">Daire Bilgisi Güncelle</a>
-                <a href="#" class="w3-bar-item w3-button">Daire Bilgilerini Listele</a>
+                <a href="/Daire/GetlAllDaires" class="w3-bar-item w3-button">Daire Bilgilerini Listele/Düzenle/Sil</a>
             </div>
             <a onclick="myAccFunc2()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn2">
                 Fatura İşlemleri <i class="fa fa-caret-down"></i>
             </a>
             <div id="demoAcc2" class="w3-bar-block w3-hide w3-padding-large w3-medium w3-show">
-                <a href="#" class="w3-bar-item w3-button">Fatura Atama</a>
-                <a href="#" class="w3-bar-item w3-button">Faturaları Listele</a>
+                <a href="/Fatura/AddFatura" class="w3-bar-item w3-button">Fatura Atama</a>
+                <a href="/Fatura/AdminGetAllFaturas" class="w3-bar-item w3-button">Faturaları Listele</a>
             </div>
             <a onclick="myAccFunc3()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn3">
                 Aidat İşlemleri <i class="fa fa-caret-down"></i>
             </a>
             <div id="demoAcc3" class="w3-bar-block w3-hide w3-padding-large w3-medium w3-show">
-                <a href="#" class="w3-bar-item w3-button">Aidat Atama</a>
-                <a href="#" class="w3-bar-item w3-button">Aidatları Listele</a>
+                <a href="/Aidat/AddAidat" class="w3-bar-item w3-button">Aidat Atama</a>
+                <a href="/Aidat/AdminGetAllAidats" class="w3-bar-item w3-button">Aidatları Listele</a>
             </div>
             <a href="#" class="w3-bar-item w3-button">Gelen Ödemeler</a>
             <a href="#" class="w3-bar-item w3-button">Mesajlarım</a>
             <a href="#" class="w3-bar-item w3-button">Borç-Alacak Listesi</a>
         </div>
 
-        <a href="#footer" class="w3-bar-item w3-button w3-padding">İletişim</a>
-        <a href="#footer" class="w3-bar-item w3-button w3-padding">Uygulama Hakkında</a>
+        <a href="/Home/AdminAbout" class="w3-bar-item w3-button w3-padding">Uygulama Hakkında</a>
     </nav>
 
     <!-- Top menu on small screens -->

@@ -14,13 +14,13 @@
     <meta name="keywords"
           content="Bicycle Error Page Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
     <script>
-		addEventListener("load", function () {
-			setTimeout(hideURLbar, 0);
-		}, false);
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
 
-		function hideURLbar() {
-			window.scrollTo(0, 1);
-		}
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
     </script>
     <!-- //Meta tag Keywords -->
     <!--/Style-CSS -->
@@ -28,6 +28,7 @@
     <!--//Style-CSS -->
     <!-- font-awesome-icons -->
     <link href="~/weberror/css/font-awesome.css" rel="stylesheet">
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
     <!-- //font-awesome-icons -->
 </head>
 
@@ -41,9 +42,12 @@
                         <h3>404 </h3>
 
                         <p>Oops! Kayboldunuz</p>
+                        <p>Ana Sayfaya dönmek için "Ana Sayfa" butonuna tıklayınız veya bir şeyler arayınız.</p>
+                        <a href="~/Home/Index" class="btn btn-outline-warning text-white text-md-center">Ana Sayfa</a>
+
                         <form action="#" method="post" class="d-flex error-page-form">
                             <input type="search" placeholder="Birşeyler ara" required="required">
-                            <button type="submit"><span class="fa fa-search" aria-hidden="true"></span></button>
+                            <button type="submit"><span class="fa fa-search text-center" aria-hidden="true"></span></button>
                         </form>
                     </div>
 
