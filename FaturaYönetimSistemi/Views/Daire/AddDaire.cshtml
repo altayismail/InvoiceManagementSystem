@@ -1,0 +1,41 @@
+﻿@using EntityLayer.Concrete
+@model Daire
+@{
+    ViewData["Title"] = "AddDaire";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<header class="w3-container w3-xlarge w3-padding">
+    <p class="w3-center">Daire Ekleme Sayfası</p>
+</header>
+
+@using (Html.BeginForm("AddDaire", "Daire", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col">
+            <label for="formGroupExampleInput">Blok</label>
+            @Html.TextBoxFor(x => x.DaireBlok, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.DaireBlok, "", new { @class = "text-danger" })
+        </div>
+        <div class="col">
+            <label for="formGroupExampleInput">Durum</label>
+            @Html.TextBoxFor(x => x.DaireDurumu, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.DaireDurumu, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col">
+            <label for="formGroupExampleInput">Tip</label>
+            @Html.TextBoxFor(x => x.DaireTipi, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.DaireTipi, "", new { @class = "text-danger" })
+        </div>
+        <div class="col">
+            <label for="formGroupExampleInput">Kullanıcı Id</label>
+            @Html.TextBoxFor(x => x.DaireKullanıcıId, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.DaireKullanıcıId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Daireyi Kaydet</button>
+}

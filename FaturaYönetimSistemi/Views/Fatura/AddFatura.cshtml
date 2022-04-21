@@ -32,9 +32,9 @@
             @Html.ValidationMessageFor(model => model.FaturaTutarı, "", new { @class = "text-danger" })
         </div>
         <div class="col-md-6">
-            @Html.LabelFor(model => model.KullanıcıId, "Kullanıcılar")
-            @Html.DropDownListFor(model => model.KullanıcıId, (List<SelectListItem>)ViewBag.kullanıcılar, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.KullanıcıId, "", new { @class = "text-danger" })
+            @Html.LabelFor(model => model.FaturaKullanıcıId, "Kullanıcılar")
+            @Html.DropDownListFor(model => model.FaturaKullanıcıId, (List<SelectListItem>)ViewBag.kullanıcılar, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.FaturaKullanıcıId, "", new { @class = "text-danger" })
         </div>
     </div>
     <br />

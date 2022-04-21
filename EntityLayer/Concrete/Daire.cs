@@ -12,7 +12,7 @@ namespace EntityLayer.Concrete
         public string DaireTipi { get; set; }
         public string DaireKatı { get; set; }
 
-        public int KullanıcıId { get; set; }
+        public int DaireKullanıcıId { get; set; }
         public Kullanıcı DaireKullanıcı { get; set; }
     }
 }

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DataAccessLayer.Migrations
 {
-    public partial class mig_first : Migration
+    public partial class first_mig : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -37,7 +37,7 @@ namespace DataAccessLayer.Migrations
                     KullanıcıEmail = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     KullanıcıSifre = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     KullanıcıAraçBilgisi = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DaireId = table.Column<int>(type: "int", nullable: true)
+                    KullanıcıDaireNo = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -67,18 +67,18 @@ namespace DataAccessLayer.Migrations
                 {
                     AidatId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    AidatTarihi = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    AidatSonOdemeTarihi = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    AidatUcreti = table.Column<double>(type: "float", nullable: true),
-                    AidatOdendiMi = table.Column<bool>(type: "bit", nullable: true),
-                    KullanıcıId = table.Column<int>(type: "int", nullable: true)
+                    AidatTarihi = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    AidatSonOdemeTarihi = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    AidatUcreti = table.Column<double>(type: "float", nullable: false),
+                    AidatOdendiMi = table.Column<bool>(type: "bit", nullable: false),
+                    AidatKullanıcıId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Aidatlar", x => x.AidatId);
                     table.ForeignKey(
-                        name: "FK_Aidatlar_Kullanıcılar_KullanıcıId",
-                        column: x => x.KullanıcıId,
+                        name: "FK_Aidatlar_Kullanıcılar_AidatKullanıcıId",
+                        column: x => x.AidatKullanıcıId,
                         principalTable: "Kullanıcılar",
                         principalColumn: "KullanıcıId",
                         onDelete: ReferentialAction.Cascade);
@@ -90,23 +90,22 @@ namespace DataAccessLayer.Migrations
                 {
                     DaireId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    DaireNo = table.Column<int>(type: "int", nullable: true),
+                    DaireNo = table.Column<int>(type: "int", nullable: false),
                     DaireBlok = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DaireDurumu = table.Column<bool>(type: "bit", nullable: true),
+                    DaireDurumu = table.Column<bool>(type: "bit", nullable: false),
                     DaireTipi = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DaireKatı = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    KullanıcıId = table.Column<int>(type: "int", nullable: true),
-                    DaireKullanıcıKullanıcıId = table.Column<int>(type: "int", nullable: true)
+                    DaireKullanıcıId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Daireler", x => x.DaireId);
                     table.ForeignKey(
-                        name: "FK_Daireler_Kullanıcılar_DaireKullanıcıKullanıcıId",
-                        column: x => x.DaireKullanıcıKullanıcıId,
+                        name: "FK_Daireler_Kullanıcılar_DaireKullanıcıId",
+                        column: x => x.DaireKullanıcıId,
                         principalTable: "Kullanıcılar",
                         principalColumn: "KullanıcıId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -116,18 +115,18 @@ namespace DataAccessLayer.Migrations
                     FaturaId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FaturaTipi = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    FaturaTarihi = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    FaturaSonOdemeTarihi = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    FaturaTutarı = table.Column<double>(type: "float", nullable: true),
-                    FaturaOdendiMi = table.Column<bool>(type: "bit", nullable: true),
-                    KullanıcıId = table.Column<int>(type: "int", nullable: true)
+                    FaturaTarihi = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FaturaSonOdemeTarihi = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FaturaTutarı = table.Column<double>(type: "float", nullable: false),
+                    FaturaOdendiMi = table.Column<bool>(type: "bit", nullable: false),
+                    FaturaKullanıcıId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Faturalar", x => x.FaturaId);
                     table.ForeignKey(
-                        name: "FK_Faturalar_Kullanıcılar_KullanıcıId",
-                        column: x => x.KullanıcıId,
+                        name: "FK_Faturalar_Kullanıcılar_FaturaKullanıcıId",
+                        column: x => x.FaturaKullanıcıId,
                         principalTable: "Kullanıcılar",
                         principalColumn: "KullanıcıId",
                         onDelete: ReferentialAction.Cascade);
@@ -139,53 +138,54 @@ namespace DataAccessLayer.Migrations
                 {
                     MesajId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    MesajTarihi = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    MesajTarihi = table.Column<DateTime>(type: "datetime2", nullable: false),
                     MesajKonusu = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     MesajIcerik = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    KullanıcıId = table.Column<int>(type: "int", nullable: true),
-                    YoneticiId = table.Column<int>(type: "int", nullable: true)
+                    MesajOkunduMu = table.Column<bool>(type: "bit", nullable: false),
+                    MesajAlanId = table.Column<int>(type: "int", nullable: true),
+                    MesajYollayanId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Mesajlar", x => x.MesajId);
                     table.ForeignKey(
-                        name: "FK_Mesajlar_Kullanıcılar_KullanıcıId",
-                        column: x => x.KullanıcıId,
+                        name: "FK_Mesajlar_Kullanıcılar_MesajYollayanId",
+                        column: x => x.MesajYollayanId,
                         principalTable: "Kullanıcılar",
                         principalColumn: "KullanıcıId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Mesajlar_Yoneticiler_YoneticiId",
-                        column: x => x.YoneticiId,
+                        name: "FK_Mesajlar_Yoneticiler_MesajAlanId",
+                        column: x => x.MesajAlanId,
                         principalTable: "Yoneticiler",
                         principalColumn: "YoneticiId",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Aidatlar_KullanıcıId",
+                name: "IX_Aidatlar_AidatKullanıcıId",
                 table: "Aidatlar",
-                column: "KullanıcıId");
+                column: "AidatKullanıcıId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Daireler_DaireKullanıcıKullanıcıId",
+                name: "IX_Daireler_DaireKullanıcıId",
                 table: "Daireler",
-                column: "DaireKullanıcıKullanıcıId");
+                column: "DaireKullanıcıId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Faturalar_KullanıcıId",
+                name: "IX_Faturalar_FaturaKullanıcıId",
                 table: "Faturalar",
-                column: "KullanıcıId");
+                column: "FaturaKullanıcıId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Mesajlar_KullanıcıId",
+                name: "IX_Mesajlar_MesajAlanId",
                 table: "Mesajlar",
-                column: "KullanıcıId");
+                column: "MesajAlanId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Mesajlar_YoneticiId",
+                name: "IX_Mesajlar_MesajYollayanId",
                 table: "Mesajlar",
-                column: "YoneticiId");
+                column: "MesajYollayanId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

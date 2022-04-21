@@ -13,7 +13,7 @@ namespace EntityLayer.Concrete
         public double FaturaTutarı { get; set; }
         public bool FaturaOdendiMi { get; set; }
 
-        public int KullanıcıId { get; set; }
+        public int FaturaKullanıcıId { get; set; }
         public Kullanıcı FaturaKullanıcı { get; set; }
     }
 }

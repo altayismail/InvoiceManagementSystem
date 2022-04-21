@@ -1,7 +1,7 @@
 ﻿@using EntityLayer.Concrete
 @model Aidat
 @{
-    ViewData["Title"] = "AidatAdd";
+    ViewData["Title"] = "AddAidat";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -32,9 +32,9 @@
             @Html.ValidationMessageFor(model => model.AidatUcreti, "", new { @class = "text-danger" })
         </div>
         <div class="col-md-6">
-            @Html.LabelFor(model => model.KullanıcıId, "Kullanıcılar")
-            @Html.DropDownListFor(model => model.KullanıcıId, (List<SelectListItem>)ViewBag.kullanıcılar,new { @class="form-control"})
-            @Html.ValidationMessageFor(model => model.KullanıcıId, "", new { @class = "text-danger" })
+            @Html.LabelFor(model => model.AidatKullanıcıId, "Kullanıcılar")
+            @Html.DropDownListFor(model => model.AidatKullanıcıId, (List<SelectListItem>)ViewBag.kullanıcılar,new { @class="form-control"})
+            @Html.ValidationMessageFor(model => model.AidatKullanıcıId, "", new { @class = "text-danger" })
         </div>
     </div>
     <br />

@@ -22,13 +22,15 @@ namespace BusinessLayer.ValidationRules
                 MinimumLength(15).WithMessage("Email en az 15 karakterden oluşmalıdır.");
 
             RuleFor(x => x.KullanıcıTCNo).NotEmpty().WithMessage("Kullanıcı şifresi boş geçilemez.").
-                Length(11).WithMessage("TC kimlik numarası 11 haneli olmalıdır.");
+                Length(11).WithMessage("TC kimlik numarası 11 haneli olmalıdır.").
+                Matches("[0-9]").WithMessage("TC kimlik numarası sadece rakamlardan oluşmalı.");
 
-            RuleFor(x => x.DaireId).NotEmpty().WithMessage("Kullanıcının atanacağı daire numarası boş geçilemez").
+            RuleFor(x => x.KullanıcıDaireNo).NotEmpty().WithMessage("Kullanıcının atanacağı daire numarası boş geçilemez").
                 GreaterThan(0).WithMessage("Daire numarası sıfırdan büyük olmalıdır.");
 
             RuleFor(x => x.KullanıcıTelefonNo).NotEmpty().WithMessage("Kullanıcı telefon numarası boş geçilemez").
-                Length(10).WithMessage("Kullanıcı telefon numarası 10 haneli olamalıdır.");
+                Length(10).WithMessage("Kullanıcı telefon numarası 10 haneli olamalıdır.").
+                Matches("[0-9]").WithMessage("Telefon numarası sadece rakamlardan oluşmalı.");
         }
     }
 }

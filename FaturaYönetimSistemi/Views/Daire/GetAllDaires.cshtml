@@ -1,0 +1,63 @@
+﻿@using EntityLayer.Concrete
+@model List<Daire>
+@{
+    ViewData["Title"] = "GetAllDaire";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<header class="w3-container w3-xlarge w3-padding">
+    <p class="w3-center">Daire İşlemleri</p>
+</header>
+
+@if (Model is not null)
+{
+    <div class="w3-container pl-3 pt-3 mt-3 mb-3 bg-success text-white" id="jeans">
+        <p>@Model.Count adet Daire listelendi.</p>
+    </div>
+}
+else
+{
+    <div class="w3-container pl-3 pt-3 mt-3 mb-3 bg-danger text-white" id="jeans">
+        <p>Daire bulunamadı.</p>
+    </div>
+}
+
+<hr />
+<a href="/Daire/AddDaire" class="btn btn-outline-primary text-right">Daire Ekle</a>
+<hr />
+
+<table class="table table-bordered table-striped p-5 ">
+    <tr>
+        <th>Daire No</th>
+        <th>Blok</th>
+        <th>Durum</th>
+        <th>Tip</th>
+        <th>Kat Bilgisi</th>
+        <th>Daire Sahibi</th>
+        <th>Düzenle</th>
+        <th>Sil</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.DaireNo</td>
+            <td>@item.DaireBlok</td>
+            <td>
+                @if (@item.DaireDurumu)
+                {
+                    <p class="text-warning">Dolu</p>
+                }
+                else
+                {
+                    <p class="text-success">Boş</p>
+                }
+            </td>
+            <td>@item.DaireTipi</td>
+            <td>@item.DaireKatı</td>
+            <td>@item.DaireKullanıcı.KullanıcıIsım @item.DaireKullanıcı.KullanıcıSoyisim</td>
+            <td><a href="/Daire/UpdateDaire/@item.DaireId" class="btn btn-outline-warning text-dark">Düzenle</a></td>
+            <td><a href="/Daire/DeleteDaire/@item.DaireId" class="btn btn-outline-danger text-dark">Sil</a></td>
+        </tr>
+    }
+</table>
+

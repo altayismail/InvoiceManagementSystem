@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Concrete;
 using BusinessLayer.ValidationRules;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
@@ -15,8 +16,11 @@ namespace FaturaYönetimSistemi.Controllers
         AidatManager manager = new(new EFAidatRepository());
         public IActionResult KullanıcıGetAllAidats()
         {
-            var aidatlar = manager.GetAllQueryWithKullanıcı();
-            return View(aidatlar);
+            var kullanıcıMail = User.Identity.Name;
+            Context context = new Context();
+            var kullanıcı = context.Kullanıcılar.Where(x => x.KullanıcıEmail == kullanıcıMail).Select(x => x.KullanıcıId).Single();
+            var aidatlar = manager.GetAllQueryWithKullanıcı().Where(x => x.AidatKullanıcıId == kullanıcı).ToList<Aidat>();
+            return View(aidatlar); 
         }
 
         public IActionResult AdminGetAllAidats()

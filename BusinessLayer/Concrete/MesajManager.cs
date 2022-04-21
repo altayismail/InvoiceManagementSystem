@@ -32,6 +32,16 @@ namespace BusinessLayer.Concrete
             return _mesajDal.GetAllQuery();
         }
 
+        public List<Mesaj> GetAllQueryByKullanıcı(int id)
+        {
+            return _mesajDal.GetAllQuery().Where(x => x.MesajAlanId == id).ToList();
+        }
+
+        public List<Mesaj> GetAllQueryWithYoneticiAndKullanıcı(int id)
+        {
+            return _mesajDal.GetAllQueryWithYoneticiAndKullanıcı(id);
+        }
+
         public Mesaj GetQueryById(int id)
         {
             return _mesajDal.GetQueryById(id);

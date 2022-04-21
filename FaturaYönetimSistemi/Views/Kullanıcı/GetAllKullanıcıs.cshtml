@@ -1,7 +1,7 @@
 ﻿@using EntityLayer.Concrete
 @model List<Kullanıcı>
 @{
-    ViewData["Title"] = "GetAllKullanıcı";
+    ViewData["Title"] = "GetAllDaires";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -51,7 +51,7 @@ else
             <p>@item.KullanıcıAraçBilgisi</p>
         }
     </td>
-    <td>@item.DaireId</td>
+    <td>@item.KullanıcıDaireNo</td>
     <td><a href="/Kullanıcı/UpdateKullanıcı/@item.KullanıcıId" class="btn btn-outline-warning text-dark">Düzenle</a></td>
     <td><a href="/Kullanıcı/DeleteKullanıcı/@item.KullanıcıId" class="btn btn-outline-danger text-dark">Sil</a></td>
 </tr>

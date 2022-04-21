@@ -1,0 +1,25 @@
+﻿@using EntityLayer.Concrete
+@model Daire 
+@{
+    ViewData["Title"] = "UpdateDaire";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<header class="w3-container w3-xlarge w3-padding">
+    <p class="w3-center">Daire Düzenle</p>
+</header>
+<hr />
+
+@using (Html.BeginForm("UpdateDaire", "Daire", FormMethod.Post))
+{
+    @Html.Label("Durum")
+    @Html.TextBoxFor(x => x.DaireDurumu, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.DaireDurumu, "", new { @class = "text-danger" })
+    <br />
+    @Html.Label("Kullanıcı Id")
+    @Html.TextBoxFor(x => x.DaireKullanıcıId, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.DaireKullanıcıId, "", new { @class = "text-danger" })
+    <br />
+    <button class="btn btn-warning">Düzenle</button>
+}
+

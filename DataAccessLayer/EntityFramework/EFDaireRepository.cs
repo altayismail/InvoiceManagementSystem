@@ -1,15 +1,21 @@
 ﻿using DataAccessLayer.Abstract;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.Repostories;
 using EntityLayer.Concrete;
-using System;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccessLayer.EntityFramework
 {
     public class EFDaireRepository : GenericRepository<Daire>, IDaireDal
     {
+        public List<Daire> GetAllDaireWithKullanıcı()
+        {
+            using(var context = new Context())
+            {
+                return context.Daireler.Include(x => x.DaireKullanıcı).ToList();
+            }
+        }
     }
 }

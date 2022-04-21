@@ -11,7 +11,7 @@ namespace BusinessLayer.ValidationRules
             RuleFor(x => x.AidatId).NotEmpty().WithMessage("Id kısmı boş geçilemez").
                 GreaterThan(0).WithMessage("Id sıfırdan büyük olmalıdır.");
 
-            RuleFor(x => x.KullanıcıId).NotEmpty().WithMessage("Kullanıcı Id boş geçilemez").
+            RuleFor(x => x.AidatKullanıcıId).NotEmpty().WithMessage("Kullanıcı Id boş geçilemez").
                 GreaterThan(0).WithMessage("Kullanıcı Id sıfırdan büyük olmalıdır.");
 
             RuleFor(x => x.AidatUcreti).NotEmpty().WithMessage("Aidat ücreti boş geçilemez.").

@@ -12,6 +12,7 @@ namespace EntityLayer.Concrete
         public string YoneticiTelefonNo { get; set; }
         public string YoneticiEmail { get; set; }
         public string YoneticiSifre { get; set; }
-        public List<Mesaj> YoneticiMesajlar { get; set; }
+        public virtual List<Mesaj> YoneticiMesajAl { get; set; }
+
     }
 }

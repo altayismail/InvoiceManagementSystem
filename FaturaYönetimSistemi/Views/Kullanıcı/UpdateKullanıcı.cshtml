@@ -1,7 +1,7 @@
 ﻿@using EntityLayer.Concrete
 @model Kullanıcı
 @{
-    ViewData["Title"] = "KullanıcıUpdate";
+    ViewData["Title"] = "UpdateKullanıcı";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -34,12 +34,11 @@
     <br />
     @Html.Label("Araç Bilgisi")
     @Html.TextBoxFor(x => x.KullanıcıAraçBilgisi, new { @class = "form-control" })
-    @Html.ValidationMessageFor(x => x.KullanıcıAraçBilgisi, "", new { @class = "text-danger" })
     <br />
     @Html.Label("Daire No")
-    @Html.TextBoxFor(x => x.DaireId, new { @class = "form-control" })
-    @Html.ValidationMessageFor(x => x.DaireId,"", new { @class = "text-danger"})
+    @Html.TextBoxFor(x => x.KullanıcıDaireNo, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.KullanıcıDaireNo, "", new { @class = "text-danger"})
     <br />
-    <button class="btn btn-warning">Düzenle</button>
+    <button class="btn btn-warning">Kaydet</button>
 }
 

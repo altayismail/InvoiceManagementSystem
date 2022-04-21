@@ -21,7 +21,7 @@ namespace BusinessLayer.ValidationRules
             RuleFor(x => x.FaturaTutarı).GreaterThan(0).WithMessage("Fatura tutarı sıfırdan büyük olmalıdır.")
                 .NotEmpty().WithMessage("Fatura tutarı boş geçilemez.");
 
-            RuleFor(x => x.KullanıcıId).NotEmpty().WithMessage("Kullanıcı boş geçilemez.").
+            RuleFor(x => x.FaturaKullanıcıId).NotEmpty().WithMessage("Kullanıcı boş geçilemez.").
                 GreaterThan(0).WithMessage("Kullanıcı Id sıfırndan büyük olmalıdır.");
         }
     }

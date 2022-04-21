@@ -7,6 +7,7 @@
 <header class="w3-container w3-xlarge w3-padding">
     <p class="w3-center">Kullanıcı Ekleme Sayfası</p>
 </header>
+<hr />
 
 @using (Html.BeginForm("AddKullanıcı", "Kullanıcı", FormMethod.Post)){
 <div class="row">
@@ -47,8 +48,8 @@
 </div>
 <div class="form-group">
     <label for="formGroupExampleInput2">Daire No</label>
-    @Html.TextBoxFor(x => x.DaireId, new { @class = "form-control" })
-    @Html.ValidationMessageFor(x => x.DaireId, "", new { @class = "text-danger" })
+    @Html.TextBoxFor(x => x.KullanıcıDaireNo, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.KullanıcıDaireNo, "", new { @class = "text-danger" })
 </div>
 <button type="submit" class="btn btn-primary">Kullanıcıyı Kaydet</button>
 }

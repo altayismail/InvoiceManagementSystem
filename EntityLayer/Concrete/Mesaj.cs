@@ -10,8 +10,12 @@ namespace EntityLayer.Concrete
         public DateTime MesajTarihi { get; set; }
         public string MesajKonusu { get; set; }
         public string MesajIcerik { get; set; }
+        public bool MesajOkunduMu { get; set; }
 
-        public int KullanıcıId { get; set; }
-        public Kullanıcı MesajKullanıcı { get; set; }
+        public int? MesajAlanId { get; set; }
+        public Yonetici MesajAlan { get; set; }
+
+        public int? MesajYollayanId { get; set; }
+        public Kullanıcı MesajYollayan { get; set; }
     }
 }

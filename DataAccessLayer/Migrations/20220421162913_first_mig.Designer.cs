@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20220412131143_mig_first")]
-    partial class mig_first
+    [Migration("20220421162913_first_mig")]
+    partial class first_mig
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,6 +28,9 @@ namespace DataAccessLayer.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("AidatKullanıcıId")
+                        .HasColumnType("int");
+
                     b.Property<bool>("AidatOdendiMi")
                         .HasColumnType("bit");
 
@@ -40,12 +43,9 @@ namespace DataAccessLayer.Migrations
                     b.Property<double>("AidatUcreti")
                         .HasColumnType("float");
 
-                    b.Property<int>("KullanıcıId")
-                        .HasColumnType("int");
-
                     b.HasKey("AidatId");
 
-                    b.HasIndex("KullanıcıId");
+                    b.HasIndex("AidatKullanıcıId");
 
                     b.ToTable("Aidatlar");
                 });
@@ -66,7 +66,7 @@ namespace DataAccessLayer.Migrations
                     b.Property<string>("DaireKatı")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("DaireKullanıcıKullanıcıId")
+                    b.Property<int>("DaireKullanıcıId")
                         .HasColumnType("int");
 
                     b.Property<int>("DaireNo")
@@ -75,12 +75,9 @@ namespace DataAccessLayer.Migrations
                     b.Property<string>("DaireTipi")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("KullanıcıId")
-                        .HasColumnType("int");
-
                     b.HasKey("DaireId");
 
-                    b.HasIndex("DaireKullanıcıKullanıcıId");
+                    b.HasIndex("DaireKullanıcıId");
 
                     b.ToTable("Daireler");
                 });
@@ -91,6 +88,9 @@ namespace DataAccessLayer.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("FaturaKullanıcıId")
+                        .HasColumnType("int");
 
                     b.Property<bool>("FaturaOdendiMi")
                         .HasColumnType("bit");
@@ -107,12 +107,9 @@ namespace DataAccessLayer.Migrations
                     b.Property<double>("FaturaTutarı")
                         .HasColumnType("float");
 
-                    b.Property<int>("KullanıcıId")
-                        .HasColumnType("int");
-
                     b.HasKey("FaturaId");
 
-                    b.HasIndex("KullanıcıId");
+                    b.HasIndex("FaturaKullanıcıId");
 
                     b.ToTable("Faturalar");
                 });
@@ -151,11 +148,11 @@ namespace DataAccessLayer.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("DaireId")
-                        .HasColumnType("int");
-
                     b.Property<string>("KullanıcıAraçBilgisi")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("KullanıcıDaireNo")
+                        .HasColumnType("int");
 
                     b.Property<string>("KullanıcıEmail")
                         .HasColumnType("nvarchar(max)");
@@ -187,7 +184,7 @@ namespace DataAccessLayer.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("KullanıcıId")
+                    b.Property<int?>("MesajAlanId")
                         .HasColumnType("int");
 
                     b.Property<string>("MesajIcerik")
@@ -196,17 +193,20 @@ namespace DataAccessLayer.Migrations
                     b.Property<string>("MesajKonusu")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("MesajOkunduMu")
+                        .HasColumnType("bit");
+
                     b.Property<DateTime>("MesajTarihi")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("YoneticiId")
+                    b.Property<int?>("MesajYollayanId")
                         .HasColumnType("int");
 
                     b.HasKey("MesajId");
 
-                    b.HasIndex("KullanıcıId");
+                    b.HasIndex("MesajAlanId");
 
-                    b.HasIndex("YoneticiId");
+                    b.HasIndex("MesajYollayanId");
 
                     b.ToTable("Mesajlar");
                 });
@@ -242,7 +242,7 @@ namespace DataAccessLayer.Migrations
                 {
                     b.HasOne("EntityLayer.Concrete.Kullanıcı", "AidatKullanıcı")
                         .WithMany("KullanıcıAidatlar")
-                        .HasForeignKey("KullanıcıId")
+                        .HasForeignKey("AidatKullanıcıId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -253,7 +253,9 @@ namespace DataAccessLayer.Migrations
                 {
                     b.HasOne("EntityLayer.Concrete.Kullanıcı", "DaireKullanıcı")
                         .WithMany()
-                        .HasForeignKey("DaireKullanıcıKullanıcıId");
+                        .HasForeignKey("DaireKullanıcıId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("DaireKullanıcı");
                 });
@@ -262,7 +264,7 @@ namespace DataAccessLayer.Migrations
                 {
                     b.HasOne("EntityLayer.Concrete.Kullanıcı", "FaturaKullanıcı")
                         .WithMany("KullanıcıFaturalar")
-                        .HasForeignKey("KullanıcıId")
+                        .HasForeignKey("FaturaKullanıcıId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -271,17 +273,17 @@ namespace DataAccessLayer.Migrations
 
             modelBuilder.Entity("EntityLayer.Concrete.Mesaj", b =>
                 {
-                    b.HasOne("EntityLayer.Concrete.Kullanıcı", "MesajKullanıcı")
-                        .WithMany()
-                        .HasForeignKey("KullanıcıId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("EntityLayer.Concrete.Yonetici", "MesajAlan")
+                        .WithMany("YoneticiMesajAl")
+                        .HasForeignKey("MesajAlanId");
 
-                    b.HasOne("EntityLayer.Concrete.Yonetici", null)
-                        .WithMany("YoneticiMesajlar")
-                        .HasForeignKey("YoneticiId");
+                    b.HasOne("EntityLayer.Concrete.Kullanıcı", "MesajYollayan")
+                        .WithMany("KullanıcıMesajGönder")
+                        .HasForeignKey("MesajYollayanId");
 
-                    b.Navigation("MesajKullanıcı");
+                    b.Navigation("MesajAlan");
+
+                    b.Navigation("MesajYollayan");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.Kullanıcı", b =>
@@ -289,11 +291,13 @@ namespace DataAccessLayer.Migrations
                     b.Navigation("KullanıcıAidatlar");
 
                     b.Navigation("KullanıcıFaturalar");
+
+                    b.Navigation("KullanıcıMesajGönder");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.Yonetici", b =>
                 {
-                    b.Navigation("YoneticiMesajlar");
+                    b.Navigation("YoneticiMesajAl");
                 });
 #pragma warning restore 612, 618
         }

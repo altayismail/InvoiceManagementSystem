@@ -24,6 +24,11 @@ namespace BusinessLayer.Concrete
             _daireDal.Delete(t);
         }
 
+        public List<Daire> GetAllDaireWithKullanıcı()
+        {
+            return _daireDal.GetAllDaireWithKullanıcı();
+        }
+
         public List<Daire> GetAllQuery()
         {
             return _daireDal.GetAllQuery();

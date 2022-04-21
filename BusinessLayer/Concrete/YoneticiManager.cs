@@ -24,6 +24,11 @@ namespace BusinessLayer.Concrete
             _yoneticiDal.Delete(t);
         }
 
+        public List<Yonetici> GetAllQueryWithMesaj()
+        {
+            return _yoneticiDal.GetAllQuery();
+        }
+
         public List<Yonetici> GetAllQuery()
         {
             return _yoneticiDal.GetAllQuery();
