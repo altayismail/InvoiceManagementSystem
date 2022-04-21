@@ -1,8 +1,49 @@
-﻿
+﻿@using EntityLayer.Concrete
+@model Fatura
 @{
     ViewData["Title"] = "AddFatura";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>AddFatura</h1>
+<header class="w3-container w3-xlarge w3-padding">
+    <p class="w3-center">Fatura Ekle</p>
+</header>
+<hr />
+
+@using (Html.BeginForm("FaturaAdd", "Fatura", FormMethod.Post))
+{
+    <div class="d-flex flex-row col-md-12">
+        <div class="col-md-6">
+            @Html.LabelFor(model => model.FaturaTarihi, "Fatura Tarihi")
+            @Html.TextBoxFor(model => model.FaturaTarihi, new { @type = "date", @class = "form-control datepicker" })
+            @Html.ValidationMessageFor(model => model.FaturaTarihi, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-6">
+            @Html.LabelFor(model => model.FaturaSonOdemeTarihi, "Fatura Son Ödeme Tarihi")
+            @Html.TextBoxFor(model => model.FaturaSonOdemeTarihi, new { @type = "date", @class = "form-control datepicker" })
+            @Html.ValidationMessageFor(model => model.FaturaSonOdemeTarihi, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <div class="d-flex flex-row col-md-12">
+        <div class="col-md-6">
+            @Html.LabelFor(model => model.FaturaTutarı, "Fatura Tutarı")
+            @Html.TextBoxFor(model => model.FaturaTutarı, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.FaturaTutarı, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-6">
+            @Html.LabelFor(model => model.KullanıcıId, "Kullanıcılar")
+            @Html.DropDownListFor(model => model.KullanıcıId, (List<SelectListItem>)ViewBag.kullanıcılar, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.KullanıcıId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <div class="col-md-12">
+            @Html.LabelFor(model => model.FaturaTipi, "Fatura Tipi")
+            @Html.DropDownListFor(model => model.FaturaTipi, Enum.GetNames(typeof(FaturaTipiEnum.FaturaTipi)).Select(e => new SelectListItem { Text = e}), new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.FaturaTipi, "", new { @class = "text-danger" })
+    </div>
+    <br />
+    <button type="submit" style="margin-left:30px" class="btn btn-primary">Fatura Ekle</button>
+}
 
