@@ -10,7 +10,7 @@
 </header>
 <hr />
 
-@using (Html.BeginForm("KullanıcıUpdate", "Kullanıcı", FormMethod.Post))
+@using (Html.BeginForm("UpdateKullanıcı", "Kullanıcı", FormMethod.Post))
 {
     @Html.Label("Id")
     @Html.TextBoxFor(x => x.KullanıcıId, new { @class = "form-control" })

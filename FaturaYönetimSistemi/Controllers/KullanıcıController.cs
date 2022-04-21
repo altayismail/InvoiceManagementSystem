@@ -32,7 +32,7 @@ namespace FaturaYönetimSistemi.Controllers
             {
                 kullanıcı.KullanıcıSifre = PasswordGenerator();
                 manager.AddT(kullanıcı);
-                return RedirectToAction("GetAllKullanıcıs", "Kullanıcı");
+                return RedirectToAction("GetAllKullanıcıs");
             }
             else
             {
