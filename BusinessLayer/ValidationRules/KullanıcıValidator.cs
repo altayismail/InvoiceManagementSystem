@@ -18,7 +18,7 @@ namespace BusinessLayer.ValidationRules
             RuleFor(x => x.KullanıcıEmail).NotEmpty().WithMessage("Email kısmı boş bırakılamaz.").
                 Matches("@").WithMessage("Email '@' sembolünü içermelidir.").
                 Matches(".com").WithMessage("Email '.com' kısmını içermelidir.").
-                MaximumLength(30).WithMessage("Email en fazla 30 karakterden oluşmalıdır.").
+                MaximumLength(50).WithMessage("Email en fazla 50 karakterden oluşmalıdır.").
                 MinimumLength(15).WithMessage("Email en az 15 karakterden oluşmalıdır.");
 
             RuleFor(x => x.KullanıcıTCNo).NotEmpty().WithMessage("Kullanıcı şifresi boş geçilemez.").

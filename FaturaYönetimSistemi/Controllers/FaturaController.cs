@@ -13,9 +13,11 @@ namespace FaturaYönetimSistemi.Controllers
     public class FaturaController : Controller
     {
         FaturaManager manager = new FaturaManager(new EFFaturaRepository());
+        KullanıcıManager kullanıcıManager = new KullanıcıManager(new EFKullanıcıRepository());
         public IActionResult KullanıcıGetAllFaturas()
         {
-            var faturalar = manager.GetAllQueryWithKullanıcı();
+            var kullanıcı = kullanıcıManager.GetKullanıcıBySession(User.Identity.Name);
+            var faturalar = manager.GetAllQueryWithKullanıcı().Where(x => x.FaturaKullanıcıId == kullanıcı.KullanıcıId).ToList<Fatura>();
             return View(faturalar);
         }
         public IActionResult AdminGetAllFaturas()
@@ -26,7 +28,6 @@ namespace FaturaYönetimSistemi.Controllers
         [HttpGet]
         public IActionResult AddFatura()
         {
-            KullanıcıManager kullanıcıManager = new(new EFKullanıcıRepository());
             List<SelectListItem> kullanıcılar = kullanıcıManager.GetAllQuery().
                                                 Select(x => new SelectListItem
                                                 {
@@ -39,6 +40,13 @@ namespace FaturaYönetimSistemi.Controllers
         [HttpPost]
         public IActionResult AddFatura(Fatura fatura)
         {
+            List<SelectListItem> kullanıcılar = kullanıcıManager.GetAllQuery().
+                                                Select(x => new SelectListItem
+                                                {
+                                                    Text = x.KullanıcıIsım + " " + x.KullanıcıSoyisim,
+                                                    Value = x.KullanıcıId.ToString()
+                                                }).ToList();
+            ViewBag.kullanıcılar = kullanıcılar;
             FaturaValidator validator = new FaturaValidator();
             ValidationResult validationResult = validator.Validate(fatura);
             if (validationResult.IsValid)

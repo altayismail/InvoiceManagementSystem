@@ -23,6 +23,11 @@ namespace BusinessLayer.Concrete
             _kullanıcıDal.Delete(t);
         }
 
+        public Kullanıcı GetKullanıcıBySession(string name)
+        {
+            return _kullanıcıDal.GetKullanıcıBySession(name);
+        }
+
         public List<Kullanıcı> GetAllQuery()
         {
             return _kullanıcıDal.GetAllQuery();

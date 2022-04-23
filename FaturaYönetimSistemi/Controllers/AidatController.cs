@@ -1,6 +1,5 @@
 ﻿using BusinessLayer.Concrete;
 using BusinessLayer.ValidationRules;
-using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
@@ -14,12 +13,11 @@ namespace FaturaYönetimSistemi.Controllers
     public class AidatController : Controller
     {
         AidatManager manager = new(new EFAidatRepository());
+        KullanıcıManager kullanıcıManager = new(new EFKullanıcıRepository());
         public IActionResult KullanıcıGetAllAidats()
         {
-            var kullanıcıMail = User.Identity.Name;
-            Context context = new Context();
-            var kullanıcı = context.Kullanıcılar.Where(x => x.KullanıcıEmail == kullanıcıMail).Select(x => x.KullanıcıId).Single();
-            var aidatlar = manager.GetAllQueryWithKullanıcı().Where(x => x.AidatKullanıcıId == kullanıcı).ToList<Aidat>();
+            var kullanıcı = kullanıcıManager.GetKullanıcıBySession(User.Identity.Name);
+            var aidatlar = manager.GetAllQueryWithKullanıcı().Where(x => x.AidatKullanıcıId == kullanıcı.KullanıcıId).ToList<Aidat>();
             return View(aidatlar); 
         }
 
@@ -44,14 +42,22 @@ namespace FaturaYönetimSistemi.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddAidats(Aidat aidat)
+        public IActionResult AddAidat(Aidat aidat)
         {
+            KullanıcıManager kullanıcıManager = new(new EFKullanıcıRepository());
+            List<SelectListItem> kullanıcılar = kullanıcıManager.GetAllQuery().
+                                                Select(x => new SelectListItem
+                                                {
+                                                    Text = x.KullanıcıIsım + " " + x.KullanıcıSoyisim,
+                                                    Value = x.KullanıcıId.ToString()
+                                                }).ToList();
+            ViewBag.kullanıcılar = kullanıcılar;
             AidatValidator validator = new AidatValidator();
             ValidationResult validationResult = validator.Validate(aidat);
             if (validationResult.IsValid)
             {
                 manager.AddT(aidat);
-                return RedirectToAction("AdminGetAllAidats");
+                return RedirectToAction("AdminGetAllAidats","Aidat");
             }
             else
             {

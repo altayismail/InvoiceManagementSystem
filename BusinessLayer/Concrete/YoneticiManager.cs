@@ -2,7 +2,7 @@
 using DataAccessLayer.Abstract;
 using EntityLayer.Concrete;
 using System.Collections.Generic;
-
+using System.Linq;
 
 namespace BusinessLayer.Concrete
 {
@@ -27,6 +27,11 @@ namespace BusinessLayer.Concrete
         public List<Yonetici> GetAllQueryWithMesaj()
         {
             return _yoneticiDal.GetAllQuery();
+        }
+
+        public Yonetici GetAllYoneticiBySession(string name)
+        {
+            return _yoneticiDal.GetYoneticiBySession(name).Single();
         }
 
         public List<Yonetici> GetAllQuery()

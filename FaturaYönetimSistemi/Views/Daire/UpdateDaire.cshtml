@@ -1,5 +1,5 @@
 ﻿@using EntityLayer.Concrete
-@model Daire 
+@model Daire
 @{
     ViewData["Title"] = "UpdateDaire";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -13,11 +13,16 @@
 @using (Html.BeginForm("UpdateDaire", "Daire", FormMethod.Post))
 {
     @Html.Label("Durum")
-    @Html.TextBoxFor(x => x.DaireDurumu, new { @class = "form-control" })
+    @Html.DropDownListFor(x => x.DaireDurumu,
+                    new[] { new SelectListItem { Text = "Dolu", Value = true.ToString() },
+                    new SelectListItem { Text = "Boş", Value = false.ToString() } },
+                    new { @class = "form-control" })
     @Html.ValidationMessageFor(x => x.DaireDurumu, "", new { @class = "text-danger" })
     <br />
-    @Html.Label("Kullanıcı Id")
-    @Html.TextBoxFor(x => x.DaireKullanıcıId, new { @class = "form-control" })
+    @Html.Label("Kullanıcı")
+    @Html.DropDownListFor(model => model.DaireKullanıcıId,
+                    (List<SelectListItem>)ViewBag.kullanıcılar,
+                    new { @class = "form-control" })
     @Html.ValidationMessageFor(x => x.DaireKullanıcıId, "", new { @class = "text-danger" })
     <br />
     <button class="btn btn-warning">Düzenle</button>

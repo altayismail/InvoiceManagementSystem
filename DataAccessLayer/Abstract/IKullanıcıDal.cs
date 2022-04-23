@@ -4,6 +4,6 @@ namespace DataAccessLayer.Abstract
 {
     public interface IKullanıcıDal : IGenericDal<Kullanıcı>
     {
-        
+        Kullanıcı GetKullanıcıBySession(string name);
     }
 }

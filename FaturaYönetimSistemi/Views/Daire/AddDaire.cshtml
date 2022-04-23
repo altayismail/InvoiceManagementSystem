@@ -14,25 +14,48 @@
     <div class="row">
         <div class="col">
             <label for="formGroupExampleInput">Blok</label>
-            @Html.TextBoxFor(x => x.DaireBlok, new { @class = "form-control" })
+            @Html.DropDownListFor(x => x.DaireBlok, Enum.GetNames(typeof(Bloklar.Blok)).Select(x => new SelectListItem { Text = x }), new { @class = "form-control" })
             @Html.ValidationMessageFor(x => x.DaireBlok, "", new { @class = "text-danger" })
         </div>
         <div class="col">
             <label for="formGroupExampleInput">Durum</label>
-            @Html.TextBoxFor(x => x.DaireDurumu, new { @class = "form-control" })
+            @Html.DropDownListFor(x => x.DaireDurumu,
+                    new[] { new SelectListItem { Text = "Dolu", Value = "True" },
+                    new SelectListItem { Text = "Boş", Value = "False" } },
+                    new { @class = "form-control" })
             @Html.ValidationMessageFor(x => x.DaireDurumu, "", new { @class = "text-danger" })
         </div>
     </div>
     <br />
     <div class="row">
         <div class="col">
+            <label for="formGroupExampleInput">Daire No</label>
+            @Html.TextBoxFor(x => x.DaireNo, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.DaireNo, "", new { @class = "text-danger" })
+        </div>
+        <div class="col">
+            <label for="formGroupExampleInput">Kat</label>
+            @Html.TextBoxFor(x => x.DaireKatı, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.DaireKatı, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col">
             <label for="formGroupExampleInput">Tip</label>
-            @Html.TextBoxFor(x => x.DaireTipi, new { @class = "form-control" })
+            @Html.DropDownListFor(x => x.DaireTipi,
+                    new[] { new SelectListItem { Text = "0+1", Value = "0+1" },
+                    new SelectListItem { Text = "1+1", Value = "1+1" },
+                    new SelectListItem { Text = "2+1", Value = "2+1" },
+                    new SelectListItem { Text = "3+1", Value = "3+1" }},
+                    new { @class = "form-control" })
             @Html.ValidationMessageFor(x => x.DaireTipi, "", new { @class = "text-danger" })
         </div>
         <div class="col">
-            <label for="formGroupExampleInput">Kullanıcı Id</label>
-            @Html.TextBoxFor(x => x.DaireKullanıcıId, new { @class = "form-control" })
+            <label for="formGroupExampleInput">Kullanıcı</label>
+            @Html.DropDownListFor(model => model.DaireKullanıcıId, 
+                    (List<SelectListItem>)ViewBag.kullanıcılar, 
+                    new { @class = "form-control" })
             @Html.ValidationMessageFor(x => x.DaireKullanıcıId, "", new { @class = "text-danger" })
         </div>
     </div>
