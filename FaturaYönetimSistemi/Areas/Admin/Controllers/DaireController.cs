@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using System.Linq;
+using X.PagedList;
 
 namespace FaturaYönetimSistemi.Areas.Admin.Controllers
 {
@@ -15,9 +16,9 @@ namespace FaturaYönetimSistemi.Areas.Admin.Controllers
     {
         DaireManager daireManager = new DaireManager(new EFDaireRepository());
         KullanıcıManager kullanıcıManager = new KullanıcıManager(new EFKullanıcıRepository());
-        public IActionResult GetDaire()
+        public IActionResult GetDaire(int page = 1)
         {
-            return View(daireManager.GetAllDaireWithKullanıcı());
+            return View(daireManager.GetAllDaireWithKullanıcı().ToPagedList(page,10));
         }
         [HttpGet]
         public IActionResult AddDaire()

@@ -1,5 +1,8 @@
-﻿@using EntityLayer.Concrete
-@model List<Kullanıcı>
+﻿@using X.PagedList
+@using X.PagedList.Mvc.Core
+@using X.PagedList.Web.Common
+@using EntityLayer.Concrete
+@model IPagedList<Kullanıcı>
 @{
     ViewData["Title"] = "GetKullanıcı";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -36,25 +39,33 @@ else
     </tr>
     @foreach (var item in Model)
     {
-<tr>
-    <td>@item.KullanıcıIsım</td>
-    <td>@item.KullanıcıSoyisim</td>
-    <td>@item.KullanıcıTCNo</td>
-    <td>@item.KullanıcıEmail</td>
-    <td>
-        @if (@item.KullanıcıAraçBilgisi is null)
-        {
-            <p>Yok</p>
-        }
-        else
-        {
-            <p>@item.KullanıcıAraçBilgisi</p>
-        }
-    </td>
-    <td>@item.KullanıcıDaireNo</td>
-    <td><a href="/Admin/Kullanıcı/UpdateKullanıcı/@item.KullanıcıId" id ="UpdateButton" onclick="return confirm('Kullanıcı düzenleme sayfasına yönlendiriliyorsunuz, emin misiniz?');" class="btn btn-outline-warning text-dark">Düzenle</a></td>
-    <td><a href="/Admin/Kullanıcı/DeleteKullanıcı/@item.KullanıcıId" id ="DeleteButton" onclick="return confirm('Kullanıcı siliniyor, onaylıyor musunuz?');"class="btn btn-outline-danger text-dark">Sil</a></td>
-</tr>
+        <tr>
+            <td>@item.KullanıcıIsım</td>
+            <td>@item.KullanıcıSoyisim</td>
+            <td>@item.KullanıcıTCNo</td>
+            <td>@item.KullanıcıEmail</td>
+            <td>
+                @if (@item.KullanıcıAraçBilgisi is null)
+                {
+                    <p>Yok</p>
+                }
+                else
+                {
+                    <p>@item.KullanıcıAraçBilgisi</p>
+                }
+            </td>
+            <td>@item.KullanıcıDaireNo</td>
+            <td><a href="/Admin/Kullanıcı/UpdateKullanıcı/@item.KullanıcıId" id="UpdateButton" onclick="return confirm('Kullanıcı düzenleme sayfasına yönlendiriliyorsunuz, emin misiniz?');" class="btn btn-outline-warning text-dark">Düzenle</a></td>
+            <td><a href="/Admin/Kullanıcı/DeleteKullanıcı/@item.KullanıcıId" id="DeleteButton" onclick="return confirm('Kullanıcı siliniyor, onaylıyor musunuz?');" class="btn btn-outline-danger text-dark">Sil</a></td>
+        </tr>
     }
 </table>
+<hr />
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("GetAidat", new { page }),
+    new PagedListRenderOptions
+    {
+        LiElementClasses = new List<string> { "page-item" },
+        PageClasses = new List<string> { "page-link " },
+        Display = PagedListDisplayMode.IfNeeded
+    })
 

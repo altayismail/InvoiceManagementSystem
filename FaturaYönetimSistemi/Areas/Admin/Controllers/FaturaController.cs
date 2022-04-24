@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using System.Linq;
+using X.PagedList;
 
 namespace FaturaYönetimSistemi.Areas.Admin.Controllers
 {
@@ -15,9 +16,9 @@ namespace FaturaYönetimSistemi.Areas.Admin.Controllers
     {
         FaturaManager faturaManager = new FaturaManager(new EFFaturaRepository());
         KullanıcıManager kullanıcıManager = new KullanıcıManager(new EFKullanıcıRepository());
-        public IActionResult GetFatura()
+        public IActionResult GetFatura(int page = 1)
         {
-            var faturalar = faturaManager.GetAllQueryWithKullanıcı();
+            var faturalar = faturaManager.GetAllQueryWithKullanıcı().ToPagedList(page, 10);
             return View(faturalar);
         }
 

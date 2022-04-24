@@ -1,5 +1,8 @@
-﻿@using EntityLayer.Concrete
-@model List<Daire>
+﻿@using X.PagedList
+@using X.PagedList.Mvc.Core
+@using X.PagedList.Web.Common
+@using EntityLayer.Concrete
+@model IPagedList<Daire>
 @{
     ViewData["Title"] = "GetDaire";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -55,9 +58,16 @@ else
             <td>@item.DaireTipi</td>
             <td>@item.DaireKatı</td>
             <td>@item.DaireKullanıcı.KullanıcıIsım @item.DaireKullanıcı.KullanıcıSoyisim</td>
-            <td><a href="/Admin/Daire/UpdateDaire/@item.DaireId" id ="UpdateButton" onclick="return confirm('Daireyi düzenleme sayfasına yönlendiriliyorsunuz, emin misiniz?');" class="btn btn-outline-warning text-dark">Düzenle</a></td>
-            <td><a href="/Admin/Daire/DeleteDaire/@item.DaireId" id ="DeleteButton" onclick="return confirm('Daire siliniyor, onaylıyor musunuz?');" class="btn btn-outline-danger text-dark">Sil</a></td>
+            <td><a href="/Admin/Daire/UpdateDaire/@item.DaireId" id="UpdateButton" onclick="return confirm('Daireyi düzenleme sayfasına yönlendiriliyorsunuz, emin misiniz?');" class="btn btn-outline-warning text-dark">Düzenle</a></td>
+            <td><a href="/Admin/Daire/DeleteDaire/@item.DaireId" id="DeleteButton" onclick="return confirm('Daire siliniyor, onaylıyor musunuz?');" class="btn btn-outline-danger text-dark">Sil</a></td>
         </tr>
     }
 </table>
-
+<hr />
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("GetDaire", new { page }),
+    new PagedListRenderOptions
+    {
+        LiElementClasses = new List<string> { "page-item" },
+        PageClasses = new List<string> { "page-link " },
+        Display = PagedListDisplayMode.IfNeeded
+    })

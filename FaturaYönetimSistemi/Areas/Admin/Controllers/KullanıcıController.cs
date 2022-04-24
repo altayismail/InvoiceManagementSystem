@@ -5,6 +5,7 @@ using EntityLayer.Concrete;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using X.PagedList;
 
 namespace FaturaYönetimSistemi.Areas.Admin.Controllers
 {
@@ -13,9 +14,9 @@ namespace FaturaYönetimSistemi.Areas.Admin.Controllers
     {
         KullanıcıManager kullanıcıManager = new KullanıcıManager(new EFKullanıcıRepository());
 
-        public IActionResult GetKullanıcı()
+        public IActionResult GetKullanıcı(int page = 1)
         {
-            return View(kullanıcıManager.GetAllQuery());
+            return View(kullanıcıManager.GetAllQuery().ToPagedList(page, 10));
         }
 
         [HttpGet]

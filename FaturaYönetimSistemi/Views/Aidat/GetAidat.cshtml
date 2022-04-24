@@ -1,5 +1,8 @@
-﻿@using EntityLayer.Concrete
-@model List<Aidat>
+﻿@using X.PagedList
+@using X.PagedList.Mvc.Core
+@using X.PagedList.Web.Common
+@using EntityLayer.Concrete
+@model IPagedList<Aidat>
 
 @{
     Layout = "~/Views/Shared/_UserLayout.cshtml";
@@ -51,3 +54,11 @@ else
         </tr>
     }
 </table>
+<hr />
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("GetAidat", new { page }),
+    new PagedListRenderOptions
+    {
+        LiElementClasses = new List<string> { "page-item"},
+        PageClasses = new List<string> { "page-link "},
+        Display = PagedListDisplayMode.IfNeeded
+    })
