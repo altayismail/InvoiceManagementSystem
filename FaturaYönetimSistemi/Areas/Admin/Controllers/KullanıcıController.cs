@@ -6,15 +6,16 @@ using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
-namespace FaturaYönetimSistemi.Controllers
+namespace FaturaYönetimSistemi.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class KullanıcıController : Controller
     {
-        KullanıcıManager manager = new KullanıcıManager(new EFKullanıcıRepository());
+        KullanıcıManager kullanıcıManager = new KullanıcıManager(new EFKullanıcıRepository());
 
-        public IActionResult GetAllKullanıcıs()
+        public IActionResult GetKullanıcı()
         {
-            return View(manager.GetAllQuery());
+            return View(kullanıcıManager.GetAllQuery());
         }
 
         [HttpGet]
@@ -31,8 +32,8 @@ namespace FaturaYönetimSistemi.Controllers
             if (validationResult.IsValid)
             {
                 kullanıcı.KullanıcıSifre = PasswordGenerator();
-                manager.AddT(kullanıcı);
-                return RedirectToAction("GetAllKullanıcıs");
+                kullanıcıManager.AddT(kullanıcı);
+                return RedirectToAction("GetKullanıcı");
             }
             else
             {
@@ -46,14 +47,14 @@ namespace FaturaYönetimSistemi.Controllers
 
         public IActionResult DeleteKullanıcı(int id)
         {
-            var kullanıcı = manager.GetQueryById(id);
-            manager.DeleteT(kullanıcı);
-            return RedirectToAction("GetAllKullanıcıs");
+            var kullanıcı = kullanıcıManager.GetQueryById(id);
+            kullanıcıManager.DeleteT(kullanıcı);
+            return RedirectToAction("GetKullanıcı");
         }
         [HttpGet]
         public IActionResult UpdateKullanıcı(int id)
         {
-            var kullanıcı = manager.GetQueryById(id);
+            var kullanıcı = kullanıcıManager.GetQueryById(id);
             return View(kullanıcı);
         }
         [HttpPost]
@@ -63,8 +64,8 @@ namespace FaturaYönetimSistemi.Controllers
             ValidationResult validationResult = validator.Validate(kullanıcı);
             if (validationResult.IsValid)
             {
-                manager.UpdateT(kullanıcı);
-                return RedirectToAction("GetAllKullanıcıs");
+                kullanıcıManager.UpdateT(kullanıcı);
+                return RedirectToAction("GetKullanıcı");
             }
             else
             {

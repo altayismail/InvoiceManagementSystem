@@ -25,6 +25,6 @@
                     new { @class = "form-control" })
     @Html.ValidationMessageFor(x => x.DaireKullanıcıId, "", new { @class = "text-danger" })
     <br />
-    <button class="btn btn-warning">Düzenle</button>
+    <button id ="UpdateButton" onclick="return confirm('Daire güncelleniyor, onaylıyor musunuz?');" class="btn btn-warning">Düzenle</button>
 }
 

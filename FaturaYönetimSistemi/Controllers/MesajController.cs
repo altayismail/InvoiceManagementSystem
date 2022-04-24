@@ -11,19 +11,11 @@ namespace FaturaYönetimSistemi.Controllers
     public class MesajController : Controller
     {
         MesajManager manager = new MesajManager(new EFMesajRepository());
-        YoneticiManager yoneticiManager = new YoneticiManager(new EFYoneticiRepository());
         KullanıcıManager kullanıcıManager = new KullanıcıManager(new EFKullanıcıRepository());
-        [HttpGet]
-        public IActionResult GetAllMesaj()
-        {
-            var yonetici = yoneticiManager.GetAllYoneticiBySession(User.Identity.Name);
-            var mesajlar = manager.GetAllQueryWithYoneticiAndKullanıcı(yonetici.YoneticiId);
-            return View(mesajlar);
-        }
         public IActionResult GetSentMesaj()
         {
             var kullanıcı = kullanıcıManager.GetKullanıcıBySession(User.Identity.Name);
-            var mesajlar = manager.GetAllQueryWithYoneticiAndKullanıcı(kullanıcı.KullanıcıId).ToList<Mesaj>();
+            var mesajlar = manager.GetAllQueryWithYoneticiAndKullanıcı(kullanıcı.KullanıcıId).Where(x => x.MesajYollayanId == kullanıcı.KullanıcıId).ToList<Mesaj>();
             return View(mesajlar);
         }
         [HttpGet]
@@ -32,13 +24,14 @@ namespace FaturaYönetimSistemi.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult AddMesaj(Mesaj mesaj)
+        public IActionResult AddMesaj(Mesaj mesaj, int id)
         {
             var kullanıcı = kullanıcıManager.GetKullanıcıBySession(User.Identity.Name);
             MesajValidator validator = new MesajValidator();
             ValidationResult validationResult = validator.Validate(mesaj);
             if (validationResult.IsValid)
             {
+                mesaj.MesajAlanId = id;
                 mesaj.MesajYollayanId = kullanıcı.KullanıcıId;
                 mesaj.MesajTarihi = System.DateTime.Now;
                 manager.AddT(mesaj);

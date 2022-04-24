@@ -34,40 +34,39 @@
             <h3 class="w3-wide"><b>Fatura Yönetim Sistemi</b></h3>
         </div>
         <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
-            <a href="/Home/AdminIndex" class="w3-bar-item w3-button">Ana Sayfa</a>
+            @Html.ActionLink("Ana Sayfa", "Index", "Home", new { Area = "Admin" }, new { @class = "w3-bar-item w3-button " })
             <a onclick="myAccFunc()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
                 Kullanıcı İşlemleri <i class="fa fa-caret-down"></i>
             </a>
             <div id="demoAcc" class="w3-bar-block w3-hide w3-padding-large w3-medium w3-show">
-                <a href="/Kullanıcı/GetAllKullanıcıs" class="w3-bar-item w3-button">Kullanıcıları Listele/Düzenle/Sil</a>
-                <a href="/Kullanıcı/AddKullanıcı" class="w3-bar-item w3-button">Kullanıcı Ekle</a>
+                @Html.ActionLink("Kullanıcıları Listele/Düzenle/Sil", "GetKullanıcı", "Kullanıcı", new { Area = "Admin" }, new { @class = "w3-bar-item w3-button" })
+                @Html.ActionLink("Kullanıcı Ekle", "AddKullanıcı", "Kullanıcı", new { Area = "Admin" }, new { @class = "w3-bar-item w3-button" })
             </div>
             <a onclick="myAccFunc1()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn1">
                 Daire İşlemleri <i class="fa fa-caret-down"></i>
             </a>
             <div id="demoAcc1" class="w3-bar-block w3-hide w3-padding-large w3-medium w3-show">
-                <a href="/Daire/GetAllDaires" class="w3-bar-item w3-button">Daire Bilgilerini Listele/Düzenle/Sil</a>
+                @Html.ActionLink("Daire Bilgilerini Listele/Düzenle/Sil", "GetDaire", "Daire", new { Area = "Admin" }, new { @class = "w3-bar-item w3-button" })
             </div>
             <a onclick="myAccFunc2()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn2">
                 Fatura İşlemleri <i class="fa fa-caret-down"></i>
             </a>
             <div id="demoAcc2" class="w3-bar-block w3-hide w3-padding-large w3-medium w3-show">
-                <a href="/Fatura/AddFatura" class="w3-bar-item w3-button">Fatura Atama</a>
-                <a href="/Fatura/AdminGetAllFaturas" class="w3-bar-item w3-button">Faturaları Listele</a>
+                @Html.ActionLink("Fatura Atama", "AddFatura", "Fatura", new { Area = "Admin" }, new { @class = "w3-bar-item w3-button" })
+                @Html.ActionLink("Fatura Listele", "GetFatura", "Fatura", new { Area = "Admin" }, new { @class = "w3-bar-item w3-button" })
             </div>
             <a onclick="myAccFunc3()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn3">
                 Aidat İşlemleri <i class="fa fa-caret-down"></i>
             </a>
             <div id="demoAcc3" class="w3-bar-block w3-hide w3-padding-large w3-medium w3-show">
-                <a href="/Aidat/AddAidat" class="w3-bar-item w3-button">Aidat Atama</a>
-                <a href="/Aidat/AdminGetAllAidats" class="w3-bar-item w3-button">Aidatları Listele</a>
+                @Html.ActionLink("Aidat Atama", "AddAidat", "Aidat", new { Area = "Admin" }, new { @class = "w3-bar-item w3-button" })
+                @Html.ActionLink("Aidat Listele", "GetAidat", "Aidat", new { Area = "Admin" }, new { @class = "w3-bar-item w3-button" })
             </div>
             <a href="#" class="w3-bar-item w3-button">Gelen Ödemeler</a>
-            <a href="/Mesaj/GetAllMesaj" class="w3-bar-item w3-button">Mesajlarım</a>
+            @Html.ActionLink("Mesajlarım", "GetMesaj", "Mesaj", new { Area = "Admin" }, new { @class = "w3-bar-item w3-button" })
             <a href="#" class="w3-bar-item w3-button">Borç-Alacak Listesi</a>
         </div>
-
-        <a href="/Home/AdminAbout" class="w3-bar-item w3-button w3-padding">Uygulama Hakkında</a>
+        @Html.ActionLink("Uygulama Hakkında", "About", "Home", new { Area = "Admin" }, new { @class = "w3-bar-item w3-button w3-padding" })
     </nav>
 
     <!-- Top menu on small screens -->

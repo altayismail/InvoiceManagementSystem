@@ -8,15 +8,16 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace FaturaYönetimSistemi.Controllers
+namespace FaturaYönetimSistemi.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class DaireController : Controller
     {
-        DaireManager manager = new DaireManager(new EFDaireRepository());
+        DaireManager daireManager = new DaireManager(new EFDaireRepository());
         KullanıcıManager kullanıcıManager = new KullanıcıManager(new EFKullanıcıRepository());
-        public IActionResult GetAllDaires()
+        public IActionResult GetDaire()
         {
-            return View(manager.GetAllDaireWithKullanıcı());
+            return View(daireManager.GetAllDaireWithKullanıcı());
         }
         [HttpGet]
         public IActionResult AddDaire()
@@ -44,8 +45,8 @@ namespace FaturaYönetimSistemi.Controllers
             ValidationResult validationResult = validator.Validate(daire);
             if (validationResult.IsValid)
             {
-                manager.AddT(daire);
-                return RedirectToAction("GetAllDaires");
+                daireManager.AddT(daire);
+                return RedirectToAction("GetDaire","Daire");
             }
             else
             {
@@ -58,15 +59,15 @@ namespace FaturaYönetimSistemi.Controllers
         }
         public IActionResult DeleteDaire(int id)
         {
-            var daire = manager.GetQueryById(id);
-            manager.DeleteT(daire);
-            return RedirectToAction("GetAllDaires");
+            var daire = daireManager.GetQueryById(id);
+            daireManager.DeleteT(daire);
+            return RedirectToAction("GetDaire","Daire");
         }
 
         [HttpGet]
         public IActionResult UpdateDaire(int id)
         {
-            var daire = manager.GetQueryById(id);
+            var daire = daireManager.GetQueryById(id);
             List<SelectListItem> kullanıcılar = kullanıcıManager.GetAllQuery().
                                                 Select(x => new SelectListItem
                                                 {
@@ -90,8 +91,8 @@ namespace FaturaYönetimSistemi.Controllers
             ValidationResult validationResult = validator.Validate(daire);
             if (validationResult.IsValid)
             {
-                manager.UpdateT(daire);
-                return RedirectToAction("GetAllDaires");
+                daireManager.UpdateT(daire);
+                return RedirectToAction("GetDaire", "Daire");
             }
             else
             {

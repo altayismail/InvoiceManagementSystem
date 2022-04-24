@@ -36,6 +36,10 @@
     @Html.TextBoxFor(x => x.KullanıcıEmail, new { @class = "form-control" })
     @Html.ValidationMessageFor(x => x.KullanıcıEmail, "", new { @class = "text-danger" })
     <br />
+    @Html.Label("Şifre")
+    @Html.TextBoxFor(x => x.KullanıcıSifre, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.KullanıcıSifre, "", new { @class = "text-danger" })
+    <br />
     @Html.Label("Araç Bilgisi")
     @Html.TextBoxFor(x => x.KullanıcıAraçBilgisi, new { @class = "form-control" })
     <br />
@@ -43,6 +47,6 @@
     @Html.TextBoxFor(x => x.KullanıcıDaireNo, new { @class = "form-control" })
     @Html.ValidationMessageFor(x => x.KullanıcıDaireNo, "", new { @class = "text-danger" })
     <br />
-    <button class="btn btn-warning">Kaydet</button>
+    <button id ="UpdateButton" onclick="return confirm('Kullanıcı güncelleniyor, onaylıyor musunuz?');" class="btn btn-warning">Kaydet</button>
 }
 

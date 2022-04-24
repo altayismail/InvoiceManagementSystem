@@ -14,16 +14,8 @@ namespace FaturaYönetimSistemi.Controllers
         {
             return View();
         }
-        public IActionResult AdminIndex()
-        {
-            return View();
-        }
 
         public IActionResult KullanıcıAbout()
-        {
-            return View();
-        }
-        public IActionResult AdminAbout()
         {
             return View();
         }

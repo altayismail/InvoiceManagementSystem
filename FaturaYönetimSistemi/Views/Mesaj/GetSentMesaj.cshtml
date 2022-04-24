@@ -26,12 +26,14 @@
                                         <div class="text-muted small text-nowrap mt-2">@item.MesajTarihi.ToString("U")</div>
                                     </div>
                                     <div class="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">
-                                        <div class="font-weight-bold mb-1">@item.MesajYollayan.KullanıcıIsım @item.MesajYollayan.KullanıcıSoyisim</div>
+                                        <div class="font-weight-bold mb-1">Gönderen: @item.MesajYollayan.KullanıcıIsım @item.MesajYollayan.KullanıcıSoyisim</div>
                                         <h7 class="text-success"><strong>Konu: @item.MesajKonusu</strong> </h7>
                                         <p class="text-info">@item.MesajIcerik</p>
                                     </div>
                                 </div>
                             }
+                            <hr />
+                            <a href="/Mesaj/AddMesaj" class="btn btn-outline-primary">Mesaj Gönder</a>
                         </div>
                     </div>
                 </div>

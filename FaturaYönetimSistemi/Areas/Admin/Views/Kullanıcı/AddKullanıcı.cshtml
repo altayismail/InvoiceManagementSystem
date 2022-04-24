@@ -51,7 +51,7 @@
     @Html.TextBoxFor(x => x.KullanıcıDaireNo, new { @class = "form-control" })
     @Html.ValidationMessageFor(x => x.KullanıcıDaireNo, "", new { @class = "text-danger" })
 </div>
-<button type="submit" class="btn btn-primary">Kullanıcıyı Kaydet</button>
+<button id ="AddButton" onclick="return confirm('Kullanıcı kaydediliyor, onaylıyor musunuz?');" type="submit" class="btn btn-primary">Kullanıcıyı Kaydet</button>
 }
 
 
