@@ -44,3 +44,5 @@
 - Microsoft.EntityFrameworkCore.Design 5.0.15
 - Microsoft.EntityFrameworkCore.SqlServer 5.0.15
 - Microsoft.EntityFrameworkCoreTools 5.0.15
+- X.PagedList 8.1.0
+- X.PageList.Mvc.Core 8.1.0
