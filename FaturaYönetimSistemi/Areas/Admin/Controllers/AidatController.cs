@@ -1,11 +1,13 @@
 ﻿using BusinessLayer.Concrete;
 using BusinessLayer.ValidationRules;
+using ClosedXML.Excel;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using X.PagedList;
 
@@ -60,6 +62,43 @@ namespace FaturaYönetimSistemi.Areas.Admin.Controllers
                 }
             }
             return View();
+        }
+
+        public IActionResult ExportStaticExcelAidatList()
+        {
+            using(var workBook = new XLWorkbook())
+            {
+                var workSheet = workBook.Worksheets.Add("Aidatlar");
+                workSheet.Cell(1, 1).Value = "Aidat Id";
+                workSheet.Cell(1, 2).Value = "Aidat Tarihi";
+                workSheet.Cell(1, 3).Value = "Aidat Son Ödeme Tarihi";
+                workSheet.Cell(1, 4).Value = "Aidat Durumu";
+                workSheet.Cell(1, 5).Value = "Aidat Ücreti";
+                workSheet.Cell(1, 6).Value = "Aidat Sahibi";
+
+                int BlogRowCount = 2;
+
+                foreach (var item in aidatManager.GetAllQueryWithKullanıcı())
+                {
+                    workSheet.Cell(BlogRowCount, 1).Value = item.AidatId;
+                    workSheet.Cell(BlogRowCount, 2).Value = item.AidatTarihi.ToShortDateString();
+                    workSheet.Cell(BlogRowCount, 3).Value = item.AidatSonOdemeTarihi.ToShortDateString();
+                    if (item.AidatOdendiMi)
+                        workSheet.Cell(BlogRowCount, 4).Value = "Ödendi";
+                    else
+                        workSheet.Cell(BlogRowCount, 4).Value = "Ödenmedi";
+                    workSheet.Cell(BlogRowCount, 5).Value = item.AidatUcreti + " TL";
+                    workSheet.Cell(BlogRowCount, 6).Value = item.AidatKullanıcı.KullanıcıIsım + " " + item.AidatKullanıcı.KullanıcıSoyisim;
+                    BlogRowCount++;
+                }
+
+                using ( var stream = new MemoryStream())
+                {
+                    workBook.SaveAs(stream);
+                    var content = stream.ToArray();
+                    return File(content, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Aidatlar.xlsx");
+                }
+            }
         }
     }
 }
