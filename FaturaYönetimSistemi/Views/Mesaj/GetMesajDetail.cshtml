@@ -1,0 +1,64 @@
+﻿@using EntityLayer.Concrete
+@model List<Mesaj>
+@{
+    ViewData["Title"] = "GetMesajDetail";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+@{ 
+    List<Mesaj> mesajlar = Model;
+}
+
+<header class="w3-container w3-xlarge w3-padding">
+    <p class="w3-center">Mesaj Gönder</p>
+</header>
+<hr />
+
+
+<div class="container p-0">
+    <div class="card">
+        <div class="col-12">
+            <div class="py-2 px-4 border-bottom d-none d-lg-block">
+                <div class="d-flex align-items-center py-1">
+                    <div class="position-relative">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar3.png" class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40">
+                    </div>
+                    <div class="flex-grow-1 pl-3">
+                        <strong>@ViewBag.YoneticiIsim</strong>
+                        <div class="text-muted small"><em>(+90) @ViewBag.YoneticiTel</em></div>
+                    </div>
+                </div>
+            </div>
+            @if (Model.Any())
+            {
+                @foreach (var item in mesajlar)
+                {
+                    <div class="position-relative">
+                        <div class="chat-messages p-4">
+                            <div class="chat-message-left pb-4">
+                                <div class="pb-2">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar3.png" class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40">
+                                    <div class="small text-nowrap mt-2">@item.MesajTarihi</div>
+                                </div>
+                                <div class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
+                                    <div class="font-weight-bold mb-1">@item.MesajYollayan.KullanıcıIsım @item.MesajYollayan.KullanıcıSoyisim | (+90) @item.MesajYollayan.KullanıcıTelefonNo</div>
+                                    <div class="text-info"><strong>Konu:</strong> @item.MesajKonusu</div>
+                                    @item.MesajIcerik
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <p class="text-info text-center mt-3 w3-xlarge">Bu yöneticiye hiç mesaj yollamadınız.</p>
+            }
+            <hr />
+            <a href="/Mesaj/AddMesaj" class="btn btn-outline-primary mb-3">Mesaj Gönder</a>
+        </div>
+    </div>
+</div>
+
+
+

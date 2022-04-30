@@ -10,80 +10,20 @@
 </header>
 <hr />
 
-<main class="content">
-    <div class="container p-0">
-        <div class="card">
-            <div class="row g-0">
-                <div class="col-12 col-lg-5 col-xl-3 border-right">
-
-                    <div class="px-4 d-none d-md-block">
-                        <div class="d-flex align-items-center">
-                            <div class="flex-grow-1">
-                                <input type="text" class="form-control my-3" placeholder="Search...">
-                            </div>
-                        </div>
-                    </div>
-                    <a href="/Mesaj/AddMesaj/" class="list-group-item list-group-item-action border-0">
-                        <div class="d-flex align-items-start">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar5.png" class="rounded-circle mr-1" alt="Vanessa Tucker" width="40" height="40">
-                            <div class="flex-grow-1 ml-3">
-                                Vanessa Tucker
-                            </div>
-                        </div>
-                    </a>
-
-                    <hr class="d-block d-lg-none mt-1 mb-0">
-                </div>
-                <div class="col-12 col-lg-7 col-xl-9">
-
-                    <div class="position-relative">
-                        <div class="chat-messages p-4">
-
-                            <div class="chat-message-right pb-4">
-                                <div>
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="rounded-circle mr-1" alt="Chris Wood" width="40" height="40">
-                                    <div class="text-muted small text-nowrap mt-2">2:33 am</div>
-                                </div>
-                                <div class="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">
-                                    <div class="font-weight-bold mb-1">You</div>
-                                    Lorem ipsum dolor sit amet, vis erat denique in, dicunt prodesset te vix.
-                                </div>
-                            </div>
-
-                            <div class="chat-message-left pb-4">
-                                <div>
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar3.png" class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40">
-                                    <div class="text-muted small text-nowrap mt-2">2:34 am</div>
-                                </div>
-                                <div class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
-                                    <div class="font-weight-bold mb-1">Sharon Lessman</div>
-                                    Sit meis deleniti eu, pri vidit meliore docendi ut, an eum erat animal commodo.
-                                </div>
-                            </div>
-
-                            <div class="chat-message-right mb-4">
-                                <div>
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="rounded-circle mr-1" alt="Chris Wood" width="40" height="40">
-                                    <div class="text-muted small text-nowrap mt-2">2:35 am</div>
-                                </div>
-                                <div class="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">
-                                    <div class="font-weight-bold mb-1">You</div>
-                                    Cum ea graeci tractatos.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="flex-grow-0 py-3 px-4 border-top">
-                        <div class="input-group">
-                            <input type="text" class="form-control" name="MesajIcerik" placeholder="Buraya yazınız...">
-                            <button class="btn btn-primary">Gönder</button>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</main>
+@using (Html.BeginForm("AddMesaj", "Mesaj", FormMethod.Post))
+    {
+        @Html.LabelFor(model => model.MesajAlanId, "Yönetici")
+        @Html.DropDownListFor(model => model.MesajAlanId, ((List<SelectListItem>)ViewBag.yoneticiler), new { @class = "form-control"})
+        @Html.ValidationMessageFor(model => model.MesajAlanId, "*Mesaj yollamak istediğiniz yöneticiyi seçiniz." , new { @class = "text-info"})
+        <br />
+        @Html.LabelFor(model => model.MesajKonusu, "Konu")
+        @Html.TextBoxFor(model => model.MesajKonusu, new { @class = "form-control"})
+        @Html.ValidationMessageFor(model => model.MesajKonusu, "", new { @class = "text-danger"})
+        <br />
+        @Html.LabelFor(model => model.MesajIcerik, "İçerik")
+        @Html.TextAreaFor(model => model.MesajIcerik, new { @class = "form-control"})
+        @Html.ValidationMessageFor(model => model.MesajIcerik, "", new { @class = "text-danger" })
+        <hr />
+        <button onclick="return confirm('Mesaj gönderiliyor, emin misiniz?')" class="btn btn-outline-primary">Gönder</button>
+    }
 
