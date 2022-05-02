@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
@@ -36,7 +35,7 @@ namespace FaturaYönetimSistemi.Controllers
                 var userIndetity = new ClaimsIdentity(claims,"a");
                 ClaimsPrincipal principal = new ClaimsPrincipal(userIndetity);
                 await HttpContext.SignInAsync(principal);
-                return RedirectToAction("KullanıcıIndex", "Home");
+                return RedirectToAction("Index", "Home");
             }
             else
             {

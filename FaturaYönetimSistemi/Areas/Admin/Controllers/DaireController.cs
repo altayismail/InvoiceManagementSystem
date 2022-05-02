@@ -78,6 +78,12 @@ namespace FaturaYönetimSistemi.Areas.Admin.Controllers
                                                     Value = x.KullanıcıId.ToString()
                                                 }).ToList();
             ViewBag.kullanıcılar = kullanıcılar;
+            List<SelectListItem> daireDurumu = new List<SelectListItem>()
+            {
+                new SelectListItem() { Text = "Dolu" , Value = true.ToString()},
+                new SelectListItem() { Text = "Boş" , Value = false.ToString()}
+            };
+            ViewBag.daireDurumu = daireDurumu;
             return View(daire);
         }
         [HttpPost]
@@ -90,6 +96,12 @@ namespace FaturaYönetimSistemi.Areas.Admin.Controllers
                                                     Value = x.KullanıcıId.ToString()
                                                 }).ToList();
             ViewBag.kullanıcılar = kullanıcılar;
+            List<SelectListItem> daireDurumu = new List<SelectListItem>()
+            {
+                new SelectListItem() { Text = "Dolu" , Value = true.ToString()},
+                new SelectListItem() { Text = "Boş" , Value = false.ToString()}
+            };
+            ViewBag.daireDurumu = daireDurumu;
             DaireValidator validator = new DaireValidator();
             ValidationResult validationResult = validator.Validate(daire);
             if (validationResult.IsValid)

@@ -1,0 +1,31 @@
+﻿@using EntityLayer.Concrete
+@model List<Kullanıcı>
+@{
+    ViewData["Title"] = "GetKullanıcılar";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<header class="w3-container w3-xlarge w3-padding mt-3">
+    <p class="w3-center">Kullanıcılar</p>
+</header>
+<hr />
+
+<div class="px-4 d-none d-md-block">
+    <div class="d-flex align-items-center">
+        <div class="flex-grow-1">
+            <input type="text" class="form-control my-3" placeholder="Search...">
+        </div>
+    </div>
+</div>
+@foreach (var item in Model)
+{
+    <hr />
+    <a href="/Admin/Mesaj/GetMesaj/@item.KullanıcıId" class="list-group-item list-group-item-action border-0">
+        <div class="d-flex align-items-start">
+            <p style="font-weight:bold">@item.KullanıcıIsım.Substring(0, 1)@item.KullanıcıSoyisim.Substring(0, 1)   |</p>
+            <p class="ml-1">@item.KullanıcıIsım @item.KullanıcıSoyisim  |  (+90) @item.KullanıcıTelefonNo</p>
+        </div>
+    </a>
+    <hr />
+}
+

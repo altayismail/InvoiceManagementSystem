@@ -20,16 +20,16 @@
     </style>
     <script src="chrome-extension://mooikfkahbdckldjjndioackbalphokd/assets/prompt.js"></script>
 </head>
-<body class="w3-content" style="max-width:1200px">
+<body class="w3-content" style="max-width:1920px">
 
     <!-- Sidebar/menu -->
-    <nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="mySidebar">
+    <nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top border-right " style="z-index:3;width:250px" id="mySidebar">
         <div class="w3-container w3-display-container w3-padding-16">
             <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
             <h3 class="w3-wide"><b>Fatura Yönetim Sistemi</b></h3>
         </div>
-        <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
-            <a href="/Home/KullanıcıIndex" class="w3-bar-item w3-button">Ana Sayfa</a>
+        <div class="w3-padding-64 w3-large text-center" style="font-weight:bold">
+            <a href="/Home/Index" class="w3-bar-item w3-button">Ana Sayfa</a>
             <a href="/Fatura/GetFatura" class="w3-bar-item w3-button">Faturalarım</a>
             <a href="/Aidat/GetAidat" class="w3-bar-item w3-button">Aidatlarım</a>
             <a href="" class="w3-bar-item w3-button">Ödeme Yap</a>
@@ -41,9 +41,10 @@
                 <a href="/Mesaj/GetMesaj" class="w3-bar-item w3-button">Gönderilen Mesajlar</a>
             </div>
         </div>
-
+        <hr />
         <a href="/Home/Contact" class="w3-bar-item w3-button w3-padding">İletişim</a>
-        <a href="/Home/KullanıcıAbout" class="w3-bar-item w3-button w3-padding">Uygulama Hakkında</a>
+        <a href="/Home/About" class="w3-bar-item w3-button w3-padding">Uygulama Hakkında</a>
+        <a href="/KullanıcıGiris/KullanıcıCikis" class="w3-bar-item w3-button w3-padding">Çıkış Yap</a>
     </nav>
 
     <!-- Top menu on small screens -->

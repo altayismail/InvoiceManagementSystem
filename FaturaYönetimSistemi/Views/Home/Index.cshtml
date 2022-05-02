@@ -1,0 +1,63 @@
+﻿<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/carousel-11/fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="~/carousel-11/css/owl.carousel.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/carousel-11/css/bootstrap.min.css">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="~/carousel-11/css/style.css">
+</head>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<header class="w3-container w3-xlarge w3-padding mt-3">
+    <p class="w3-center text-dark font-italic">Kullanıcı @ViewBag.kullanıcıAdı, hoşgeldiniz</p>
+</header>
+<hr />
+<div>
+    <div class="container">
+        <div class="owl-carousel owl-1 carousel-item">
+            <div>
+                <img src="~/carousel-11/images/hero_1.jpg" alt="Image" class="img-fluid">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5 class="text-white font-weight-bold">Faturlarınızı Yönetin</h5>
+                    <p class="pb-2 text-white font-weight-bold">Faturalarım sekmesinden size atanan; elektrik, su ve doğalgaz faturalarınızı görebilirsiniz. Ayrıca kredi kartı ile faturalarınızı kolay bir şekilde ödeyebilirsiniz.</p>
+                </div>
+            </div>
+            <div>
+                <img src="~/carousel-11/images/hero_2.jpg" alt="Image" class="img-fluid">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5 class="text-white font-weight-bold">Aidatlarınızı Yönetin</h5>
+                    <p class="pb-2 text-white font-weight-bold">Aidatlarım sekmesinden size atanan aidatları görebilirisiniz. Ayrıca kredi kartı ile ödemenizi kolayca gerçekleştirebilirisiniz.</p>
+                </div>
+            </div>
+            <div>
+                <img src="~/carousel-11/images/hero_3.jpg" alt="Image" class="img-fluid">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5 class="text-white font-weight-bold">Yönetici ile İletişime Geçin</h5>
+                    <p class="pb-2 text-white font-weight-bold">Mesajlarım sekmesinden; yöneticiye mesaj gönderip onunla iletişime geçebilirsiniz.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/carousel-11/js/jquery-3.3.1.min.js"></script>
+<script src="~/carousel-11/js/popper.min.js"></script>
+<script src="~/carousel-11/js/bootstrap.min.js"></script>
+<script src="~/carousel-11/js/owl.carousel.min.js"></script>
+<script src="~/carousel-11/js/main.js"></script>
+

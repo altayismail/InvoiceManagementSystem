@@ -10,12 +10,15 @@ namespace FaturaYönetimSistemi.Controllers
     public class HomeController : Controller
     {
         IletisimManager manager = new(new EFIletisimRepository());
-        public IActionResult KullanıcıIndex()
+        KullanıcıManager kullanıcıManager = new KullanıcıManager(new EFKullanıcıRepository());
+        public IActionResult Index()
         {
+            var kullanıcı = kullanıcıManager.GetKullanıcıBySession(User.Identity.Name);
+            ViewBag.kullanıcıAdı = kullanıcı.KullanıcıIsım + " " + kullanıcı.KullanıcıSoyisim;
             return View();
         }
 
-        public IActionResult KullanıcıAbout()
+        public IActionResult About()
         {
             return View();
         }

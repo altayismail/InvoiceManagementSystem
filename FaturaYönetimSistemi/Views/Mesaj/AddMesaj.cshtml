@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
 
-<header class="w3-container w3-xlarge w3-padding">
+<header class="w3-container w3-xlarge w3-padding mt-3">
     <p class="w3-center">Mesaj Gönder</p>
 </header>
 <hr />
@@ -15,6 +15,7 @@
         @Html.LabelFor(model => model.MesajAlanId, "Yönetici")
         @Html.DropDownListFor(model => model.MesajAlanId, ((List<SelectListItem>)ViewBag.yoneticiler), new { @class = "form-control"})
         @Html.ValidationMessageFor(model => model.MesajAlanId, "*Mesaj yollamak istediğiniz yöneticiyi seçiniz." , new { @class = "text-info"})
+        <br />
         <br />
         @Html.LabelFor(model => model.MesajKonusu, "Konu")
         @Html.TextBoxFor(model => model.MesajKonusu, new { @class = "form-control"})

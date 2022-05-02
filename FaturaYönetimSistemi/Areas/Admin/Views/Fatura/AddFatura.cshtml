@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<header class="w3-container w3-xlarge w3-padding">
+<header class="w3-container w3-xlarge w3-padding mt-3">
     <p class="w3-center">Fatura Ekle</p>
 </header>
 <hr />
@@ -38,12 +38,14 @@
         </div>
     </div>
     <br />
-    <div class="col-md-12">
+    <div class="d-flex flex-row col-md-12">
+        <div class="col-md-6">
             @Html.LabelFor(model => model.FaturaTipi, "Fatura Tipi")
-            @Html.DropDownListFor(model => model.FaturaTipi, Enum.GetNames(typeof(FaturaTipiEnum.FaturaTipi)).Select(e => new SelectListItem { Text = e}), new { @class = "form-control" })
+            @Html.DropDownListFor(model => model.FaturaTipi, Enum.GetNames(typeof(FaturaTipiEnum.FaturaTipi)).Select(e => new SelectListItem { Text = e }), new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.FaturaTipi, "", new { @class = "text-danger" })
+        </div>
     </div>
     <br />
-    <button id ="AddButton" onclick="return confirm('Fatura kaydediliyor, onaylıyor musunuz?');" type="submit" style="margin-left:30px" class="btn btn-primary">Fatura Ekle</button>
+    <button id="AddButton" onclick="return confirm('Fatura kaydediliyor, onaylıyor musunuz?');" type="submit" style="margin-left:30px" class="btn btn-primary">Fatura Ekle</button>
 }
 

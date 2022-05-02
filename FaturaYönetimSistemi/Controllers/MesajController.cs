@@ -53,7 +53,7 @@ namespace FaturaYönetimSistemi.Controllers
             var kullanıcı = kullanıcıManager.GetKullanıcıBySession(User.Identity.Name);
             MesajValidator validator = new MesajValidator();
             ValidationResult validationResult = validator.Validate(mesaj);
-            if (true)
+            if (validationResult.IsValid)
             {
                 mesaj.MesajYollayanId = kullanıcı.KullanıcıId;
                 mesaj.MesajTarihi = System.DateTime.Now;

@@ -5,26 +5,36 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<header class="w3-container w3-xlarge w3-padding">
+<header class="w3-container w3-xlarge w3-padding mt-3">
     <p class="w3-center">Daire Düzenle</p>
 </header>
 <hr />
 
 @using (Html.BeginForm("UpdateDaire", "Daire", FormMethod.Post))
 {
+    @Html.HiddenFor(x => x.DaireId, new { @class = "form-control"})
+
     @Html.Label("Durum")
-    @Html.DropDownListFor(x => x.DaireDurumu,
-                    new[] { new SelectListItem { Text = "Dolu", Value = true.ToString() },
-                    new SelectListItem { Text = "Boş", Value = false.ToString() } },
-                    new { @class = "form-control" })
+    @Html.DropDownListFor(x => x.DaireDurumu, ((List<SelectListItem>)ViewBag.daireDurumu), new { @class = "form-control" })
     @Html.ValidationMessageFor(x => x.DaireDurumu, "", new { @class = "text-danger" })
+
+    @Html.HiddenFor(x => x.DaireBlok, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.DaireBlok, "", new { @class = "text-danger" })
+
+    @Html.HiddenFor(x => x.DaireKatı, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.DaireKatı, "", new { @class = "text-danger" })
+
+    @Html.HiddenFor(x => x.DaireNo, new { @class = "form-control " })
+    @Html.ValidationMessageFor(x => x.DaireNo, "", new { @class = "text-danger" })
+
+    @Html.HiddenFor(x => x.DaireTipi, new { @class = "form-control " })
+    @Html.ValidationMessageFor(x => x.DaireTipi, "", new { @class = "text-danger" })
     <br />
     @Html.Label("Kullanıcı")
     @Html.DropDownListFor(model => model.DaireKullanıcıId,
                     (List<SelectListItem>)ViewBag.kullanıcılar,
                     new { @class = "form-control" })
-    @Html.ValidationMessageFor(x => x.DaireKullanıcıId, "", new { @class = "text-danger" })
     <br />
-    <button id ="UpdateButton" onclick="return confirm('Daire güncelleniyor, onaylıyor musunuz?');" class="btn btn-warning">Düzenle</button>
+    <button id="UpdateButton" onclick="return confirm('Daire güncelleniyor, onaylıyor musunuz?');" class="btn btn-warning">Düzenle</button>
 }
 
