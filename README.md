@@ -34,9 +34,8 @@
 ## Teknolojiler
 - Çok Katmanlı Mimari
 - ASP.NET Core MVC
-- Uygulama için veri tabanı => MS SQL Server
 - .NET Core - Kredi Kartı Ödeme Servisi için
-- Kredi kartı servisi için veritabanı => MongoDb
+- Uygulama için veri tabanı => MS SQL Server
 ### Paketler
 - FluentValidation 10.4.0
 - FluentValidation.AspNetCore 10.4.0
