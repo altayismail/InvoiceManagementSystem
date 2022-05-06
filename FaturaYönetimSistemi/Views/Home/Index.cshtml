@@ -22,11 +22,15 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
-
-<header class="w3-container w3-xlarge w3-padding mt-3">
-    <p class="w3-center text-dark font-italic">Kullanıcı @ViewBag.kullanıcıAdı, hoşgeldiniz</p>
+<!-- Top header -->
+<header class="navbar-toggler p-4">
+    <p class="w3-left text-dark font-weight-bolder" style="font-size:20px">Ana Sayfa</p>
+    <p class="w3-right text-dark font-weight-normal" style="font-size:20px">
+        <i class="icon-user-circle mr-2"></i>@ViewBag.kullanıcıAdı
+    </p>
 </header>
 <hr />
+
 <div>
     <div class="container">
         <div class="owl-carousel owl-1 carousel-item">

@@ -4,9 +4,12 @@
     ViewData["Title"] = "AddAidat";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
-<header class="w3-container w3-xlarge w3-padding mt-3">
-    <p class="w3-center">Aidat Ekle</p>
+<!-- Top header -->
+<header class="navbar-toggler p-4">
+    <p class="w3-left text-dark font-weight-bolder" style="font-size:20px">Aidat Atama Sayfası</p>
+    <p class="w3-right text-dark font-weight-normal" style="font-size:20px">
+        <i class="icon-calendar mr-2"></i>@DateTime.Now.ToLongDateString()
+    </p>
 </header>
 <hr />
 
@@ -33,10 +36,10 @@
         </div>
         <div class="col-md-6">
             @Html.LabelFor(model => model.AidatKullanıcıId, "Kullanıcılar")
-            @Html.DropDownListFor(model => model.AidatKullanıcıId, (List<SelectListItem>)ViewBag.kullanıcılar,new { @class="form-control"})
+            @Html.DropDownListFor(model => model.AidatKullanıcıId, (List<SelectListItem>)ViewBag.kullanıcılar, new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.AidatKullanıcıId, "", new { @class = "text-danger" })
         </div>
     </div>
     <br />
-    <button id ="AddButton" onclick="return confirm('Aidat kaydediliyor, onaylıyor musunuz?');" type="submit" style="margin-left:30px" class="btn btn-primary">Aidat Ekle</button>
+    <button id="AddButton" onclick="return confirm('Aidat kaydediliyor, onaylıyor musunuz?');" type="submit" style="margin-left:30px" class="btn btn-primary">Aidat Ekle<i class="icon-send ml-2"></i></button>
 }

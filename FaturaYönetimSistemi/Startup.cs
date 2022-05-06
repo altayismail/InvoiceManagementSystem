@@ -39,7 +39,7 @@ namespace FaturaYönetimSistemi
                 CookieAuthenticationDefaults.AuthenticationScheme).
                 AddCookie(x =>
                 {
-                    x.LoginPath = "/KullanıcıGiris/Index";
+                    x.LoginPath = "/KullanıcıGiris/GirisYap";
                 });
         }
 

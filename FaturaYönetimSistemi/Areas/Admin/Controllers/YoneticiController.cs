@@ -15,13 +15,13 @@ namespace FaturaYönetimSistemi.Areas.Admin.Controllers
     public class YoneticiController : Controller
     {
         [AllowAnonymous]
-        public IActionResult Index()
+        public IActionResult GirisYap()
         {
             return View();
         }
         [HttpPost]
         [AllowAnonymous]
-        public async Task<IActionResult> Index(Yonetici yonetici)
+        public async Task<IActionResult> GirisYap(Yonetici yonetici)
         {
             Context context = new Context();
             var user = context.Yoneticiler.FirstOrDefault(x => x.YoneticiEmail == yonetici.YoneticiEmail

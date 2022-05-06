@@ -7,13 +7,16 @@
     ViewData["Title"] = "GetFatura";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
-<header class="w3-container w3-xlarge w3-padding mt-3">
-    <p class="w3-center">Tüm Faturalar</p>
+<!-- Top header -->
+<header class="navbar-toggler p-4">
+    <p class="w3-left text-dark font-weight-bolder" style="font-size:20px">Faturalar</p>
+    <p class="w3-right text-dark font-weight-normal" style="font-size:20px">
+        <i class="icon-calendar mr-2"></i>@DateTime.Now.ToLongDateString()
+    </p>
 </header>
 <hr />
 
-<a href="/Admin/Fatura/ExportStaticExcelAidatList" class="btn btn-outline-success text-dark">Excel Listesini Al</a>
+<a href="/Admin/Fatura/ExportStaticExcelAidatList" class="btn btn-outline-success text-dark">Excel Listesini Al<i class="icon-file-excel-o ml-2"></i></a>
 
 @if (Model is not null)
 {
@@ -48,11 +51,11 @@ else
                 <td>
                     @if (@item.FaturaOdendiMi)
                     {
-                        <p class="text-success">Ödendi</p>
+                        <p class="text-success">Ödendi<i class="icon-check ml-2"></i></p>
                     }
                     else
                     {
-                        <p class="text-danger">Ödenmedi</p>
+                        <p class="text-danger">Ödenmedi<i class="icon-times ml-2"></i></p>
                     }
                 </td>
                 <td>@item.FaturaTipi</td>

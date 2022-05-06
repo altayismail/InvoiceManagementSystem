@@ -44,5 +44,10 @@ namespace BusinessLayer.Concrete
         {
             _faturaDal.Update(t);
         }
+
+        public int GetAllOdenmemisFaturaSayısı(Kullanıcı kullanıcı)
+        {
+            return _faturaDal.GetAllOdenmemisFaturaSayısı(kullanıcı);
+        }
     }
 }

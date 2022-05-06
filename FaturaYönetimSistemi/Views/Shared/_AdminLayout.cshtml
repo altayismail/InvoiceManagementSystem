@@ -8,12 +8,10 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/carousel-11/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="~/font-awesome-4.7.0/css/font-awesome.min.css">
     <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
     <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/lib/bootstrap/dist/css/bootstrap-grid.css" rel="stylesheet" />
-    <link href="~/lib/bootstrap/dist/css/bootstrap-grid.min.css" rel="stylesheet" />
-    <link href="~/lib/bootstrap/dist/css/bootstrap-reboot.css" rel="stylesheet" />
-    <link href="~/lib/bootstrap/dist/css/bootstrap-reboot.min.css" rel="stylesheet" />
     <style>
         .w3-sidebar a {
             font-family: "Roboto", sans-serif
@@ -34,45 +32,45 @@
             <h3 class="w3-wide"><b>Fatura Yönetim Sistemi</b></h3>
         </div>
         <div class="w3-padding-64 w3-large " style="font-weight:bold">
-            @Html.ActionLink("Ana Sayfa", "Index", "Home", new { Area = "Admin" }, new { @class = "w3-bar-item w3-button " })
+            <a href="/Admin/Home/Index" class="w3-bar-item w3-button">Ana Sayfa<i class="icon-home ml-2"></i></a>
             <a onclick="myAccFunc()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
-                Kullanıcı İşlemleri <i class="fa fa-caret-down"></i>
+                Kullanıcı İşlemleri <i class="fa fa-caret-down"></i><i class="icon-user ml-2"></i>
             </a>
             <div id="demoAcc" class="w3-bar-block w3-hide w3-padding-large w3-medium w3-show">
                 @Html.ActionLink("Kullanıcıları Listele/Düzenle/Sil", "GetKullanıcı", "Kullanıcı", new { Area = "Admin" }, new { @class = "w3-bar-item w3-button" })
                 @Html.ActionLink("Kullanıcı Ekle", "AddKullanıcı", "Kullanıcı", new { Area = "Admin" }, new { @class = "w3-bar-item w3-button" })
             </div>
             <a onclick="myAccFunc1()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn1">
-                Daire İşlemleri <i class="fa fa-caret-down"></i>
+                Daire İşlemleri <i class="fa fa-caret-down"></i><i class="icon-bank ml-2"></i>
             </a>
             <div id="demoAcc1" class="w3-bar-block w3-hide w3-padding-large w3-medium w3-show">
                 @Html.ActionLink("Daire Bilgilerini Listele/Düzenle/Sil", "GetDaire", "Daire", new { Area = "Admin" }, new { @class = "w3-bar-item w3-button" })
             </div>
             <a onclick="myAccFunc2()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn2">
-                Fatura İşlemleri <i class="fa fa-caret-down"></i>
+                Fatura İşlemleri <i class="fa fa-caret-down"></i><i class="icon-file-text-o ml-2"></i>
             </a>
             <div id="demoAcc2" class="w3-bar-block w3-hide w3-padding-large w3-medium w3-show">
                 @Html.ActionLink("Fatura Atama", "AddFatura", "Fatura", new { Area = "Admin" }, new { @class = "w3-bar-item w3-button" })
                 @Html.ActionLink("Fatura Listele", "GetFatura", "Fatura", new { Area = "Admin" }, new { @class = "w3-bar-item w3-button" })
             </div>
             <a onclick="myAccFunc3()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn3">
-                Aidat İşlemleri <i class="fa fa-caret-down"></i>
+                Aidat İşlemleri <i class="fa fa-caret-down"></i><i class="icon-file-text-o ml-2"></i>
             </a>
             <div id="demoAcc3" class="w3-bar-block w3-hide w3-padding-large w3-medium w3-show">
                 @Html.ActionLink("Aidat Atama", "AddAidat", "Aidat", new { Area = "Admin" }, new { @class = "w3-bar-item w3-button" })
                 @Html.ActionLink("Aidat Listele", "GetAidat", "Aidat", new { Area = "Admin" }, new { @class = "w3-bar-item w3-button" })
             </div>
-            <a href="#" class="w3-bar-item w3-button">Gelen Ödemeler</a>
-            @Html.ActionLink("Mesajlarım", "GetKullanıcılar", "Mesaj", new { Area = "Admin" }, new { @class = "w3-bar-item w3-button" })
-            <a href="#" class="w3-bar-item w3-button">Borç-Alacak Listesi</a>
+            <a href="/Admin/Odeme/GetOdemeler" class="w3-bar-item w3-button">Gelen Ödemeler <i class="icon-money ml-2"></i></a>
+            <a href="/Admin/Mesaj/GetKullanıcılar" class="w3-bar-item w3-button">Mesajlarım <i class="icon-message ml-2"></i></a>
+            <a href="#" class="w3-bar-item w3-button">Borç-Alacak Listesi <i class="icon-user ml-2"></i><i class="icon-money ml-2"></i></a>
         </div>
         <hr />
-        @Html.ActionLink("Uygulama Hakkında", "About", "Home", new { Area = "Admin" }, new { @class = "w3-bar-item w3-button w3-padding" })
+        <a href="/Admin/Home/About" class="w3-bar-item w3-button">Uygulama Hakkında <i class="icon-question ml-2"></i></a>
     </nav>
 
     <!-- Top menu on small screens -->
     <header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
-        <div class="w3-bar-item w3-padding-24 w3-wide">LOGO</div>
+        <div class="w3-bar-item w3-padding-24 w3-wide">Fatura Yönetim Sistemi</div>
         <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-right" onclick="w3_open()"><i class="fa fa-bars"></i></a>
     </header>
 
@@ -88,7 +86,6 @@
         <div class="w3-container">
             @RenderBody()
         </div>
-        <!-- End page content -->
     </div>
 
     <!-- Newsletter Modal -->
@@ -103,6 +100,7 @@
             </div>
         </div>
     </div>
+    
 
     <script>
         // Accordion

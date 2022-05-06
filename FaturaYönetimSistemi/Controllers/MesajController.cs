@@ -15,7 +15,7 @@ namespace FaturaYönetimSistemi.Controllers
         MesajManager manager = new MesajManager(new EFMesajRepository());
         KullanıcıManager kullanıcıManager = new KullanıcıManager(new EFKullanıcıRepository());
         YoneticiManager yoneticiManager = new YoneticiManager(new EFYoneticiRepository());
-        public IActionResult GetMesaj()
+        public IActionResult GetYoneticiList()
         {
             var yoneticiler = yoneticiManager.GetAllQueryWithMesaj();
             return View(yoneticiler);

@@ -4,16 +4,18 @@
     ViewData["Title"] = "UpdateKullanıcı";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
-<header class="w3-container w3-xlarge w3-padding mt-3">
-    <p class="w3-center">Kullanıcı Düzenle</p>
+<!-- Top header -->
+<header class="navbar-toggler p-4">
+    <p class="w3-left text-dark font-weight-bolder" style="font-size:20px">Kullanıcı Düzenleme Sayfası</p>
+    <p class="w3-right text-dark font-weight-normal" style="font-size:20px">
+        <i class="icon-calendar mr-2"></i>@DateTime.Now.ToLongDateString()
+    </p>
 </header>
 <hr />
 
 @using (Html.BeginForm("UpdateKullanıcı", "Kullanıcı", FormMethod.Post))
 {
-    @Html.Label("Id")
-    @Html.TextBoxFor(x => x.KullanıcıId, new { @class = "form-control" })
+    @Html.HiddenFor(x => x.KullanıcıId, new { @class = "form-control" })
     @Html.ValidationMessageFor(x => x.KullanıcıId, "", new { @class = "text-danger" })
     <br />
     @Html.Label("İsim")
@@ -47,6 +49,6 @@
     @Html.TextBoxFor(x => x.KullanıcıDaireNo, new { @class = "form-control" })
     @Html.ValidationMessageFor(x => x.KullanıcıDaireNo, "", new { @class = "text-danger" })
     <br />
-    <button id ="UpdateButton" onclick="return confirm('Kullanıcı güncelleniyor, onaylıyor musunuz?');" class="btn btn-warning">Kaydet</button>
+    <button id="UpdateButton" onclick="return confirm('Kullanıcı güncelleniyor, onaylıyor musunuz?');" class="btn btn-warning">Kaydet<i class="icon-save ml-2"></i></button>
 }
 

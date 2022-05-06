@@ -4,16 +4,22 @@
 @{
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
-
-<header class="w3-container w3-xlarge w3-padding mt-3">
-    <p class="w3-center">Faturalarım</p>
+<!-- Top header -->
+<header class="navbar-toggler p-4">
+    <p class="w3-left text-dark font-weight-bolder" style="font-size:20px">Faturalarım</p>
+    <p class="w3-right text-dark font-weight-normal" style="font-size:20px">
+        <i class="icon-calendar mr-2"></i>@DateTime.Now.ToLongDateString()
+    </p>
 </header>
 <hr />
 
 @if (Model is not null)
 {
-    <div class="w3-container pl-3 pt-3 mt-3 mb-3 bg-success text-white" id="jeans">
-        <p>@Model.Count adet Fatura listelendi.</p>
+    <div class="w3-container pl-3 pt-3 mt-3 mb-3 bg-success text-white" id="faturaSayısı">
+        <p>@Model.Count adet fatura listelendi.</p>
+    </div>
+    <div class="w3-container pl-3 pt-3 mt-3 mb-3 bg-danger text-white" id="!faturaSayısı">
+        <p>@ViewBag.odenmemisFaturaSayısı adet ödenmemiş faturanız bulunmaktadır.</p>
     </div>
 }
 else
@@ -43,11 +49,11 @@ else
                 <td>
                     @if (@item.FaturaOdendiMi)
                     {
-                        <p class="text-success">Ödendi</p>
+                        <p class="text-success">Ödendi<i class="icon-check ml-2"></i></p>
                     }
                     else
                     {
-                        <p class="text-danger">Ödenmedi</p>
+                        <p class="text-danger">Ödenmedi<i class="icon-times ml-2"></i></p>
                     }
                 </td>
                 <td>@item.FaturaTipi</td>

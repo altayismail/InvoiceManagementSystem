@@ -4,9 +4,12 @@
     ViewData["Title"] = "GetKullanıcılar";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
-<header class="w3-container w3-xlarge w3-padding mt-3">
-    <p class="w3-center">Kullanıcılar</p>
+<!-- Top header -->
+<header class="navbar-toggler p-4">
+    <p class="w3-left text-dark font-weight-bolder" style="font-size:20px">Kullanıcılar</p>
+    <p class="w3-right text-dark font-weight-normal" style="font-size:20px">
+        <i class="icon-calendar mr-2"></i>@DateTime.Now.ToLongDateString()
+    </p>
 </header>
 <hr />
 
@@ -22,7 +25,7 @@
     <hr />
     <a href="/Admin/Mesaj/GetMesaj/@item.KullanıcıId" class="list-group-item list-group-item-action border-0">
         <div class="d-flex align-items-start">
-            <p style="font-weight:bold">@item.KullanıcıIsım.Substring(0, 1)@item.KullanıcıSoyisim.Substring(0, 1)   |</p>
+            <p style="font-weight:bold"><i class="icon-user-circle-o mr-3"></i>@item.KullanıcıIsım.Substring(0, 1)@item.KullanıcıSoyisim.Substring(0, 1)   |</p>
             <p class="ml-1">@item.KullanıcıIsım @item.KullanıcıSoyisim  |  (+90) @item.KullanıcıTelefonNo</p>
         </div>
     </a>

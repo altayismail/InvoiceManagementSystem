@@ -11,7 +11,7 @@ namespace FaturaYönetimSistemi.Areas.Admin.Controllers
         public IActionResult Index()
         {
             var yonetici = yoneticiManager.GetAllYoneticiBySession(User.Identity.Name);
-            ViewBag.yonetici = yonetici.YoneticiIsım + " " + yonetici.YoneticiSoyisim;
+            ViewBag.yoneticiAdı = yonetici.YoneticiIsım + " " + yonetici.YoneticiSoyisim;
             return View();
         }
 

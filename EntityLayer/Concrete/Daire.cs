@@ -11,6 +11,7 @@ namespace EntityLayer.Concrete
         public bool DaireDurumu { get; set; }
         public string DaireTipi { get; set; }
         public string DaireKatı { get; set; }
+        public string DaireKiradaMı { get; set; }
 
         public int DaireKullanıcıId { get; set; }
         public Kullanıcı DaireKullanıcı { get; set; }

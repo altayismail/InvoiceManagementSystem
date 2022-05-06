@@ -7,8 +7,6 @@ namespace BusinessLayer.ValidationRules
     {
         public DaireValidator()
         {
-            RuleFor(x => x.DaireId).GreaterThan(0).WithMessage("Daire Id'si sıfırdan büyük olmalıdır.");
-
             RuleFor(x => x.DaireKullanıcıId).GreaterThan(0).WithMessage("Daire kullanıcı Id'si sıfırdan büyük olmalıdır.");
 
             RuleFor(x => x.DaireBlok).NotEmpty().WithMessage("Daire blok bilgisi boş bırakılamaz.");
@@ -21,6 +19,8 @@ namespace BusinessLayer.ValidationRules
                 .GreaterThan(0).WithMessage("Daire No sıfırdan büyük olmalıdır.");
 
             RuleFor(x => x.DaireTipi).NotEmpty().WithMessage("Daire Tipi bilgisi boş bırakılamaz.");
+
+            RuleFor(x => x.DaireKiradaMı).NotNull().WithMessage("Dairenin kirada olup olmadığı belirtilmelidir.");
         }
     }
 }

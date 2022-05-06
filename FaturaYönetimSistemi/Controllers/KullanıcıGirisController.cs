@@ -14,13 +14,13 @@ namespace FaturaYönetimSistemi.Controllers
     public class KullanıcıGirisController : Controller
     {
         [AllowAnonymous]
-        public IActionResult Index()
+        public IActionResult GirisYap()
         {
             return View();
         }
         [HttpPost]
         [AllowAnonymous]
-        public async Task<IActionResult> Index(Kullanıcı kullanıcı)
+        public async Task<IActionResult> GirisYap(Kullanıcı kullanıcı)
         {
             Context context = new Context();
             var user = context.Kullanıcılar.FirstOrDefault(x => x.KullanıcıEmail == kullanıcı.KullanıcıEmail

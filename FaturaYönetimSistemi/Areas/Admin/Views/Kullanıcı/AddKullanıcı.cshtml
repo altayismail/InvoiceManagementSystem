@@ -3,55 +3,59 @@
     ViewData["Title"] = "Kullanıcı Ekle";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
-<header class="w3-container w3-xlarge w3-padding mt-3">
-    <p class="w3-center">Kullanıcı Ekleme Sayfası</p>
+<!-- Top header -->
+<header class="navbar-toggler p-4">
+    <p class="w3-left text-dark font-weight-bolder" style="font-size:20px">Kullanıcı Ekleme Sayfası</p>
+    <p class="w3-right text-dark font-weight-normal" style="font-size:20px">
+        <i class="icon-calendar mr-2"></i>@DateTime.Now.ToLongDateString()
+    </p>
 </header>
 <hr />
 
-@using (Html.BeginForm("AddKullanıcı", "Kullanıcı", FormMethod.Post)){
-<div class="row">
-    <div class="col">
-        <label for="formGroupExampleInput">İsim</label>
-        @Html.TextBoxFor(x => x.KullanıcıIsım, new { @class = "form-control" })
-        @Html.ValidationMessageFor(x => x.KullanıcıIsım, "", new { @class = "text-danger"})
+@using (Html.BeginForm("AddKullanıcı", "Kullanıcı", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col">
+            <label for="formGroupExampleInput">İsim</label>
+            @Html.TextBoxFor(x => x.KullanıcıIsım, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.KullanıcıIsım, "", new { @class = "text-danger" })
+        </div>
+        <div class="col">
+            <label for="formGroupExampleInput">Soyisim</label>
+            @Html.TextBoxFor(x => x.KullanıcıSoyisim, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.KullanıcıSoyisim, "", new { @class = "text-danger" })
+        </div>
     </div>
-    <div class="col">
-        <label for="formGroupExampleInput">Soyisim</label>
-        @Html.TextBoxFor(x => x.KullanıcıSoyisim, new { @class = "form-control" })
-        @Html.ValidationMessageFor(x => x.KullanıcıSoyisim, "", new { @class = "text-danger" })
+    <br />
+    <div class="row">
+        <div class="col">
+            <label for="formGroupExampleInput">TC Kimlik No</label>
+            @Html.TextBoxFor(x => x.KullanıcıTCNo, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.KullanıcıTCNo, "", new { @class = "text-danger" })
+        </div>
+        <div class="col">
+            <label for="formGroupExampleInput">Telefon No</label>
+            @Html.TextBoxFor(x => x.KullanıcıTelefonNo, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.KullanıcıTelefonNo, "", new { @class = "text-danger" })
+        </div>
     </div>
-</div>
-<br />
-<div class="row">
-    <div class="col">
-        <label for="formGroupExampleInput">TC Kimlik No</label>
-        @Html.TextBoxFor(x => x.KullanıcıTCNo, new { @class = "form-control" })
-        @Html.ValidationMessageFor(x => x.KullanıcıTCNo, "", new { @class = "text-danger" })
+    <br />
+    <div class="form-group">
+        <label for="formGroupExampleInput">E-Mail</label>
+        @Html.TextBoxFor(x => x.KullanıcıEmail, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.KullanıcıEmail, "", new { @class = "text-danger" })
     </div>
-    <div class="col">
-        <label for="formGroupExampleInput">Telefon No</label>
-        @Html.TextBoxFor(x => x.KullanıcıTelefonNo, new { @class = "form-control" })
-        @Html.ValidationMessageFor(x => x.KullanıcıTelefonNo, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <label for="formGroupExampleInput2">Araç Plakası</label>
+        @Html.TextBoxFor(x => x.KullanıcıAraçBilgisi, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.KullanıcıAraçBilgisi, "", new { @class = "text-danger" })
     </div>
-</div>
-<br />
-<div class="form-group">
-    <label for="formGroupExampleInput">E-Mail</label>
-    @Html.TextBoxFor(x => x.KullanıcıEmail, new { @class = "form-control" })
-    @Html.ValidationMessageFor(x => x.KullanıcıEmail, "", new { @class = "text-danger" })
-</div>
-<div class="form-group">
-    <label for="formGroupExampleInput2">Araç Plakası</label>
-    @Html.TextBoxFor(x => x.KullanıcıAraçBilgisi, new { @class = "form-control" })
-    @Html.ValidationMessageFor(x => x.KullanıcıAraçBilgisi, "", new { @class = "text-danger" })
-</div>
-<div class="form-group">
-    <label for="formGroupExampleInput2">Daire No</label>
-    @Html.TextBoxFor(x => x.KullanıcıDaireNo, new { @class = "form-control" })
-    @Html.ValidationMessageFor(x => x.KullanıcıDaireNo, "", new { @class = "text-danger" })
-</div>
-<button id ="AddButton" onclick="return confirm('Kullanıcı kaydediliyor, onaylıyor musunuz?');" type="submit" class="btn btn-primary">Kullanıcıyı Kaydet</button>
+    <div class="form-group">
+        <label for="formGroupExampleInput2">Daire No</label>
+        @Html.TextBoxFor(x => x.KullanıcıDaireNo, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.KullanıcıDaireNo, "", new { @class = "text-danger" })
+    </div>
+    <button id="AddButton" onclick="return confirm('Kullanıcı kaydediliyor, onaylıyor musunuz?');" type="submit" class="btn btn-primary">Kullanıcıyı Kaydet<i class="icon-save ml-2"></i></button>
 }
 
 

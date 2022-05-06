@@ -3,8 +3,12 @@
     ViewData["Title"] = "About";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
-<header class="w3-container w3-xlarge w3-padding mt-3">
-    <p class="w3-center">Uygulama Hakkında</p>
+<!-- Top header -->
+<header class="navbar-toggler p-4">
+    <p class="w3-left text-dark font-weight-bolder" style="font-size:20px">Uygulama Hakkında</p>
+    <p class="w3-right text-dark font-weight-normal" style="font-size:20px">
+        <i class="icon-calendar mr-2"></i>@DateTime.Now.ToLongDateString()
+    </p>
 </header>
 <hr />
 
@@ -15,5 +19,4 @@
     <p class="list-group-item list-group-item-action">ASP.NET Core 5 MVC => Web Uygulaması için</p>
     <p class="list-group-item list-group-item-action">.NET CORE => Kredi Kartı Servisi için</p>
     <p class="list-group-item list-group-item-action">Microsoft SQL Server 2019 => Uygulama veritabanı için</p>
-    <p class="list-group-item list-group-item-action">MongoDb => Kredi Kartı Servisi veritabanı için</p>
 </div>

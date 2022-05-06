@@ -4,10 +4,15 @@
     ViewData["Title"] = "AddDaire";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
-<header class="w3-container w3-xlarge w3-padding mt-3">
-    <p class="w3-center">Daire Ekleme Sayfası</p>
+<!-- Top header -->
+<header class="navbar-toggler p-4">
+    <p class="w3-left text-dark font-weight-bolder" style="font-size:20px">Daire Ekleme Sayfası</p>
+    <p class="w3-right text-dark font-weight-normal" style="font-size:20px">
+        <i class="icon-calendar mr-2"></i>@DateTime.Now.ToLongDateString()
+    </p>
 </header>
+<hr />
+
 
 @using (Html.BeginForm("AddDaire", "Daire", FormMethod.Post))
 {
@@ -53,12 +58,23 @@
         </div>
         <div class="col">
             <label for="formGroupExampleInput">Kullanıcı</label>
-            @Html.DropDownListFor(model => model.DaireKullanıcıId, 
-                    (List<SelectListItem>)ViewBag.kullanıcılar, 
+            @Html.DropDownListFor(model => model.DaireKullanıcıId,
+                    (List<SelectListItem>)ViewBag.kullanıcılar,
                     new { @class = "form-control" })
             @Html.ValidationMessageFor(x => x.DaireKullanıcıId, "", new { @class = "text-danger" })
         </div>
     </div>
     <br />
-    <button type="submit" id ="AddButton" onclick="return confirm('Daire kaydediliyor, onaylıyor musunuz?');" class="btn btn-primary">Daireyi Kaydet</button>
+    <div class="row">
+        <div class="col">
+            <label for="formGroupExampleInput">Kira/Daire Sahibi</label>
+            @Html.DropDownListFor(x => x.DaireKiradaMı,
+                    new[] { new SelectListItem { Text = "Kira", Value = "Kira" },
+                    new SelectListItem { Text = "Daire Sahibi", Value = "Daire Sahibi" } },
+                    new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.DaireKiradaMı, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <button type="submit" id="AddButton" onclick="return confirm('Daire kaydediliyor, onaylıyor musunuz?');" class="btn btn-primary">Daireyi Kaydet<i class="icon-save ml-2"></i></button>
 }

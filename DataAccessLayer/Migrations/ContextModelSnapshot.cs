@@ -64,6 +64,9 @@ namespace DataAccessLayer.Migrations
                     b.Property<string>("DaireKatı")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("DaireKiradaMı")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("DaireKullanıcıId")
                         .HasColumnType("int");
 

@@ -1,0 +1,59 @@
+﻿@*@using X.PagedList
+    @using X.PagedList.Mvc.Core
+    @using X.PagedList.Web.Common*@
+@using OdemeSistemi.Entities
+@model List<Odeme>
+@{
+    ViewData["Title"] = "GetOdemeler";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+<!-- Top header -->
+<header class="navbar-toggler p-4">
+    <p class="w3-left text-dark font-weight-bolder" style="font-size:20px">Ödemeler</p>
+    <p class="w3-right text-dark font-weight-normal" style="font-size:20px">
+        <i class="icon-calendar mr-2"></i>@DateTime.Now.ToLongDateString()
+    </p>
+</header>
+<hr />
+
+<a href="/Admin/Odeme/ExportStaticExcelOdemeList" class="btn btn-outline-success text-dark">Excel Listesini Al</a>
+
+@if (Model.Any())
+{
+    <div class="w3-container pl-3 pt-3 mt-3 mb-3 bg-success text-white" id="jeans">
+        <p>@Model.Count adet ödeme yapılmış.</p>
+    </div>
+}
+else
+{
+    <div class="w3-container pl-3 pt-3 mt-3 mb-3 bg-danger text-white" id="jeans">
+        <p>Herhangi bir ödeme yapılmamış.</p>
+    </div>
+}
+
+<table class="table table-bordered table-striped p-5">
+    <tr>
+        <th>Ödeme Tarihi</th>
+        <th>Ödeme Tutarı</th>
+        <th>Ödeme Sahibi</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@(((DateTime)item.OdemeTarihi).ToString("dd-MMM-yyyy"))</td>
+            <td>@item.OdemeNetTutarı @item.OdemeParaBirimi</td>
+            <td>@item.OdemeYapanKullanıcıIsim @item.OdemeYapanKullanıcıSoyisim</td>
+        </tr>
+    }
+</table>
+@*<hr />
+    @Html.PagedListPager((IPagedList)Model, page => Url.Action("GetAidat", new { page }),
+        new PagedListRenderOptions
+        {
+            LiElementClasses = new List<string> { "page-item" },
+            PageClasses = new List<string> { "page-link " },
+            Display = PagedListDisplayMode.IfNeeded
+        })*@
+

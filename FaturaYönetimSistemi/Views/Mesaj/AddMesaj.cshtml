@@ -4,27 +4,30 @@
     ViewData["Title"] = "AddMesaj";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
-
-<header class="w3-container w3-xlarge w3-padding mt-3">
-    <p class="w3-center">Mesaj Gönder</p>
+<!-- Top header -->
+<header class="navbar-toggler p-4">
+    <p class="w3-left text-dark font-weight-bolder" style="font-size:20px">Mesaj Gönderme Sayfası</p>
+    <p class="w3-right text-dark font-weight-normal" style="font-size:20px">
+        <i class="icon-calendar mr-2"></i>@DateTime.Now.ToLongDateString()
+    </p>
 </header>
 <hr />
 
 @using (Html.BeginForm("AddMesaj", "Mesaj", FormMethod.Post))
-    {
-        @Html.LabelFor(model => model.MesajAlanId, "Yönetici")
-        @Html.DropDownListFor(model => model.MesajAlanId, ((List<SelectListItem>)ViewBag.yoneticiler), new { @class = "form-control"})
-        @Html.ValidationMessageFor(model => model.MesajAlanId, "*Mesaj yollamak istediğiniz yöneticiyi seçiniz." , new { @class = "text-info"})
-        <br />
-        <br />
-        @Html.LabelFor(model => model.MesajKonusu, "Konu")
-        @Html.TextBoxFor(model => model.MesajKonusu, new { @class = "form-control"})
-        @Html.ValidationMessageFor(model => model.MesajKonusu, "", new { @class = "text-danger"})
-        <br />
-        @Html.LabelFor(model => model.MesajIcerik, "İçerik")
-        @Html.TextAreaFor(model => model.MesajIcerik, new { @class = "form-control"})
-        @Html.ValidationMessageFor(model => model.MesajIcerik, "", new { @class = "text-danger" })
-        <hr />
-        <button onclick="return confirm('Mesaj gönderiliyor, emin misiniz?')" class="btn btn-outline-primary">Gönder</button>
-    }
+{
+    @Html.LabelFor(model => model.MesajAlanId, "Yönetici")
+    @Html.DropDownListFor(model => model.MesajAlanId, ((List<SelectListItem>)ViewBag.yoneticiler), new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.MesajAlanId, "*Mesaj yollamak istediğiniz yöneticiyi seçiniz.", new { @class = "text-info" })
+    <br />
+    <br />
+    @Html.LabelFor(model => model.MesajKonusu, "Konu")
+    @Html.TextBoxFor(model => model.MesajKonusu, new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.MesajKonusu, "", new { @class = "text-danger" })
+    <br />
+    @Html.LabelFor(model => model.MesajIcerik, "İçerik")
+    @Html.TextAreaFor(model => model.MesajIcerik, new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.MesajIcerik, "", new { @class = "text-danger" })
+    <hr />
+    <button onclick="return confirm('Mesaj gönderiliyor, emin misiniz?')" class="btn btn-outline-primary">Gönder<i class="icon-send ml-2"></i></button>
+}
 

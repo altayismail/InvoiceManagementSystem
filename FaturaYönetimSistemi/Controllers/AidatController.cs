@@ -16,6 +16,7 @@ namespace FaturaYönetimSistemi.Controllers
             var kullanıcı = kullanıcıManager.GetKullanıcıBySession(User.Identity.Name);
             var aidatlar = manager.GetAllQueryWithKullanıcı()
                 .Where(x => x.AidatKullanıcıId == kullanıcı.KullanıcıId).ToList<Aidat>().ToPagedList(page, 10);
+            ViewBag.odenmemisAidatSayısı = manager.GetAllOdenmemisAidatSayısı(kullanıcı);
             return View(aidatlar); 
         }
     }

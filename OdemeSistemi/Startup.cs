@@ -7,9 +7,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using OdemeSistemi.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace OdemeSistemi
@@ -32,6 +34,8 @@ namespace OdemeSistemi
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "OdemeSistemi", Version = "v1" });
             });
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            services.AddDbContext<Context>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

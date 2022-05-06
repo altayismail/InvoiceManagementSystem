@@ -7,12 +7,16 @@
     ViewData["Title"] = "GetDaire";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
-<header class="w3-container w3-xlarge w3-padding mt-3">
-    <p class="w3-center">Daire İşlemleri</p>
+<!-- Top header -->
+<header class="navbar-toggler p-4">
+    <p class="w3-left text-dark font-weight-bolder" style="font-size:20px">Daireler</p>
+    <p class="w3-right text-dark font-weight-normal" style="font-size:20px">
+        <i class="icon-calendar mr-2"></i>@DateTime.Now.ToLongDateString()
+    </p>
 </header>
 <hr />
-<a href="/Admin/Daire/ExportStaticExcelAidatList" class="btn btn-outline-success text-dark">Excel Listesini Al</a>
+
+<a href="/Admin/Daire/ExportStaticExcelAidatList" class="btn btn-outline-success text-dark">Excel Listesini Al<i class="icon-file-excel-o ml-2"></i></a>
 
 @if (Model is not null)
 {
@@ -28,7 +32,7 @@ else
 }
 
 <hr />
-<a href="/Admin/Daire/AddDaire" class="btn btn-outline-primary text-right">Daire Ekle</a>
+<a href="/Admin/Daire/AddDaire" class="btn btn-outline-primary text-right">Daire Ekle<i class="icon-add ml-2"></i></a>
 <hr />
 
 <table class="table table-bordered table-striped p-5 ">
@@ -39,6 +43,7 @@ else
         <th>Tip</th>
         <th>Kat Bilgisi</th>
         <th>Daire Sahibi</th>
+        <th>Kira/Daire Sahibi</th>
         <th>Düzenle</th>
         <th>Sil</th>
     </tr>
@@ -50,18 +55,19 @@ else
             <td>
                 @if (@item.DaireDurumu)
                 {
-                    <p class="text-warning">Dolu</p>
+                    <p class="text-warning">Dolu<i class="icon-warning ml-2"></i></p>
                 }
                 else
                 {
-                    <p class="text-success">Boş</p>
+                    <p class="text-success">Boş<i class="icon-check ml-2"></i></p>
                 }
             </td>
             <td>@item.DaireTipi</td>
             <td>@item.DaireKatı</td>
             <td>@item.DaireKullanıcı.KullanıcıIsım @item.DaireKullanıcı.KullanıcıSoyisim</td>
-            <td><a href="/Admin/Daire/UpdateDaire/@item.DaireId" id="UpdateButton" onclick="return confirm('Daireyi düzenleme sayfasına yönlendiriliyorsunuz, emin misiniz?');" class="btn btn-outline-warning text-dark">Düzenle</a></td>
-            <td><a href="/Admin/Daire/DeleteDaire/@item.DaireId" id="DeleteButton" onclick="return confirm('Daire siliniyor, onaylıyor musunuz?');" class="btn btn-outline-danger text-dark">Sil</a></td>
+            <td>@item.DaireKiradaMı</td>
+            <td><a href="/Admin/Daire/UpdateDaire/@item.DaireId" id="UpdateButton" onclick="return confirm('Daireyi düzenleme sayfasına yönlendiriliyorsunuz, emin misiniz?');" class="btn btn-outline-warning text-dark">Düzenle<i class="icon-edit ml-2"></i></a></td>
+            <td><a href="/Admin/Daire/DeleteDaire/@item.DaireId" id="DeleteButton" onclick="return confirm('Daire siliniyor, onaylıyor musunuz?');" class="btn btn-outline-danger text-dark">Sil<i class="icon-delete ml-2"></i></a></td>
         </tr>
     }
 </table>

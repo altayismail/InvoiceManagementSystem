@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.15" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.15">
       <PrivateAssets>all</PrivateAssets>
@@ -20,7 +21,11 @@
 
   <ItemGroup>
     <Folder Include="Abstract\" />
-    <Folder Include="Entities\" />
+    <Folder Include="Application\BankaHesabıOperation\Commands\" />
+    <Folder Include="Application\BankaHesabıOperation\Queries\" />
+    <Folder Include="Application\KrediKartıOperation\Commands\" />
+    <Folder Include="Application\KrediKartıOperation\Queries\" />
+    <Folder Include="ValidationRules\" />
   </ItemGroup>
 
 </Project>

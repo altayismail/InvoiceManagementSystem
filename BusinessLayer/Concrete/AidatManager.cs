@@ -43,5 +43,15 @@ namespace BusinessLayer.Concrete
         {
             _aidatDal.Update(t);
         }
+
+        public double CalculateToplamOdenmemisAidat()
+        {
+            return _aidatDal.CalculateToplamOdenmemisAidat();
+        }
+
+        public int GetAllOdenmemisAidatSayısı(Kullanıcı kullanıcı)
+        {
+            return _aidatDal.GetAllOdenmemisAidatSayısı(kullanıcı);
+        }
     }
 }
