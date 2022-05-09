@@ -8,10 +8,6 @@ namespace BusinessLayer.ValidationRules
     {
         public AidatValidator()
         {
-            RuleFor(x => x.AidatKullanıcıId).
-                GreaterThan(0).WithMessage("Kullanıcı Id sıfırdan büyük olmalıdır.").
-                NotEmpty().WithMessage("Lütfen kullanıcı seçiniz.");
-
             RuleFor(x => x.AidatUcreti).NotEmpty().WithMessage("Aidat ücreti boş geçilemez.").
                 GreaterThan(0).WithMessage("Aidat ücreti en az 0 TL olmalıdır");
 

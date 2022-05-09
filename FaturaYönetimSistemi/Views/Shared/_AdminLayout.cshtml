@@ -58,6 +58,7 @@
             </a>
             <div id="demoAcc3" class="w3-bar-block w3-hide w3-padding-large w3-medium w3-show">
                 @Html.ActionLink("Aidat Atama", "AddAidat", "Aidat", new { Area = "Admin" }, new { @class = "w3-bar-item w3-button" })
+                @Html.ActionLink("Tüm Kullanıclara Aidat Atama", "AddAidatForAllUser", "Aidat", new { Area = "Admin" }, new { @class = "w3-bar-item w3-button" })
                 @Html.ActionLink("Aidat Listele", "GetAidat", "Aidat", new { Area = "Admin" }, new { @class = "w3-bar-item w3-button" })
             </div>
             <a href="/Admin/Odeme/GetOdemeler" class="w3-bar-item w3-button">Gelen Ödemeler <i class="icon-money ml-2"></i></a>
@@ -66,6 +67,7 @@
         </div>
         <hr />
         <a href="/Admin/Home/About" class="w3-bar-item w3-button">Uygulama Hakkında <i class="icon-question ml-2"></i></a>
+        <a href="/Admin/YoneticiGiris/CikisYap" class="w3-bar-item w3-button">Çıkış Yap <i class="icon-sign-out ml-2"></i></a>
     </nav>
 
     <!-- Top menu on small screens -->

@@ -13,7 +13,7 @@ namespace FaturaYönetimSistemi.Areas.Admin.Controllers
         public async Task<IActionResult> GetOdemeler()
         {
             var httpClient = new HttpClient();
-            var responseMessage = await httpClient.GetAsync("https://localhost:44367/api/Odeme");
+            var responseMessage = await httpClient.GetAsync("http://localhost:45080/api/Odeme");
             var jsonString = await responseMessage.Content.ReadAsStringAsync();
             var odemeler = JsonConvert.DeserializeObject<List<Odeme>>(jsonString);
             return View(odemeler);

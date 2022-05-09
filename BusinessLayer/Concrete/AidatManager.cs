@@ -53,5 +53,10 @@ namespace BusinessLayer.Concrete
         {
             return _aidatDal.GetAllOdenmemisAidatSayısı(kullanıcı);
         }
+
+        public List<Aidat> AddAidatForAllKullanıcı(Aidat aidat)
+        {
+            return _aidatDal.AddAidatForAllKullanıcı(aidat);
+        }
     }
 }

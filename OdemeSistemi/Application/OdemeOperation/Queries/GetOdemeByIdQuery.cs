@@ -1,9 +1,7 @@
 ﻿using AutoMapper;
 using OdemeSistemi.Concrete;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace OdemeSistemi.Application.OdemeOperation.Queries
 {

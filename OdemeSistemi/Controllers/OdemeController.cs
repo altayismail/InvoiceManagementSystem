@@ -1,9 +1,10 @@
 ﻿using AutoMapper;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
+using OdemeSistemi.Application.OdemeOperation.Commands;
 using OdemeSistemi.Application.OdemeOperation.Queries;
 using OdemeSistemi.Concrete;
-using OdemeSistemi.Entities;
-using System.Linq;
+using OdemeSistemi.ValidationRules;
 
 namespace OdemeSistemi.Controllers
 {
@@ -26,10 +27,14 @@ namespace OdemeSistemi.Controllers
             return Ok(odemeler);
         }
         [HttpPost]
-        public IActionResult AddOdeme(Odeme odeme)
+        public IActionResult AddOdeme([FromBody] AddOdemeViewModel viewModel)
         {
-            _context.Add(odeme);
-            _context.SaveChanges();
+            AddOdemeCommand command = new AddOdemeCommand(_context, _mapper);
+            command.Model = viewModel;
+            command.Handle();
+
+            OdemeValidation validator = new OdemeValidation();
+            validator.ValidateAndThrow(viewModel);
             return Ok();
         }
         [HttpGet("{id}")]
@@ -39,6 +44,14 @@ namespace OdemeSistemi.Controllers
             query.OdemeId = id;
             var odeme = query.Handle();
             return Ok(odeme);
+        }
+        [HttpDelete("{id}")]
+        public IActionResult DeleteOdeme(int id)
+        {
+            DeleteOdemeCommand command = new DeleteOdemeCommand(_context);
+            command.OdemeId = id;
+            command.Handle();
+            return Ok();
         }
     }
 }

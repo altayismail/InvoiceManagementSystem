@@ -1,6 +1,7 @@
 ﻿using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -35,12 +36,19 @@ namespace FaturaYönetimSistemi.Controllers
                 var userIndetity = new ClaimsIdentity(claims,"a");
                 ClaimsPrincipal principal = new ClaimsPrincipal(userIndetity);
                 await HttpContext.SignInAsync(principal);
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("AnaSayfa", "Home");
             }
             else
             {
+                ViewBag.Message = "Hatalı giriş bilgileri, lütfen tekrar deneyiniz.";
                 return View();
             }
+        }
+        [HttpGet]
+        public async Task<IActionResult> CikisYap()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Index", "Home");
         }
     }
 }

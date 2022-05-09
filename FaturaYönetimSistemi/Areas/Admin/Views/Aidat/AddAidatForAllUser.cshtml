@@ -1,0 +1,41 @@
+﻿@using EntityLayer.Concrete
+@model Aidat
+@{
+    ViewData["Title"] = "AddAidatForAllUser";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!-- Top header -->
+<header class="navbar-toggler p-4">
+    <p class="w3-left text-dark font-weight-bolder" style="font-size:20px">Tüm Kullanıcılara Aidat Atama Sayfası</p>
+    <p class="w3-right text-dark font-weight-normal" style="font-size:20px">
+        <i class="icon-calendar mr-2"></i>@DateTime.Now.ToLongDateString()
+    </p>
+</header>
+<hr />
+
+@using (Html.BeginForm("AddAidatForAllUser", "Aidat", FormMethod.Post))
+{
+    <div class="d-flex flex-row col-md-12">
+        <div class="col-md-6">
+            @Html.LabelFor(model => model.AidatTarihi, "Aidat Tarihi")
+            @Html.TextBoxFor(model => model.AidatTarihi, new { @type = "date", @class = "form-control datepicker" })
+            @Html.ValidationMessageFor(model => model.AidatTarihi, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-6">
+            @Html.LabelFor(model => model.AidatSonOdemeTarihi, "Aidat Son Ödeme Tarihi")
+            @Html.TextBoxFor(model => model.AidatSonOdemeTarihi, new { @type = "date", @class = "form-control datepicker" })
+            @Html.ValidationMessageFor(model => model.AidatSonOdemeTarihi, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <div class="d-flex flex-row col-md-12">
+        <div class="col-md-6">
+            @Html.LabelFor(model => model.AidatUcreti, "Aidat Ücreti")
+            @Html.TextBoxFor(model => model.AidatUcreti, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.AidatUcreti, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <button id="AddButton" onclick="return confirm('Hazırladığınız aidat tüm kullanıcılara atanıyor, onaylıyor musunuz?');" type="submit" style="margin-left:30px" class="btn btn-primary">Aidat Ekle<i class="icon-send ml-2"></i></button>
+}

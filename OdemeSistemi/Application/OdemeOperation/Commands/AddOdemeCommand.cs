@@ -1,9 +1,8 @@
 ﻿using AutoMapper;
 using OdemeSistemi.Concrete;
+using OdemeSistemi.Entities;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace OdemeSistemi.Application.OdemeOperation.Commands
 {
@@ -11,6 +10,7 @@ namespace OdemeSistemi.Application.OdemeOperation.Commands
     {
         private readonly Context _context;
         private readonly IMapper _mapper;
+        public AddOdemeViewModel Model { get; set; }
         public AddOdemeCommand(Context context, IMapper mapper)
         {
             _context = context;
@@ -19,7 +19,25 @@ namespace OdemeSistemi.Application.OdemeOperation.Commands
 
         public void Handle()
         {
+            var krediKartı = _context.KrediKartları.Where(x => x.KrediKartıNo == Model.OdemeKartNumarası &&
+                                                                x.KrediKartıUzerindekiIsim == Model.OdemeKrediKartıUzerindekiIsim &&
+                                                                x.KrediKartıCVV == Model.OdemeKrediKartıCVV &&
+                                                                x.KrediKartıSonKullanımTarihiAy == Model.OdemeKartNumarasıSonKullanımAy &&
+                                                                x.KrediKartıSonKullanımTarihiYıl == Model.OdemeKartNumarasıSonKullanımYıl).Single();
 
+            if (krediKartı == null)
+                throw new InvalidOperationException("Girdiğiniz kart bilgileri hatalı.");
+
+            var bankaHesabı = _context.BankaHesapları.Where(x => x.BankaHesabıId == krediKartı.KrediKartıBankaHesabıId)
+                                                .Single();
+
+            if (bankaHesabı.BankaHesabıBakiye < Model.OdemeNetTutarı)
+                throw new InvalidOperationException("Bakiyeniz yetersiz");
+
+
+            var odeme = _mapper.Map<Odeme>(Model);
+            _context.Odemeler.Add(odeme);
+            _context.SaveChanges();
         }
     }
 

@@ -3,6 +3,7 @@ using BusinessLayer.ValidationRules;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FaturaYönetimSistemi.Controllers
@@ -11,7 +12,12 @@ namespace FaturaYönetimSistemi.Controllers
     {
         IletisimManager manager = new(new EFIletisimRepository());
         KullanıcıManager kullanıcıManager = new KullanıcıManager(new EFKullanıcıRepository());
+        [AllowAnonymous]
         public IActionResult Index()
+        {
+            return View();
+        }
+        public IActionResult AnaSayfa()
         {
             var kullanıcı = kullanıcıManager.GetKullanıcıBySession(User.Identity.Name);
             ViewBag.kullanıcıAdı = kullanıcı.KullanıcıIsım + " " + kullanıcı.KullanıcıSoyisim;

@@ -1,14 +1,11 @@
 ﻿
 @{
     ViewData["Title"] = "GirisYap";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Views/Shared/_FirstPageLayout.cshtml";
 }
 <!-- Top header -->
 <header class="navbar-toggler p-4">
-    <p class="w3-left text-dark font-weight-bolder" style="font-size:20px">Yönetici Giriş Sayfası</p>
-    <p class="w3-right text-dark font-weight-normal" style="font-size:20px">
-        <i class="icon-calendar mr-2"></i>@DateTime.Now.ToLongDateString()
-    </p>
+    <p class="w3-left text-dark font-weight-bolder" style="font-size:20px"><a href="/Home/Index"><i class="icon-arrow-left mr-3"></i></a>Yönetici Giriş Sayfası</p>
 </header>
 <hr />
 
@@ -23,14 +20,19 @@
                             <div class="form-group row">
                                 <label for="email_address" class="col-md-4 col-form-label text-md-right">E-Mail</label>
                                 <div class="col-md-6">
-                                    <input type="text" id="email_address" name="YoneticiEmail" class="form-control" required autofocus>
+                                    <input type="text" id="email_address" name="YoneticiEmail" class="form-control" placeholder="emailadresiniz@mail.com" autofocus>
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="password" class="col-md-4 col-form-label text-md-right">Şifre</label>
                                 <div class="col-md-6">
-                                    <input type="password" id="password" class="form-control" name="YoneticiSifre" required>
+                                    <input type="password" id="password" class="form-control" name="YoneticiSifre" placeholder="Şifreniz" required>
+                                    <hr />
+                                    @if (ViewBag.Message != null)
+                                    {
+                                        <p class="text-danger mt-2"><i class="icon-warning mr-2"></i>@ViewBag.Message</p>
+                                    }
                                 </div>
                             </div>
 
@@ -44,9 +46,9 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Giriş Yap
+                            <div class="col-md-4 offset-md-4">
+                                <button type="submit" class="btn btn-outline-primary">
+                                    Giriş Yap<i class="icon-sign-in ml-2"></i>
                                 </button>
                             </div>
                         </form>

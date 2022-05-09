@@ -100,5 +100,29 @@ namespace FaturaYönetimSistemi.Areas.Admin.Controllers
                 }
             }
         }
+        [HttpGet]
+        public IActionResult AddAidatForAllUser()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult AddAidatForAllUser(Aidat aidat)
+        {
+            AidatValidator validator = new AidatValidator();
+            ValidationResult validationResult = validator.Validate(aidat);
+            if (validationResult.IsValid)
+            {
+                aidatManager.AddAidatForAllKullanıcı(aidat);
+                return RedirectToAction("GetAidat", "Aidat");
+            }
+            else
+            {
+                foreach (var item in validationResult.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
+            return View();
+        }
     }
 }

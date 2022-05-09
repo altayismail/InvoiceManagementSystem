@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using OdemeSistemi.Application.OdemeOperation.Commands;
 using OdemeSistemi.Application.OdemeOperation.Queries;
 using OdemeSistemi.Entities;
 
@@ -19,6 +20,8 @@ namespace OdemeSistemi.MappingProfile
                 .ForMember(dest => dest.OdemeYapanIsim, conf => conf.MapFrom(src => src.OdemeYapanKullanıcıIsim))
                 .ForMember(dest => dest.OdemeYapanSoyisim, conf => conf.MapFrom(src => src.OdemeYapanKullanıcıSoyisim))
                 .ForMember(dest => dest.OdemeParaBirimi, conf => conf.MapFrom(src => src.OdemeParaBirimi));
+
+            CreateMap<AddOdemeViewModel, Odeme>().ForMember(dest => dest.OdemeBasariliMi, conf => conf.MapFrom(src => src.OdemeBasariliMi == true));
         }
     }
 }

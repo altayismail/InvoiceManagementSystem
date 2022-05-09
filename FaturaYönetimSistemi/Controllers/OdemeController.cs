@@ -12,11 +12,5 @@ namespace FaturaYönetimSistemi.Controllers
         {
             return View();
         }
-        [HttpPost]
-        public async Task<IActionResult> AddOdeme(Odeme odeme)
-        {
-            var httpClient = new HttpClient();
-            return View();
-        }
     }
 }
