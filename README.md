@@ -46,3 +46,4 @@
 - X.PagedList 8.1.0
 - X.PageList.Mvc.Core 8.1.0
 - ClosedXML 0.95.4
+- AutoMapper.Extensions.Microsoft.DependencyInjection 8.1.1
