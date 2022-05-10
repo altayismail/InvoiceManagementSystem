@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using OdemeSistemi.Concrete;
+using OdemeSistemi.Services;
 using System.Reflection;
 
 namespace OdemeSistemi
@@ -29,6 +30,8 @@ namespace OdemeSistemi
             });
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddDbContext<Context>();
+            services.AddSingleton<ILoggerService, ConsoleLogger>();
+            services.AddSingleton<ILoggerService, DBLogger>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
