@@ -17,6 +17,7 @@ namespace FaturaYönetimSistemi.Controllers
             var aidatlar = manager.GetAllQueryWithKullanıcı()
                 .Where(x => x.AidatKullanıcıId == kullanıcı.KullanıcıId).ToList<Aidat>().ToPagedList(page, 10);
             ViewBag.odenmemisAidatSayısı = manager.GetAllOdenmemisAidatSayısı(kullanıcı);
+            ViewBag.toplamAidatSayısı = manager.GetAllQuery().Count();
             return View(aidatlar); 
         }
     }

@@ -10,10 +10,11 @@ namespace FaturaYönetimSistemi.Areas.Admin.Controllers
     [Area("Admin")]
     public class OdemeController : Controller
     {
+        string baseUrl = "https://localhost:44308/";
         public async Task<IActionResult> GetOdemeler()
         {
             var httpClient = new HttpClient();
-            var responseMessage = await httpClient.GetAsync("http://localhost:45080/api/Odeme");
+            var responseMessage = await httpClient.GetAsync(baseUrl + "api/Odeme");
             var jsonString = await responseMessage.Content.ReadAsStringAsync();
             var odemeler = JsonConvert.DeserializeObject<List<Odeme>>(jsonString);
             return View(odemeler);

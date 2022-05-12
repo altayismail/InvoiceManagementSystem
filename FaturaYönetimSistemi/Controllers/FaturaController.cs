@@ -16,6 +16,7 @@ namespace FaturaYönetimSistemi.Controllers
             var faturalar = manager.GetAllQueryWithKullanıcı()
                 .Where(x => x.FaturaKullanıcıId == kullanıcı.KullanıcıId).ToList<Fatura>();
             ViewBag.odenmemisFaturaSayısı = manager.GetAllOdenmemisFaturaSayısı(kullanıcı);
+            ViewBag.toplamFaturaSayısı = manager.GetAllQuery().Count();
             return View(faturalar);
         }
     }
