@@ -29,16 +29,27 @@ else
     </div>
 }
 
+<hr />
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">Arama<i class="icon-search2 ml-2"></i></span>
+    </div>
+    <input type="text" id="faturaFiltreInput" class="form-control" placeholder="İstediğiniz bilgiye göre arama yapıp, sonuçlarınızı filtreleyebilirsiniz..." aria-label="Username" aria-describedby="basic-addon1">
+</div>
+<hr />
+
 <table class="table table-bordered table-striped p-5">
-    <tr>
-        <th>Fatura Tarihi</th>
-        <th>Fatura Son Ödeme Tarihi</th>
-        <th>Fatura Ücreti</th>
-        <th>Fatura Sahibi</th>
-        <th>Fatura Durumu</th>
-        <th>Fatura Tipi</th>
-    </tr>
-    <tbody id="myTable">
+    <thead>
+        <tr>
+            <th>Fatura Tarihi</th>
+            <th>Fatura Son Ödeme Tarihi</th>
+            <th>Fatura Ücreti</th>
+            <th>Fatura Sahibi</th>
+            <th>Fatura Durumu</th>
+            <th>Fatura Tipi</th>
+        </tr>
+    </thead>
+    <tbody id="faturaTable">
         @foreach (var item in Model)
         {
             <tr>
@@ -61,6 +72,16 @@ else
         }
     </tbody>
 </table>
+<script>
+    $(document).ready(function () {
+        $("#faturaFiltreInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#faturaTable tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+            });
+        });
+    });
+</script>
 
 
 

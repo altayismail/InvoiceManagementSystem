@@ -1,8 +1,5 @@
-﻿@using X.PagedList
-@using X.PagedList.Mvc.Core
-@using X.PagedList.Web.Common
-@using EntityLayer.Concrete
-@model IPagedList<Aidat>
+﻿@using EntityLayer.Concrete
+@model List<Aidat>
 
 @{
     Layout = "~/Views/Shared/_UserLayout.cshtml";
@@ -32,39 +29,56 @@ else
     </div>
 }
 
-<table class="table table-bordered table-striped p-5">
-    <tr>
-        <th>Aidat Tarihi</th>
-        <th>Aidat Son Ödeme Tarihi</th>
-        <th>Aidat Ücreti</th>
-        <th>Aidat Sahibi</th>
-        <th>Aidat Durumu</th>
-    </tr>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>@(((DateTime)item.AidatTarihi).ToString("dd-MMM-yyyy"))</td>
-            <td>@(((DateTime)item.AidatSonOdemeTarihi).ToString("dd-MMM-yyyy"))</td>
-            <td>@item.AidatUcreti TL</td>
-            <td>@item.AidatKullanıcı.KullanıcıIsım @item.AidatKullanıcı.KullanıcıSoyisim</td>
-            <td>
-                @if (@item.AidatOdendiMi)
-                {
-                    <p class="text-success">Ödendi<i class="icon-check ml-2"></i></p>
-                }
-                else
-                {
-                    <p class="text-danger">Ödenmedi<i class="icon-times ml-2"></i></p>
-                }
-            </td>
-        </tr>
-    }
-</table>
 <hr />
-@Html.PagedListPager((IPagedList)Model, page => Url.Action("GetAidat", new { page }),
-    new PagedListRenderOptions
-    {
-        LiElementClasses = new List<string> { "page-item" },
-        PageClasses = new List<string> { "page-link " },
-        Display = PagedListDisplayMode.IfNeeded
-    })
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">Arama<i class="icon-search2 ml-2"></i></span>
+    </div>
+    <input type="text" id="aidatFiltreInput" class="form-control" placeholder="İstediğiniz bilgiye göre arama yapıp, sonuçlarınızı filtreleyebilirsiniz..." aria-label="Username" aria-describedby="basic-addon1">
+</div>
+<hr />
+
+<table class="table table-bordered table-striped p-5">
+    <thead>
+        <tr>
+            <th>Aidat Tarihi</th>
+            <th>Aidat Son Ödeme Tarihi</th>
+            <th>Aidat Ücreti</th>
+            <th>Aidat Sahibi</th>
+            <th>Aidat Durumu</th>
+        </tr>
+    </thead>
+    <tbody id="aidatTable">
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td>@(((DateTime)item.AidatTarihi).ToString("dd-MMM-yyyy"))</td>
+                <td>@(((DateTime)item.AidatSonOdemeTarihi).ToString("dd-MMM-yyyy"))</td>
+                <td>@item.AidatUcreti TL</td>
+                <td>@item.AidatKullanıcı.KullanıcıIsım @item.AidatKullanıcı.KullanıcıSoyisim</td>
+                <td>
+                    @if (@item.AidatOdendiMi)
+                    {
+                        <p class="text-success">Ödendi<i class="icon-check ml-2"></i></p>
+                    }
+                    else
+                    {
+                        <p class="text-danger">Ödenmedi<i class="icon-times ml-2"></i></p>
+                    }
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+<script>
+    $(document).ready(function () {
+        $("#aidatFiltreInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#aidatTable tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+            });
+        });
+    });
+</script>

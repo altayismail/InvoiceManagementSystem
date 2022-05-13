@@ -3,7 +3,6 @@ using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
-using X.PagedList;
 
 namespace FaturaYönetimSistemi.Controllers
 {
@@ -11,13 +10,13 @@ namespace FaturaYönetimSistemi.Controllers
     {
         AidatManager manager = new(new EFAidatRepository());
         KullanıcıManager kullanıcıManager = new(new EFKullanıcıRepository());
-        public IActionResult GetAidat(int page = 1)
+        public IActionResult GetAidat()
         {
             var kullanıcı = kullanıcıManager.GetKullanıcıBySession(User.Identity.Name);
             var aidatlar = manager.GetAllQueryWithKullanıcı()
-                .Where(x => x.AidatKullanıcıId == kullanıcı.KullanıcıId).ToList<Aidat>().ToPagedList(page, 10);
+                .Where(x => x.AidatKullanıcıId == kullanıcı.KullanıcıId).ToList<Aidat>();
             ViewBag.odenmemisAidatSayısı = manager.GetAllOdenmemisAidatSayısı(kullanıcı);
-            ViewBag.toplamAidatSayısı = manager.GetAllQuery().Count();
+            ViewBag.toplamAidatSayısı = manager.GetAllQuery().Where(x => x.AidatKullanıcıId == kullanıcı.KullanıcıId).Count();
             return View(aidatlar); 
         }
     }
