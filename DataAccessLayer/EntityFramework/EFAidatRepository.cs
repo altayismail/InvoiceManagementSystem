@@ -10,18 +10,13 @@ namespace DataAccessLayer.EntityFramework
 {
     public class EFAidatRepository : GenericRepository<Aidat>, IAidatDal
     {
-        public List<Aidat> AddAidatForAllKullanıcı(Aidat aidat)
+        public void AddAidat(Aidat aidat)
         {
             using(var context = new Context())
             {
-                List<Aidat> aidatlar = new List<Aidat>();
-                foreach (var kullanıcı in context.Kullanıcılar)
-                {
-                    aidat.AidatKullanıcıId = kullanıcı.KullanıcıId;
-                    aidatlar.Add(aidat);
-                }
-                return aidatlar;
-            };
+                context.Aidatlar.Add(aidat);
+                context.SaveChanges();
+            }
         }
 
         public double CalculateToplamOdenmemisAidat()

@@ -112,7 +112,13 @@ namespace FaturaYönetimSistemi.Areas.Admin.Controllers
             ValidationResult validationResult = validator.Validate(aidat);
             if (validationResult.IsValid)
             {
-                aidatManager.AddAidatForAllKullanıcı(aidat);
+                Aidat tempAidat = new Aidat();
+                foreach (var kullanıcı in kullanıcıManager.GetAllQuery())
+                {
+                    tempAidat = aidat;
+                    tempAidat.AidatKullanıcıId = kullanıcı.KullanıcıId;
+                    aidatManager.AddT(tempAidat);
+                }
                 return RedirectToAction("GetAidat", "Aidat");
             }
             else

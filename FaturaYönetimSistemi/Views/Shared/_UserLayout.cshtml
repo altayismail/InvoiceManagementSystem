@@ -34,13 +34,19 @@
             <a href="/Home/AnaSayfa" class="w3-bar-item w3-button">Ana Sayfa<i class="icon-home ml-2"></i></a>
             <a href="/Fatura/GetFatura" class="w3-bar-item w3-button">Faturalarım<i class="icon-file-text-o ml-2"></i></a>
             <a href="/Aidat/GetAidat" class="w3-bar-item w3-button">Aidatlarım<i class="icon-file-text-o ml-2"></i></a>
-            <a href="/Odeme/AddOdeme" class="w3-bar-item w3-button">Ödeme Yap<i class="icon-payment ml-2"></i></a>
             <a onclick="myAccFunc()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
                 Mesajlar <i class="fa fa-caret-down"></i><i class="icon-message ml-2"></i>
             </a>
             <div id="demoAcc" class="w3-bar-block w3-hide w3-padding-large w3-medium w3-show">
                 <a href="/Mesaj/AddMesaj" class="w3-bar-item w3-button">Mesaj Gönder</a>
                 <a href="/Mesaj/GetYoneticiList" class="w3-bar-item w3-button">Gönderilen Mesajlar</a>
+            </div>
+            <a onclick="myAccFunc1()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn1">
+                Ödeme Yap <i class="fa fa-caret-down"></i><i class="icon-message ml-2"></i>
+            </a>
+            <div id="demoAcc1" class="w3-bar-block w3-hide w3-padding-large w3-medium w3-show">
+                <a href="/Odeme/GetOdenmemisAidat" class="w3-bar-item w3-button">Aidat Öde</a>
+                <a href="/Odeme/GetOdenmemisFatura" class="w3-bar-item w3-button">Fatura Öde</a>
             </div>
         </div>
         <hr />
@@ -95,8 +101,18 @@
             }
         }
 
+        function myAccFunc1() {
+            var x = document.getElementById("demoAcc1");
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+            } else {
+                x.className = x.className.replace(" w3-show", "");
+            }
+        }
+
 
         document.getElementById("myBtn").click();
+        document.getElementById("myBtn1").click();
 
 
         // Open and close sidebar

@@ -8,7 +8,7 @@ namespace FaturaYönetimSistemi.Areas.Admin.Controllers
     public class HomeController : Controller
     {
         YoneticiManager yoneticiManager = new YoneticiManager(new EFYoneticiRepository());
-        public IActionResult Index()
+        public IActionResult AnaSayfa()
         {
             var yonetici = yoneticiManager.GetAllYoneticiBySession(User.Identity.Name);
             ViewBag.yoneticiAdı = yonetici.YoneticiIsım + " " + yonetici.YoneticiSoyisim;

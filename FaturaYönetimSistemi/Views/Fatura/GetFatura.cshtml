@@ -45,30 +45,30 @@ else
             <th>Fatura Son Ödeme Tarihi</th>
             <th>Fatura Ücreti</th>
             <th>Fatura Sahibi</th>
-            <th>Fatura Durumu</th>
             <th>Fatura Tipi</th>
+            <th>Fatura Durumu</th>
         </tr>
     </thead>
     <tbody id="faturaTable">
         @foreach (var item in Model)
         {
-            <tr>
-                <td>@(((DateTime)item.FaturaTarihi).ToString("dd-MMM-yyyy"))</td>
-                <td>@(((DateTime)item.FaturaSonOdemeTarihi).ToString("dd-MMM-yyyy"))</td>
-                <td>@item.FaturaTutarı TL</td>
-                <td>@item.FaturaKullanıcı.KullanıcıIsım @item.FaturaKullanıcı.KullanıcıSoyisim</td>
-                <td>
-                    @if (@item.FaturaOdendiMi)
-                    {
-                        <p class="text-success">Ödendi<i class="icon-check ml-2"></i></p>
-                    }
-                    else
-                    {
-                        <p class="text-danger">Ödenmedi<i class="icon-times ml-2"></i></p>
-                    }
-                </td>
-                <td>@item.FaturaTipi</td>
-            </tr>
+        <tr>
+            <td>@(((DateTime)item.FaturaTarihi).ToString("dd-MMM-yyyy"))</td>
+            <td>@(((DateTime)item.FaturaSonOdemeTarihi).ToString("dd-MMM-yyyy"))</td>
+            <td>@item.FaturaTutarı TL</td>
+            <td>@item.FaturaKullanıcı.KullanıcıIsım @item.FaturaKullanıcı.KullanıcıSoyisim</td>
+            <td>@item.FaturaTipi</td>
+            <td>
+                @if (@item.FaturaOdendiMi)
+                {
+                    <p class="text-success">Ödendi<i class="icon-check ml-2"></i></p>
+                }
+                else
+                {
+                    <p class="text-danger">Ödenmedi<i class="icon-times ml-2 mr-4"></i><a class="btn btn-outline-success" href="/Odeme/AddOdeme/@item.FaturaId">Ödeme Yap<i class="icon-payment ml-2"></i></a></p>
+                }
+            </td>
+        </tr>
         }
     </tbody>
 </table>
