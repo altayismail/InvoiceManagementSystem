@@ -11,24 +11,50 @@
         <i class="icon-calendar mr-2"></i>@DateTime.Now.ToLongDateString()
     </p>
 </header>
+
+<hr />
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">Arama<i class="icon-search2 ml-2"></i></span>
+    </div>
+    <input type="text" id="yoneticiFiltreInput" class="form-control" placeholder="Mesaj göndermek istediğiniz yöneticiyi filtreleyebilirsiniz..." aria-label="Username" aria-describedby="basic-addon1">
+</div>
 <hr />
 
-<div class="px-4 d-none d-md-block">
-    <div class="d-flex align-items-center">
-        <div class="flex-grow-1">
-            <input type="text" class="form-control my-3" placeholder="Search...">
-        </div>
-    </div>
-</div>
-@foreach (var item in Model)
-{
-    <hr />
-    <a href="/Mesaj/GetMesajDetail/@item.YoneticiId" class="list-group-item list-group-item-action border-0">
-        <div class="d-flex align-items-start">
-            <p style="font-weight:bold"><i class="icon-user-circle mr-3"></i>@item.YoneticiIsım.Substring(0, 1)@item.YoneticiSoyisim.Substring(0, 1)   |</p>
-            <p class="ml-1">@item.YoneticiIsım @item.YoneticiSoyisim  |  (+90) @item.YoneticiTelefonNo</p>
-        </div>
-    </a>
-    <hr />
-}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">İsim</th>
+            <th scope="col">Soyisim</th>
+            <th scope="col">Telefon Numarası</th>
+            <th>Mesajlar</th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tbody id="yoneticiBilgileri">
+            <tr>
+                <th scope="row"><i class="icon-user-circle mr-3"></i>@item.YoneticiIsım.Substring(0, 1)@item.YoneticiSoyisim.Substring(0, 1)</th>
+                <td>@item.YoneticiIsım</td>
+                <td>@item.YoneticiSoyisim</td>
+                <td>(+90) @item.YoneticiTelefonNo</td>
+                <td><a class="btn btn-info" href="/Mesaj/GetMesajDetail/@item.YoneticiId">Mesajlar<i class="icon-get-pocket ml-2"></i></a></td>
+            </tr>
+        </tbody>
+    }
+
+</table>
+
+
+<script>
+    $(document).ready(function () {
+        $("#yoneticiFiltreInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#yoneticiBilgileri tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+            });
+        });
+    });
+</script>
 

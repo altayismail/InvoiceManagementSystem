@@ -23,7 +23,7 @@ namespace FaturaYönetimSistemi.Controllers
         public IActionResult GetMesajDetail(int id)
         {
             var kullanıcı = kullanıcıManager.GetKullanıcıBySession(User.Identity.Name);
-            var mesajlar = manager.GetAllQueryWithYoneticiAndKullanıcı(id).Where(x => x.MesajYollayanId == kullanıcı.KullanıcıId).ToList<Mesaj>();
+            var mesajlar = manager.GetAllQueryWithYoneticiAndKullanıcı(id).Where(x => x.MesajYollayanId == kullanıcı.KullanıcıId).Reverse().ToList<Mesaj>();
             ViewBag.YoneticiIsim = yoneticiManager.GetQueryById(id).YoneticiIsım + " " + yoneticiManager.GetQueryById(id).YoneticiSoyisim;
             ViewBag.YoneticiTel = yoneticiManager.GetQueryById(id).YoneticiTelefonNo;
             return View(mesajlar);
@@ -58,7 +58,7 @@ namespace FaturaYönetimSistemi.Controllers
                 mesaj.MesajYollayanId = kullanıcı.KullanıcıId;
                 mesaj.MesajTarihi = System.DateTime.Now;
                 manager.AddT(mesaj);
-                return RedirectToAction("GetMesaj","Mesaj");
+                return RedirectToAction("GetMesajDetail", new { id = mesaj.MesajAlanId});
             }
             else
             {

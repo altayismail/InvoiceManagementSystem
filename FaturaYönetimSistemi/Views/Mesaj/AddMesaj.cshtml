@@ -17,7 +17,7 @@
 {
     @Html.LabelFor(model => model.MesajAlanId, "Yönetici")
     @Html.DropDownListFor(model => model.MesajAlanId, ((List<SelectListItem>)ViewBag.yoneticiler), new { @class = "form-control" })
-    @Html.ValidationMessageFor(model => model.MesajAlanId, "*Mesaj yollamak istediğiniz yöneticiyi seçiniz.", new { @class = "text-info" })
+    @Html.ValidationMessageFor(model => model.MesajAlanId, "* Mesaj yollamak istediğiniz yöneticiyi seçiniz.", new { @class = "text-info" })
     <br />
     <br />
     @Html.LabelFor(model => model.MesajKonusu, "Konu")

@@ -15,7 +15,7 @@ namespace FaturaYönetimSistemi.Areas.Admin.Controllers
         public IActionResult GetMesaj(int id)
         {
             var yonetici = yoneticiManager.GetAllYoneticiBySession(User.Identity.Name);
-            var mesajlar = mesajManager.GetAllQueryWithYoneticiAndKullanıcı(id).Where(x => x.MesajYollayanId == id).ToList<Mesaj>();
+            var mesajlar = mesajManager.GetAllQueryWithYoneticiAndKullanıcı(id).Where(x => x.MesajYollayanId == id).Reverse().ToList<Mesaj>();
             ViewBag.KullanıcıIsim = kullanıcıManager.GetQueryById(id).KullanıcıIsım + " " + kullanıcıManager.GetQueryById(id).KullanıcıSoyisim;
             ViewBag.KullanıcıTel = kullanıcıManager.GetQueryById(id).KullanıcıTelefonNo;
             return View(mesajlar);
