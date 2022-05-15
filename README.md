@@ -47,3 +47,5 @@
 - X.PageList.Mvc.Core 8.1.0
 - ClosedXML 0.95.4
 - AutoMapper.Extensions.Microsoft.DependencyInjection 8.1.1
+- Microsoft.AspNetCore.Identity 2.2.0
+- Microsoft.AspNetCore.Identity.EntityFrameworkCore 5.0.15
