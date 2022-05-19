@@ -10,24 +10,14 @@
 -Aylık olarak borç-alacak listesini görür.
 -Kişileri listeler, düzenler, siler.
 -Daire/konut bilgilerini listeler, düzenler siler.
+-Daire, fatura, aidat ve kullanıcı bilgilerinin excel çıkıtısını sistemden alabilir.
 
 2-Kullanıcı
--Kendisine atanan fatura ve aidat bilgilerini görür.
+-Kendisine atanan fatura ve aidat bilgilerini görür ve bu faturaları her hangi bir bilgiye göre filtereleyerek görür.
 -Kredi kartı ile ödeme yapabilir.
 -Yöneticiye mesaj gönderebilir.
--Daire/Konut bilgilerinde
--Hangi blokda
--Durumu (Dolu-boş)
--Tipi (2+1 vb.)
--Bulunduğu kat
--Daire numarası
--Daire sahibi veya kiracı
--Kullanıcı bilgilerinde
--Ad-soyad
--TCNo
--E-Mail
--T-elefon
--Araç bilgisi(varsa plaka no)
+-Daire/Konut bilgilerinde, Hangi blokda, Durumu (Dolu-boş), Tipi (2+1 vb.), Bulunduğu kat, Daire numarası, Daire sahibi veya kiracı,
+-Kullanıcı bilgilerinde; Ad-soyad, TCNo, E-Mail, Telefon No, Araç bilgisi(varsa plaka no).
 
 3-Arayüz dışında kullanıcıların kredi kartı ile ödeme yapabilmesi için ayrı bir servis bulunmaktadır. Bu servisde sistemde ki her bir kullanıcı için banka bilgileri(bakiye, kredi kartı no vb.) kontrol edilerek ödeme yapılması sağlanır.
 
