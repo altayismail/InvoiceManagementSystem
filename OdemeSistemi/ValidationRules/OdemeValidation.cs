@@ -8,7 +8,7 @@ namespace OdemeSistemi.ValidationRules
         public OdemeValidation()
         {
             RuleFor(x => x.OdemeKartNumarası).NotEmpty().WithMessage("Lütfen kart numarasını giriniz.")
-                .Length(26).WithMessage("Kart numarası 26 haneli olmalıdır.");
+                .Length(16).WithMessage("Kart numarası 16 haneli olmalıdır.");
 
             RuleFor(x => x.OdemeKartNumarasıSonKullanımAy).NotEmpty().WithMessage("Kredi kartının son kullanım tarihinin ay kısmını giriniz")
                 .MaximumLength(2).WithMessage("İlgili ayı, sayı olarak giriniz");

@@ -39,5 +39,12 @@ namespace DataAccessLayer.Repostories
             context.Update(t);
             context.SaveChanges();
         }
+
+        public void AddRange(List<T> t)
+        {
+            using var context = new Context();
+            context.AddRange(t);
+            context.SaveChanges();
+        }
     }
 }

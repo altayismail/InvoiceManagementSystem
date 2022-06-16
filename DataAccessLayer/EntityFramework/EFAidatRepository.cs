@@ -10,15 +10,6 @@ namespace DataAccessLayer.EntityFramework
 {
     public class EFAidatRepository : GenericRepository<Aidat>, IAidatDal
     {
-        public void AddAidat(Aidat aidat)
-        {
-            using(var context = new Context())
-            {
-                context.Aidatlar.Add(aidat);
-                context.SaveChanges();
-            }
-        }
-
         public double CalculateToplamOdenmemisAidat()
         {
             using(var context = new Context())

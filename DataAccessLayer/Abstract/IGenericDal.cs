@@ -9,5 +9,6 @@ namespace DataAccessLayer.Abstract
         void Update(T t);
         List<T> GetAllQuery();
         T GetQueryById(int id);
+        void AddRange(List<T> t);
     }
 }

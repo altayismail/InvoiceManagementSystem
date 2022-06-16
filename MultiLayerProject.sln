@@ -9,11 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer", "DataAcce
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLayer", "BusinessLayer\BusinessLayer.csproj", "{6AC37D20-A056-4F45-8B4A-135EB9E5C427}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreLayer", "CoreLayer\CoreLayer.csproj", "{8BC77F04-4454-49C8-B328-BB37FA88BAAE}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FaturaYönetimSistemi", "FaturaYönetimSistemi\FaturaYönetimSistemi.csproj", "{E36624AE-F9E4-4EF2-81E8-F0497AA2B229}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OdemeSistemi", "OdemeSistemi\OdemeSistemi.csproj", "{902D89EC-C361-461F-A1E9-8243BAE06117}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OdemeSistemi", "OdemeSistemi\OdemeSistemi.csproj", "{902D89EC-C361-461F-A1E9-8243BAE06117}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,10 +31,6 @@ Global
 		{6AC37D20-A056-4F45-8B4A-135EB9E5C427}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6AC37D20-A056-4F45-8B4A-135EB9E5C427}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6AC37D20-A056-4F45-8B4A-135EB9E5C427}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8BC77F04-4454-49C8-B328-BB37FA88BAAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8BC77F04-4454-49C8-B328-BB37FA88BAAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8BC77F04-4454-49C8-B328-BB37FA88BAAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8BC77F04-4454-49C8-B328-BB37FA88BAAE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E36624AE-F9E4-4EF2-81E8-F0497AA2B229}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E36624AE-F9E4-4EF2-81E8-F0497AA2B229}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E36624AE-F9E4-4EF2-81E8-F0497AA2B229}.Release|Any CPU.ActiveCfg = Release|Any CPU

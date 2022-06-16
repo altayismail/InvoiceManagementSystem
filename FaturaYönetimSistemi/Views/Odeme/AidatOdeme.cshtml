@@ -37,12 +37,12 @@
     <div class="d-flex flex-row col-md-12">
         <div class="col-md-6">
             @Html.LabelFor(model => model.OdemeKartNumarası, "Kart Numarası")
-            @Html.TextBoxFor(model => model.OdemeKartNumarası, new { @class = "form-control", @placeholder="Örnek: 12341234123412341234123412 - 26 Haneli Kart Numarası" })
+            @Html.TextBoxFor(model => model.OdemeKartNumarası, new { @class = "form-control", @placeholder="1234123412341234" })
             @Html.ValidationMessageFor(model => model.OdemeKartNumarası, "", new { @class = "text-danger" })
         </div>
         <div class="col-md-6">
             @Html.LabelFor(model => model.OdemeKrediKartıUzerindekiIsim, "Kart Üzerindeki İsim")
-            @Html.TextBoxFor(model => model.OdemeKrediKartıUzerindekiIsim, new { @class = "form-control", @placeholder="Örnek: İsmail Altay" })
+            @Html.TextBoxFor(model => model.OdemeKrediKartıUzerindekiIsim, new { @class = "form-control", @placeholder="İsmail Altay" })
             @Html.ValidationMessageFor(model => model.OdemeKrediKartıUzerindekiIsim, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -50,12 +50,12 @@
     <div class="d-flex flex-row col-md-12">
         <div class="col-md-6">
             @Html.LabelFor(model => model.OdemeKartNumarasıSonKullanımAy, "Kart Son Kullanım Tarihi - Ay")
-            @Html.TextBoxFor(model => model.OdemeKartNumarasıSonKullanımAy, new { @class = "form-control", @placeholder="Örnek: 05" })
+            @Html.TextBoxFor(model => model.OdemeKartNumarasıSonKullanımAy, new { @class = "form-control", @placeholder="05" })
             @Html.ValidationMessageFor(model => model.OdemeKartNumarasıSonKullanımAy, "", new { @class = "text-danger" })
         </div>
         <div class="col-md-6">
-            @Html.LabelFor(model => model.OdemeKartNumarasıSonKullanımYıl, "Kart Son Kullanım Tarihi- Yıl")
-            @Html.TextBoxFor(model => model.OdemeKartNumarasıSonKullanımYıl, new { @class = "form-control", @placeholder="Örnek: 2029" })
+            @Html.LabelFor(model => model.OdemeKartNumarasıSonKullanımYıl, "Kart Son Kullanım Tarihi - Yıl")
+            @Html.TextBoxFor(model => model.OdemeKartNumarasıSonKullanımYıl, new { @class = "form-control", @placeholder="2029" })
             @Html.ValidationMessageFor(model => model.OdemeKartNumarasıSonKullanımYıl, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -63,7 +63,7 @@
     <div class="d-flex flex-row col-md-12">
         <div class="col-md-12">
             @Html.LabelFor(model => model.OdemeKrediKartıCVV, "CVV")
-            @Html.TextBoxFor(model => model.OdemeKrediKartıCVV, new { @class = "form-control", @placeholder="Örnek: 095 - Kartınızın arkasındaki 3 haneli sayı" })
+            @Html.TextBoxFor(model => model.OdemeKrediKartıCVV, new { @class = "form-control", @placeholder="095" })
             @Html.ValidationMessageFor(model => model.OdemeKrediKartıCVV, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -71,12 +71,12 @@
     <div class="d-flex flex-row col-md-12">
         <div class="col-md-6">
             @Html.LabelFor(model => model.OdemeYapanKullanıcıSehir, "Sehir")
-            @Html.TextBoxFor(model => model.OdemeYapanKullanıcıSehir, new { @class = "form-control", @placeholder="Örnek: İzmir" })
+            @Html.TextBoxFor(model => model.OdemeYapanKullanıcıSehir, new { @class = "form-control", @placeholder="İzmir" })
             @Html.ValidationMessageFor(model => model.OdemeYapanKullanıcıSehir, "", new { @class = "text-danger" })
         </div>
         <div class="col-md-6">
             @Html.LabelFor(model => model.OdemeYapanKullanıcıUlke, "Ülke")
-            @Html.TextBoxFor(model => model.OdemeYapanKullanıcıUlke, new { @class = "form-control", @placeholder="Örnek: Türkiye" })
+            @Html.TextBoxFor(model => model.OdemeYapanKullanıcıUlke, new { @class = "form-control", @placeholder="Türkiye" })
             @Html.ValidationMessageFor(model => model.OdemeYapanKullanıcıUlke, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -86,4 +86,3 @@
         <i class="icon-payment ml-2"></i>
     </button>
 }
-

@@ -8,6 +8,5 @@ namespace DataAccessLayer.Abstract
         List<Aidat> GetQueryWithKullanıcı();
         double CalculateToplamOdenmemisAidat();
         int GetAllOdenmemisAidatSayısı(Kullanıcı kullanıcı);
-        void AddAidat(Aidat aidat);
     }
 }

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +13,9 @@ using System.Threading.Tasks;
 
 namespace FaturaYönetimSistemi.Controllers
 {
+    [AllowAnonymous]
     public class KullanıcıGirisController : Controller
     {
-        [AllowAnonymous]
         public IActionResult GirisYap()
         {
             return View();
@@ -27,13 +28,13 @@ namespace FaturaYönetimSistemi.Controllers
             var user = context.Kullanıcılar.FirstOrDefault(x => x.KullanıcıEmail == kullanıcı.KullanıcıEmail
                                                             && x.KullanıcıSifre == kullanıcı.KullanıcıSifre);
 
-            if(user is not null)
+            if (user is not null)
             {
                 var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, kullanıcı.KullanıcıEmail)
                 };
-                var userIndetity = new ClaimsIdentity(claims,"a");
+                var userIndetity = new ClaimsIdentity(claims, "a");
                 ClaimsPrincipal principal = new ClaimsPrincipal(userIndetity);
                 await HttpContext.SignInAsync(principal);
                 return RedirectToAction("AnaSayfa", "Home");

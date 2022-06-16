@@ -18,22 +18,22 @@
 {
     <div class="d-flex flex-row col-md-12">
         <div class="col-md-6">
-            @Html.LabelFor(model => model.AidatTarihi, "Aidat Tarihi")
-            @Html.TextBoxFor(model => model.AidatTarihi, new { @type = "date", @class = "form-control datepicker" })
-            @Html.ValidationMessageFor(model => model.AidatTarihi, "", new { @class = "text-danger" })
+            @Html.LabelFor(model => Model.AidatTarihi, "Aidat Tarihi")
+            @Html.TextBoxFor(model => Model.AidatTarihi, new { @type = "date", @class = "form-control datepicker" })
+            @Html.ValidationMessageFor(model => Model.AidatTarihi, "", new { @class = "text-danger" })
         </div>
         <div class="col-md-6">
-            @Html.LabelFor(model => model.AidatSonOdemeTarihi, "Aidat Son Ödeme Tarihi")
-            @Html.TextBoxFor(model => model.AidatSonOdemeTarihi, new { @type = "date", @class = "form-control datepicker" })
-            @Html.ValidationMessageFor(model => model.AidatSonOdemeTarihi, "", new { @class = "text-danger" })
+            @Html.LabelFor(model => Model.AidatSonOdemeTarihi, "Aidat Son Ödeme Tarihi")
+            @Html.TextBoxFor(model => Model.AidatSonOdemeTarihi, new { @type = "date", @class = "form-control datepicker" })
+            @Html.ValidationMessageFor(model => Model.AidatSonOdemeTarihi, "", new { @class = "text-danger" })
         </div>
     </div>
     <br />
     <div class="d-flex flex-row col-md-12">
         <div class="col-md-6">
-            @Html.LabelFor(model => model.AidatUcreti, "Aidat Ücreti")
-            @Html.TextBoxFor(model => model.AidatUcreti, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.AidatUcreti, "", new { @class = "text-danger" })
+            @Html.LabelFor(model => Model.AidatUcreti, "Aidat Ücreti")
+            @Html.TextBoxFor(model => Model.AidatUcreti, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => Model.AidatUcreti, "", new { @class = "text-danger" })
         </div>
     </div>
     <br />
