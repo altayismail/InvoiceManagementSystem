@@ -1,5 +1,4 @@
 ﻿using EntityLayer.Concrete;
-using System.Collections.Generic;
 
 namespace DataAccessLayer.Abstract
 {
@@ -8,5 +7,7 @@ namespace DataAccessLayer.Abstract
         List<Aidat> GetQueryWithKullanıcı();
         double CalculateToplamOdenmemisAidat();
         int GetAllOdenmemisAidatSayısı(Kullanıcı kullanıcı);
+        void AddAidatForAllKullanıcı(Aidat aidat);
+        void AidatUpdateById(int id);
     }
 }

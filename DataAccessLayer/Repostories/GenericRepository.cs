@@ -1,7 +1,5 @@
 ﻿using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace DataAccessLayer.Repostories
 {

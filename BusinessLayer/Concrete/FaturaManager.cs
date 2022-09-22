@@ -1,8 +1,6 @@
 ﻿using BusinessLayer.Abstract;
 using DataAccessLayer.Abstract;
 using EntityLayer.Concrete;
-using System;
-using System.Collections.Generic;
 
 namespace BusinessLayer.Concrete
 {
@@ -48,6 +46,11 @@ namespace BusinessLayer.Concrete
         public int GetAllOdenmemisFaturaSayısı(Kullanıcı kullanıcı)
         {
             return _faturaDal.GetAllOdenmemisFaturaSayısı(kullanıcı);
+        }
+
+        public void UpdateFaturaById(int id)
+        {
+            _faturaDal.FaturaUpdateById(id);
         }
     }
 }

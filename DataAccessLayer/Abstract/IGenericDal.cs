@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace DataAccessLayer.Abstract
+﻿namespace DataAccessLayer.Abstract
 {
     public interface IGenericDal<T> where T : class
     {

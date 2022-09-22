@@ -1,6 +1,5 @@
 ﻿using EntityLayer.Concrete;
 using FluentValidation;
-using System;
 
 namespace BusinessLayer.ValidationRules
 {

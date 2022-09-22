@@ -28,12 +28,12 @@ namespace DataAccessLayer.Concrete
             base.OnModelCreating(modelBuilder);
         }
 
-        public DbSet<Aidat> Aidatlar { get; set; }
-        public DbSet<Daire> Daireler { get; set; }
-        public DbSet<Fatura> Faturalar { get; set; }
-        public DbSet<Kullanıcı> Kullanıcılar { get; set; }
-        public DbSet<Mesaj> Mesajlar { get; set; }
-        public DbSet<Yonetici> Yoneticiler { get; set; }
-        public DbSet<Iletisim> Iletisim { get; set; }
+        public DbSet<Aidat>? Aidatlar { get; set; }
+        public DbSet<Daire>? Daireler { get; set; }
+        public DbSet<Fatura>? Faturalar { get; set; }
+        public DbSet<Kullanıcı>? Kullanıcılar { get; set; }
+        public DbSet<Mesaj>? Mesajlar { get; set; }
+        public DbSet<Yonetici>? Yoneticiler { get; set; }
+        public DbSet<Iletisim>? Iletisim { get; set; }
     }
 }

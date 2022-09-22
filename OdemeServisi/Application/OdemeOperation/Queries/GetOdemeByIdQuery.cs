@@ -1,7 +1,5 @@
 ﻿using AutoMapper;
 using OdemeSistemi.Concrete;
-using System;
-using System.Linq;
 
 namespace OdemeSistemi.Application.OdemeOperation.Queries
 {
@@ -30,10 +28,10 @@ namespace OdemeSistemi.Application.OdemeOperation.Queries
 
     public class GetOdemeByIdViewModel
     {
-        public string OdemeYapanIsim { get; set; }
-        public string OdemeYapanSoyisim { get; set; }
+        public string? OdemeYapanIsim { get; set; }
+        public string? OdemeYapanSoyisim { get; set; }
         public DateTime OdemeTarih { get; set; }
         public double OdemeNetTutar { get; set; }
-        public string OdemeParaBirimi { get; set; }
+        public string? OdemeParaBirimi { get; set; }
     }
 }

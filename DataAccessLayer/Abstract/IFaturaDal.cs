@@ -1,5 +1,4 @@
 ﻿using EntityLayer.Concrete;
-using System.Collections.Generic;
 
 namespace DataAccessLayer.Abstract
 {
@@ -7,5 +6,6 @@ namespace DataAccessLayer.Abstract
     {
         List<Fatura> GetQueryWithKullanıcı();
         int GetAllOdenmemisFaturaSayısı(Kullanıcı kullanıcı);
+        void FaturaUpdateById(int id);
     }
 }

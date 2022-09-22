@@ -10,7 +10,7 @@ namespace FaturaYönetimSistemi.Controllers
 {
     public class HomeController : Controller
     {
-        IletisimManager manager = new(new EFIletisimRepository());
+        IletisimManager iletisimManager = new(new EFIletisimRepository());
         KullanıcıManager kullanıcıManager = new KullanıcıManager(new EFKullanıcıRepository());
         [AllowAnonymous]
         public IActionResult Index()
@@ -40,7 +40,7 @@ namespace FaturaYönetimSistemi.Controllers
             ValidationResult validationResult = validator.Validate(iletisim);
             if (validationResult.IsValid)
             {
-                manager.AddIletisim(iletisim);
+                iletisimManager.AddIletisim(iletisim);
                 return RedirectToAction("Contact", "Home");
             }
             else

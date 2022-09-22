@@ -2,7 +2,6 @@
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq;
 
 namespace FaturaYönetimSistemi.Areas.Admin.Controllers
 {

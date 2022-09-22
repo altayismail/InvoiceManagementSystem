@@ -2,21 +2,20 @@
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq;
 
 namespace FaturaYönetimSistemi.Controllers
 {
     public class FaturaController : Controller
     {
-        FaturaManager manager = new FaturaManager(new EFFaturaRepository());
+        FaturaManager faturaManager = new FaturaManager(new EFFaturaRepository());
         KullanıcıManager kullanıcıManager = new KullanıcıManager(new EFKullanıcıRepository());
         public IActionResult GetFatura()
         {
             var kullanıcı = kullanıcıManager.GetKullanıcıBySession(User.Identity.Name);
-            var faturalar = manager.GetAllQueryWithKullanıcı()
+            var faturalar = faturaManager.GetAllQueryWithKullanıcı()
                 .Where(x => x.FaturaKullanıcıId == kullanıcı.KullanıcıId).ToList<Fatura>();
-            ViewBag.odenmemisFaturaSayısı = manager.GetAllOdenmemisFaturaSayısı(kullanıcı);
-            ViewBag.toplamFaturaSayısı = manager.GetAllQuery().Where(x => x.FaturaKullanıcıId == kullanıcı.KullanıcıId).Count();
+            ViewBag.odenmemisFaturaSayısı = faturaManager.GetAllOdenmemisFaturaSayısı(kullanıcı);
+            ViewBag.toplamFaturaSayısı = faturaManager.GetAllQuery().Where(x => x.FaturaKullanıcıId == kullanıcı.KullanıcıId).Count();
             return View(faturalar);
         }
     }

@@ -6,9 +6,6 @@ using EntityLayer.Concrete;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using X.PagedList;
 
 namespace FaturaYönetimSistemi.Areas.Admin.Controllers

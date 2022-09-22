@@ -5,14 +5,12 @@ using EntityLayer.Concrete;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace FaturaYönetimSistemi.Controllers
 {
     public class MesajController : Controller
     {
-        MesajManager manager = new MesajManager(new EFMesajRepository());
+        MesajManager mesajManager = new MesajManager(new EFMesajRepository());
         KullanıcıManager kullanıcıManager = new KullanıcıManager(new EFKullanıcıRepository());
         YoneticiManager yoneticiManager = new YoneticiManager(new EFYoneticiRepository());
         public IActionResult GetYoneticiList()
@@ -23,7 +21,7 @@ namespace FaturaYönetimSistemi.Controllers
         public IActionResult GetMesajDetail(int id)
         {
             var kullanıcı = kullanıcıManager.GetKullanıcıBySession(User.Identity.Name);
-            var mesajlar = manager.GetAllQueryWithYoneticiAndKullanıcı(id).Where(x => x.MesajYollayanId == kullanıcı.KullanıcıId).Reverse().ToList<Mesaj>();
+            var mesajlar = mesajManager.GetAllQueryWithYoneticiAndKullanıcı(id).Where(x => x.MesajYollayanId == kullanıcı.KullanıcıId).Reverse().ToList<Mesaj>();
             ViewBag.YoneticiIsim = yoneticiManager.GetQueryById(id).YoneticiIsım + " " + yoneticiManager.GetQueryById(id).YoneticiSoyisim;
             ViewBag.YoneticiTel = yoneticiManager.GetQueryById(id).YoneticiTelefonNo;
             return View(mesajlar);
@@ -57,7 +55,7 @@ namespace FaturaYönetimSistemi.Controllers
             {
                 mesaj.MesajYollayanId = kullanıcı.KullanıcıId;
                 mesaj.MesajTarihi = System.DateTime.Now;
-                manager.AddT(mesaj);
+                mesajManager.AddT(mesaj);
                 return RedirectToAction("GetMesajDetail", new { id = mesaj.MesajAlanId});
             }
             else

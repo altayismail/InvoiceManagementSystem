@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OdemeSistemi.Concrete;
 
@@ -11,9 +12,10 @@ using OdemeSistemi.Concrete;
 namespace OdemeSistemi.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20220922162338_odeme_class_changes")]
+    partial class odeme_class_changes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -117,9 +119,6 @@ namespace OdemeSistemi.Migrations
 
                     b.Property<int>("OdemeFaturaId")
                         .HasColumnType("int");
-
-                    b.Property<string>("OdemeFaturaTipi")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("OdemeKartNumarası")
                         .HasColumnType("nvarchar(max)");

@@ -3,13 +3,29 @@ using DataAccessLayer.Concrete;
 using DataAccessLayer.Repostories;
 using EntityLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace DataAccessLayer.EntityFramework
 {
     public class EFAidatRepository : GenericRepository<Aidat>, IAidatDal
     {
+        public void AddAidatForAllKullanıcı(Aidat aidat)
+        {
+            using(var context = new Context())
+            {
+                var kullanıcıList = context.Database.ExecuteSqlRaw("INSERT INTO ");
+            }
+        }
+
+        public void AidatUpdateById(int id)
+        {
+            using(var context = new Context())
+            {
+                var aidat = context.Aidatlar.SingleOrDefault(x => x.AidatId == id);
+                aidat.AidatOdendiMi = true;
+                context.SaveChanges();
+            }
+        }
+
         public double CalculateToplamOdenmemisAidat()
         {
             using(var context = new Context())

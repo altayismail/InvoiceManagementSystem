@@ -3,13 +3,21 @@ using DataAccessLayer.Concrete;
 using DataAccessLayer.Repostories;
 using EntityLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace DataAccessLayer.EntityFramework
 {
     public class EFFaturaRepository : GenericRepository<Fatura>, IFaturaDal
     {
+        public void FaturaUpdateById(int id)
+        {
+            using(var context = new Context())
+            {
+                var fatura = context.Faturalar.SingleOrDefault(x => x.FaturaId == id);
+                fatura.FaturaOdendiMi = true;
+                context.SaveChanges();
+            }
+        }
+
         public int GetAllOdenmemisFaturaSayısı(Kullanıcı kullanıcı)
         {
             using(var context = new Context())

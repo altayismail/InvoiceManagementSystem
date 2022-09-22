@@ -31,10 +31,11 @@ namespace OdemeSistemi.Controllers
         {
             AddOdemeCommand command = new AddOdemeCommand(_context, _mapper);
             command.Model = viewModel;
-            command.Handle();
 
             OdemeValidation validator = new OdemeValidation();
             validator.ValidateAndThrow(viewModel);
+
+            command.Handle();
             return Ok();
         }
         [HttpGet("{id}")]
@@ -44,14 +45,6 @@ namespace OdemeSistemi.Controllers
             query.OdemeId = id;
             var odeme = query.Handle();
             return Ok(odeme);
-        }
-        [HttpDelete("{id}")]
-        public IActionResult DeleteOdeme(int id)
-        {
-            DeleteOdemeCommand command = new DeleteOdemeCommand(_context);
-            command.OdemeId = id;
-            command.Handle();
-            return Ok();
         }
     }
 }

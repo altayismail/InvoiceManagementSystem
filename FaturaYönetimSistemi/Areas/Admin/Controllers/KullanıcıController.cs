@@ -90,11 +90,10 @@ namespace FaturaYönetimSistemi.Areas.Admin.Controllers
                 var workSheet = workBook.Worksheets.Add("Kullanıcılar");
                 workSheet.Cell(1, 1).Value = "Kullanıcı Id";
                 workSheet.Cell(1, 2).Value = "Kullanıcı Ad Soyad";
-                workSheet.Cell(1, 3).Value = "Kullanıcı TC Kimlik No";
-                workSheet.Cell(1, 4).Value = "Kullanıcı Telefon No";
-                workSheet.Cell(1, 5).Value = "Kullanıcı Email";
-                workSheet.Cell(1, 6).Value = "Kullanıcı Daire No";
-                workSheet.Cell(1, 7).Value = "Kullanıcı Araç Bilgisi";
+                workSheet.Cell(1, 3).Value = "Kullanıcı Telefon No";
+                workSheet.Cell(1, 4).Value = "Kullanıcı Email";
+                workSheet.Cell(1, 5).Value = "Kullanıcı Daire No";
+                workSheet.Cell(1, 6).Value = "Kullanıcı Araç Bilgisi";
 
                 int BlogRowCount = 2;
 
@@ -102,14 +101,13 @@ namespace FaturaYönetimSistemi.Areas.Admin.Controllers
                 {
                     workSheet.Cell(BlogRowCount, 1).Value = item.KullanıcıId;
                     workSheet.Cell(BlogRowCount, 2).Value = item.KullanıcıIsım + " " + item.KullanıcıSoyisim;
-                    workSheet.Cell(BlogRowCount, 3).Value = item.KullanıcıTCNo;
-                    workSheet.Cell(BlogRowCount, 4).Value = item.KullanıcıTelefonNo;
-                    workSheet.Cell(BlogRowCount, 5).Value = item.KullanıcıEmail;
-                    workSheet.Cell(BlogRowCount, 6).Value = item.KullanıcıDaireNo;
+                    workSheet.Cell(BlogRowCount, 3).Value = item.KullanıcıTelefonNo;
+                    workSheet.Cell(BlogRowCount, 4).Value = item.KullanıcıEmail;
+                    workSheet.Cell(BlogRowCount, 5).Value = item.KullanıcıDaireNo;
                     if (item.KullanıcıAraçBilgisi is null)
-                        workSheet.Cell(BlogRowCount, 7).Value = "Yok";
+                        workSheet.Cell(BlogRowCount, 6).Value = "Yok";
                     else
-                        workSheet.Cell(BlogRowCount, 7).Value = item.KullanıcıAraçBilgisi;
+                        workSheet.Cell(BlogRowCount, 6).Value = item.KullanıcıAraçBilgisi;
                     BlogRowCount++;
                 }
 

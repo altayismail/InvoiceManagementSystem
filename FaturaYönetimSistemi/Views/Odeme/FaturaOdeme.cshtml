@@ -25,32 +25,29 @@
 @using (Html.BeginForm("FaturaOdeme", "Odeme", FormMethod.Post))
 {
     <div class="d-flex flex-row col-md-12">
-        <div class="col-md-6">
-            @Html.Label("Ödenecek Fatura No")
-            <input type="text" class="form-control" placeholder=@TempData["FaturaId"] readonly>
-        </div>
-        <div class="col-md-6">
+        @Html.HiddenFor(model => model.OdemeFaturaId, new { @class = "form-control" })
+        <div class="col-md-12">
             @Html.Label("Net Ödeme Ücreti")
-            <input class="form-control" placeholder="@TempData["FaturaUcreti"] TL" readonly>
+            @Html.TextBoxFor(model => model.OdemeNetTutarı, new { @class = "form-control", @readonly = "readonly"})
         </div>
     </div>
     <br />
     <div class="d-flex flex-row col-md-12">
         <div class="col-md-12">
             @Html.Label("Ödenecek Fatura Tipi")
-            <input type="text" class="form-control" placeholder=@TempData["FaturaTipi"] readonly>
+            @Html.TextBoxFor(model => model.OdemeFaturaTipi, new { @class = "form-control", @readonly = "readonly"})
         </div>
     </div>
     <br />
     <div class="d-flex flex-row col-md-12">
         <div class="col-md-6">
             @Html.LabelFor(model => model.OdemeKartNumarası, "Kart Numarası")
-            @Html.TextBoxFor(model => model.OdemeKartNumarası, new { @class = "form-control", @placeholder = "1234123412341234" })
+            @Html.TextBoxFor(model => model.OdemeKartNumarası, new { @class = "form-control"})
             @Html.ValidationMessageFor(model => model.OdemeKartNumarası, "", new { @class = "text-danger" })
         </div>
         <div class="col-md-6">
             @Html.LabelFor(model => model.OdemeKrediKartıUzerindekiIsim, "Kart Üzerindeki İsim")
-            @Html.TextBoxFor(model => model.OdemeKrediKartıUzerindekiIsim, new { @class = "form-control", @placeholder = "İsmail Altay" })
+            @Html.TextBoxFor(model => model.OdemeKrediKartıUzerindekiIsim, new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.OdemeKrediKartıUzerindekiIsim, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -58,12 +55,12 @@
     <div class="d-flex flex-row col-md-12">
         <div class="col-md-6">
             @Html.LabelFor(model => model.OdemeKartNumarasıSonKullanımAy, "Kart Son Kullanım Tarihi - Ay")
-            @Html.TextBoxFor(model => model.OdemeKartNumarasıSonKullanımAy, new { @class = "form-control", @placeholder = "05" })
+            @Html.TextBoxFor(model => model.OdemeKartNumarasıSonKullanımAy, new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.OdemeKartNumarasıSonKullanımAy, "", new { @class = "text-danger" })
         </div>
         <div class="col-md-6">
             @Html.LabelFor(model => model.OdemeKartNumarasıSonKullanımYıl, "Kart Son Kullanım Tarihi- Yıl")
-            @Html.TextBoxFor(model => model.OdemeKartNumarasıSonKullanımYıl, new { @class = "form-control", @placeholder = "2029" })
+            @Html.TextBoxFor(model => model.OdemeKartNumarasıSonKullanımYıl, new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.OdemeKartNumarasıSonKullanımYıl, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -71,21 +68,8 @@
     <div class="d-flex flex-row col-md-12">
         <div class="col-md-12">
             @Html.LabelFor(model => model.OdemeKrediKartıCVV, "CVV")
-            @Html.TextBoxFor(model => model.OdemeKrediKartıCVV, new { @class = "form-control", @placeholder = "095" })
+            @Html.TextBoxFor(model => model.OdemeKrediKartıCVV, new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.OdemeKrediKartıCVV, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    <br />
-    <div class="d-flex flex-row col-md-12">
-        <div class="col-md-6">
-            @Html.LabelFor(model => model.OdemeYapanKullanıcıSehir, "Sehir")
-            @Html.TextBoxFor(model => model.OdemeYapanKullanıcıSehir, new { @class = "form-control", @placeholder = "İzmir" })
-            @Html.ValidationMessageFor(model => model.OdemeYapanKullanıcıSehir, "", new { @class = "text-danger"})
-        </div>
-        <div class="col-md-6">
-            @Html.LabelFor(model => model.OdemeYapanKullanıcıUlke, "Ülke")
-            @Html.TextBoxFor(model => model.OdemeYapanKullanıcıUlke, new { @class = "form-control", @placeholder = "Türkiye" })
-            @Html.ValidationMessageFor(model => model.OdemeYapanKullanıcıUlke, "", new { @class = "text-danger" })
         </div>
     </div>
     <br />

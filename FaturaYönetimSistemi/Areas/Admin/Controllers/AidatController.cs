@@ -6,9 +6,6 @@ using EntityLayer.Concrete;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using X.PagedList;
 
 namespace FaturaYönetimSistemi.Areas.Admin.Controllers
@@ -17,7 +14,7 @@ namespace FaturaYönetimSistemi.Areas.Admin.Controllers
     public class AidatController : Controller
     {
         AidatManager aidatManager = new AidatManager(new EFAidatRepository());
-        KullanıcıManager kullanıcıManager = new(new EFKullanıcıRepository());
+        KullanıcıManager kullanıcıManager = new KullanıcıManager(new EFKullanıcıRepository());
         public IActionResult GetAidat(int page = 1)
         {
             var aidatlar = aidatManager.GetAllQueryWithKullanıcı().ToPagedList(page,10);
@@ -52,6 +49,41 @@ namespace FaturaYönetimSistemi.Areas.Admin.Controllers
             if (validationResult.IsValid)
             {
                 aidatManager.AddT(aidat);
+                return RedirectToAction("GetAidat", "Aidat");
+            }
+            else
+            {
+                foreach (var item in validationResult.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult AddAidatForAllUser()
+        {
+            ViewBag.KullanıcıSayısı = kullanıcıManager.GetAllQuery().Count();
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddAidatForAllUser(Aidat aidat)
+        {
+            AidatValidator validator = new AidatValidator();
+            ValidationResult validationResult = validator.Validate(aidat);
+            var kullanıcılar = kullanıcıManager.GetAllQuery().ToList<Kullanıcı>();
+            List<Aidat> aidatlar = new List<Aidat>();
+            Aidat tempAidat = aidat;
+            if (validationResult.IsValid)
+            {
+                for (int i = 0; i < kullanıcılar.Count(); i++)
+                {
+                    tempAidat.AidatKullanıcıId = kullanıcılar[i].KullanıcıId;
+                    aidatlar.Add(tempAidat);
+                }
+                aidatManager.AddRange(aidatlar);
                 return RedirectToAction("GetAidat", "Aidat");
             }
             else
@@ -99,39 +131,6 @@ namespace FaturaYönetimSistemi.Areas.Admin.Controllers
                     return File(content, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Aidatlar.xlsx");
                 }
             }
-        }
-        [HttpGet]
-        public IActionResult AddAidatForAllUser()
-        {
-            ViewBag.KullanıcıSayısı = kullanıcıManager.GetAllQuery().Count();
-            return View();
-        }
-        [HttpPost]
-        public IActionResult AddAidatForAllUser(Aidat aidat)
-        {
-            AidatValidator validator = new AidatValidator();
-            ValidationResult validationResult = validator.Validate(aidat);
-            var kullanıcılar = kullanıcıManager.GetAllQuery().ToList<Kullanıcı>();
-            List<Aidat> aidatlar = new List<Aidat>();
-            Aidat tempAidat = aidat;
-            if (validationResult.IsValid)
-            {
-                for (int i = 0; i < kullanıcılar.Count() ; i++)
-                {
-                    tempAidat.AidatKullanıcıId = kullanıcılar[i].KullanıcıId;
-                    aidatlar.Add(tempAidat);
-                }
-                aidatManager.AddRange(aidatlar);
-                return RedirectToAction("GetAidat", "Aidat");
-            }
-            else
-            {
-                foreach (var item in validationResult.Errors)
-                {
-                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
-                }
-            }
-            return View();
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace OdemeSistemi.Services
+﻿namespace OdemeSistemi.Services
 {
     public class DBLogger : ILoggerService
     {

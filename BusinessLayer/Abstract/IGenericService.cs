@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-
-
-namespace BusinessLayer.Abstract
+﻿namespace BusinessLayer.Abstract
 {
     public interface IGenericService<T>
     {

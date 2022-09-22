@@ -1,8 +1,8 @@
 ﻿@*@using X.PagedList
     @using X.PagedList.Mvc.Core
     @using X.PagedList.Web.Common*@
-@using OdemeSistemi.Entities
-@model List<Odeme>
+@using OdemeSistemi.Application.OdemeOperation.Queries;
+@model List<GetOdemeViewModel>
 @{
     ViewData["Title"] = "GetOdemeler";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -18,7 +18,7 @@
 </header>
 <hr />
 
-<a href="/Admin/Odeme/ExportStaticExcelOdemeList" class="btn btn-outline-success text-dark">Excel Listesini Al</a>
+<a href="/Admin/Odeme/ExportStaticExcelOdemeList" class="btn btn-outline-success text-dark">Excel Listesini Al <i class="icon-file-excel-o ml-2"></i></a>
 
 @if (Model.Any())
 {
@@ -35,16 +35,16 @@ else
 
 <table class="table table-bordered table-striped p-5">
     <tr>
-        <th>Ödeme Tarihi</th>
+        <th>Ödeme Tarihi & Saati</th>
         <th>Ödeme Tutarı</th>
         <th>Ödeme Sahibi</th>
     </tr>
     @foreach (var item in Model)
     {
         <tr>
-            <td>@(((DateTime)item.OdemeTarihi).ToString("dd-MMM-yyyy"))</td>
-            <td>@item.OdemeNetTutarı @item.OdemeParaBirimi</td>
-            <td>@item.OdemeYapanKullanıcıIsim @item.OdemeYapanKullanıcıSoyisim</td>
+            <td>@item.OdemeTarih</td>
+            <td>@item.OdemeNetTutar @item.OdemeParaBirimi</td>
+            <td>@item.OdemeYapanIsim @item.OdemeYapanSoyisim</td>
         </tr>
     }
 </table>

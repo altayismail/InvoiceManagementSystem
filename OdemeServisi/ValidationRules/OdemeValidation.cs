@@ -11,7 +11,7 @@ namespace OdemeSistemi.ValidationRules
                 .Length(16).WithMessage("Kart numarası 16 haneli olmalıdır.");
 
             RuleFor(x => x.OdemeKartNumarasıSonKullanımAy).NotEmpty().WithMessage("Kredi kartının son kullanım tarihinin ay kısmını giriniz")
-                .MaximumLength(2).WithMessage("İlgili ayı, sayı olarak giriniz");
+                .Length(2).WithMessage("İlgili ayı, sayı olarak giriniz");
 
             RuleFor(x => x.OdemeKartNumarasıSonKullanımYıl).NotEmpty().WithMessage("Kredi kartının son kullanım tarihinin yıl kısmını giriniz")
                 .Length(4).WithMessage("İlgili yılı, sayı olarak giriniz");
@@ -21,9 +21,11 @@ namespace OdemeSistemi.ValidationRules
 
             RuleFor(x => x.OdemeKrediKartıUzerindekiIsim).NotEmpty().WithMessage("Kart üzerindeki isim boş bırakılamaz");
 
-            RuleFor(x => x.OdemeNetTutarı).GreaterThan(0).WithMessage("Ödeme net tutarı sıfırdan büyük olmalıdır.");
+            RuleFor(x => x.OdemeNetTutarı).NotEmpty().WithMessage("Ödeme tutarı boş bırakılamaz.")
+                .GreaterThan(0).WithMessage("Ödeme net tutarı sıfırdan büyük olmalıdır.");
 
-            RuleFor(x => x.OdemeTutarı).NotEmpty().WithMessage("Odeme tutarı boş bırakılamaz");
+            RuleFor(x => x.OdemeTutarı).NotEmpty().WithMessage("Odeme tutarı boş bırakılamaz")
+                .GreaterThan(0).WithMessage("Ödeme tutarı sıfırdan büyük olmalıdır.");
         }
     }
 }

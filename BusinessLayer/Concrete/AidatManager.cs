@@ -1,7 +1,6 @@
 ﻿using BusinessLayer.Abstract;
 using DataAccessLayer.Abstract;
 using EntityLayer.Concrete;
-using System.Collections.Generic;
 
 namespace BusinessLayer.Concrete
 {
@@ -57,6 +56,11 @@ namespace BusinessLayer.Concrete
         public void AddRange(List<Aidat> t)
         {
             _aidatDal.AddRange(t);
+        }
+
+        public void UpdateAidatDurumu(int id)
+        {
+            _aidatDal.AidatUpdateById(id);
         }
     }
 }
