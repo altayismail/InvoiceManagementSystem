@@ -9,7 +9,6 @@
   <ItemGroup>
     <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj" />
     <ProjectReference Include="..\EntityLayer\EntityLayer.csproj" />
-    <ProjectReference Include="..\OdemeSistemi\OdemeSistemi.csproj" />
   </ItemGroup>
 
   <ItemGroup>

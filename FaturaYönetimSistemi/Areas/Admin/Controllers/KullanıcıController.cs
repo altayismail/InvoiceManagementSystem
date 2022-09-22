@@ -4,11 +4,7 @@ using ClosedXML.Excel;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.IO;
-using System.Threading.Tasks;
 using X.PagedList;
 
 namespace FaturaYönetimSistemi.Areas.Admin.Controllers
@@ -17,12 +13,6 @@ namespace FaturaYönetimSistemi.Areas.Admin.Controllers
     public class KullanıcıController : Controller
     {
         KullanıcıManager kullanıcıManager = new KullanıcıManager(new EFKullanıcıRepository());
-
-        private readonly UserManager<AppUser> _userManager;
-        public KullanıcıController(UserManager<AppUser> userManager)
-        {
-            _userManager = userManager;
-        }
 
         public IActionResult GetKullanıcı(int page = 1)
         {
@@ -43,18 +33,8 @@ namespace FaturaYönetimSistemi.Areas.Admin.Controllers
             if (validationResult.IsValid)
             {
                 kullanıcı.KullanıcıSifre = PasswordGenerator();
-                AppUser user = new AppUser()
-                {
-                    Email = kullanıcı.KullanıcıEmail,
-                    UserName = kullanıcı.KullanıcıEmail,
-                    NameSurname = kullanıcı.KullanıcıIsım + " " + kullanıcı.KullanıcıSoyisim
-                };
-                var result = await _userManager.CreateAsync(user, kullanıcı.KullanıcıSifre);
-                if (result.Succeeded)
-                {
-                    kullanıcıManager.AddT(kullanıcı);
-                    return RedirectToAction("GetKullanıcı");
-                }
+                kullanıcıManager.AddT(kullanıcı);
+                return RedirectToAction("GetKullanıcı");
             }
             else
             {
