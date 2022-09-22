@@ -45,7 +45,7 @@ namespace FaturaYönetimSistemi.Areas.Admin.Controllers
         public async Task<IActionResult> CikisYap()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("GirisYap","YoneticiGiris");
         }
     }
 }
