@@ -8,7 +8,7 @@ namespace DataAccessLayer.Concrete
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("server=ISMAILALTAY; database=FaturaYonetimDB; integrated security=true;");
+            optionsBuilder.UseSqlServer("server=ISMAILALTAY; database=FaturaYonetimDB; integrated security=true; MultipleActiveResultSets=true;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

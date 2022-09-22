@@ -10,9 +10,20 @@ namespace DataAccessLayer.EntityFramework
     {
         public void AddAidatForAllKullanıcı(Aidat aidat)
         {
-            using(var context = new Context())
+            using (var context = new Context())
             {
-                var kullanıcıList = context.Database.ExecuteSqlRaw("INSERT INTO ");
+                List<Aidat> aidatlar = new List<Aidat>();
+                foreach (var ids in context.Kullanıcılar)
+                {
+                    Aidat aidatIns = new Aidat();
+                    aidatIns.AidatTarihi = aidat.AidatTarihi;
+                    aidatIns.AidatKullanıcıId = ids.KullanıcıId;
+                    aidatIns.AidatSonOdemeTarihi = aidat.AidatSonOdemeTarihi;
+                    aidatIns.AidatUcreti = aidat.AidatUcreti;
+                    aidatlar.Add(aidatIns);
+                }
+                context.Aidatlar.AddRange(aidatlar);
+                context.SaveChanges();
             }
         }
 

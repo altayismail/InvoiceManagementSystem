@@ -64,7 +64,6 @@ namespace FaturaYönetimSistemi.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult AddAidatForAllUser()
         {
-            ViewBag.KullanıcıSayısı = kullanıcıManager.GetAllQuery().Count();
             return View();
         }
 
@@ -73,17 +72,10 @@ namespace FaturaYönetimSistemi.Areas.Admin.Controllers
         {
             AidatValidator validator = new AidatValidator();
             ValidationResult validationResult = validator.Validate(aidat);
-            var kullanıcılar = kullanıcıManager.GetAllQuery().ToList<Kullanıcı>();
-            List<Aidat> aidatlar = new List<Aidat>();
-            Aidat tempAidat = aidat;
+
             if (validationResult.IsValid)
             {
-                for (int i = 0; i < kullanıcılar.Count(); i++)
-                {
-                    tempAidat.AidatKullanıcıId = kullanıcılar[i].KullanıcıId;
-                    aidatlar.Add(tempAidat);
-                }
-                aidatManager.AddRange(aidatlar);
+                aidatManager.AddAidatForAllKullanıcı(aidat);
                 return RedirectToAction("GetAidat", "Aidat");
             }
             else

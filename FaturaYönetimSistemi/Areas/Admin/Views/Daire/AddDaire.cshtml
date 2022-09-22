@@ -13,7 +13,6 @@
 </header>
 <hr />
 
-
 @using (Html.BeginForm("AddDaire", "Daire", FormMethod.Post))
 {
     <div class="row">
@@ -27,7 +26,7 @@
             @Html.DropDownListFor(x => x.DaireDurumu,
                     new[] { new SelectListItem { Text = "Dolu", Value = "True" },
                     new SelectListItem { Text = "Boş", Value = "False" } },
-                    new { @class = "form-control" })
+                    new { @class = "form-control", id = "dairedurumu"})
             @Html.ValidationMessageFor(x => x.DaireDurumu, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -60,7 +59,7 @@
             <label for="formGroupExampleInput">Kullanıcı</label>
             @Html.DropDownListFor(model => model.DaireKullanıcıId,
                     (List<SelectListItem>)ViewBag.kullanıcılar,
-                    new { @class = "form-control" })
+                     new { @class = "form-control", id = "kullanıcı" })
             @Html.ValidationMessageFor(x => x.DaireKullanıcıId, "", new { @class = "text-danger" })
         </div>
     </div>

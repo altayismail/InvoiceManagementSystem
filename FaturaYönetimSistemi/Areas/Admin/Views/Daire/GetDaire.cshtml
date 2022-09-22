@@ -64,7 +64,18 @@ else
             </td>
             <td>@item.DaireTipi</td>
             <td>@item.DaireKatı</td>
-            <td>@item.DaireKullanıcı.KullanıcıIsım @item.DaireKullanıcı.KullanıcıSoyisim</td>
+            @if (item.DaireKullanıcı == null)
+            {
+                <td>
+                    Kullanıcı Yok
+                </td>
+            }
+            else
+            {
+                <td>
+                    @item.DaireKullanıcı.KullanıcıIsım @item.DaireKullanıcı.KullanıcıSoyisim
+                </td>
+            }
             <td>@item.DaireKiradaMı</td>
             <td><a href="/Admin/Daire/UpdateDaire/@item.DaireId" id="UpdateButton" onclick="return confirm('Daireyi düzenleme sayfasına yönlendiriliyorsunuz, emin misiniz?');" class="btn btn-outline-warning text-dark">Düzenle<i class="icon-edit ml-2"></i></a></td>
             <td><a href="/Admin/Daire/DeleteDaire/@item.DaireId" id="DeleteButton" onclick="return confirm('Daire siliniyor, onaylıyor musunuz?');" class="btn btn-outline-danger text-dark">Sil<i class="icon-delete ml-2"></i></a></td>

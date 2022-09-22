@@ -28,7 +28,6 @@ namespace FaturaYönetimSistemi.Areas.Admin.Controllers
                                                     Text = x.KullanıcıIsım + " " + x.KullanıcıSoyisim,
                                                     Value = x.KullanıcıId.ToString()
                                                 }).ToList();
-            kullanıcılar.Add(new SelectListItem() { Text = "Yok", Value = null });
             ViewBag.kullanıcılar = kullanıcılar;
             return View();
         }
@@ -42,7 +41,12 @@ namespace FaturaYönetimSistemi.Areas.Admin.Controllers
                                                     Value = x.KullanıcıId.ToString()
                                                 }).ToList();
             ViewBag.kullanıcılar = kullanıcılar;
-            kullanıcılar.Add(new SelectListItem() { Text = "Yok", Value = null });
+
+            if (!daire.DaireDurumu)
+            {
+                daire.DaireKullanıcı = null;
+            }
+
             DaireValidator validator = new DaireValidator();
             ValidationResult validationResult = validator.Validate(daire);
             if (validationResult.IsValid)
@@ -77,7 +81,7 @@ namespace FaturaYönetimSistemi.Areas.Admin.Controllers
                                                     Value = x.KullanıcıId.ToString()
                                                 }).ToList();
             ViewBag.kullanıcılar = kullanıcılar;
-            kullanıcılar.Add(new SelectListItem() { Text = "Yok", Value = null });
+
             List<SelectListItem> daireDurumu = new List<SelectListItem>()
             {
                 new SelectListItem() { Text = "Dolu" , Value = true.ToString()},
@@ -96,7 +100,12 @@ namespace FaturaYönetimSistemi.Areas.Admin.Controllers
                                                     Value = x.KullanıcıId.ToString()
                                                 }).ToList();
             ViewBag.kullanıcılar = kullanıcılar;
-            kullanıcılar.Add(new SelectListItem() { Text = "Yok", Value = null });
+
+            if (!daire.DaireDurumu)
+            {
+                daire.DaireKullanıcı = null;
+            }
+
             List<SelectListItem> daireDurumu = new List<SelectListItem>()
             {
                 new SelectListItem() { Text = "Dolu" , Value = true.ToString()},

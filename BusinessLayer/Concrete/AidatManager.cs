@@ -62,5 +62,10 @@ namespace BusinessLayer.Concrete
         {
             _aidatDal.AidatUpdateById(id);
         }
+
+        public void AddAidatForAllKullanıcı(Aidat aidat)
+        {
+            _aidatDal.AddAidatForAllKullanıcı(aidat);
+        }
     }
 }
