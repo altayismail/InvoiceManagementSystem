@@ -8,8 +8,8 @@ namespace EntityLayer.Concrete
         [Key]
         public int MesajId { get; set; }
         public DateTime MesajTarihi { get; set; }
-        public string MesajKonusu { get; set; }
-        public string MesajIcerik { get; set; }
+        public string? MesajKonusu { get; set; }
+        public string? MesajIcerik { get; set; }
         public bool MesajOkunduMu { get; set; }
 
         public int? MesajAlanId { get; set; }

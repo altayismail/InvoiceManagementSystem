@@ -1,6 +1,5 @@
 ﻿using EntityLayer.Concrete;
 using System.Collections.Generic;
-using System.Web.Mvc;
 
 namespace DataAccessLayer.Abstract
 {
@@ -8,6 +7,5 @@ namespace DataAccessLayer.Abstract
     {
         Kullanıcı GetKullanıcıBySession(string name);
 
-        List<SelectListItem> SelectListItemKullanıcı();
     }
 }

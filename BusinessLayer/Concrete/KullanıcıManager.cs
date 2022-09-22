@@ -2,7 +2,6 @@
 using DataAccessLayer.Abstract;
 using EntityLayer.Concrete;
 using System.Collections.Generic;
-using System.Web.Mvc;
 
 namespace BusinessLayer.Concrete
 {
@@ -37,11 +36,6 @@ namespace BusinessLayer.Concrete
         public Kullanıcı GetQueryById(int id)
         {
             return _kullanıcıDal.GetQueryById(id);
-        }
-
-        public List<SelectListItem> SelectListItemKullanıcılar()
-        {
-            return _kullanıcıDal.SelectListItemKullanıcı();
         }
 
         public void UpdateT(Kullanıcı t)

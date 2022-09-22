@@ -7,13 +7,13 @@ namespace EntityLayer.Concrete
     {
         [Key]
         public int KullanıcıId { get; set; }
-        public string KullanıcıIsım { get; set; }
-        public string KullanıcıSoyisim { get; set; }
-        public string KullanıcıTCNo { get; set; }
-        public string KullanıcıTelefonNo { get; set; }
-        public string KullanıcıEmail { get; set; }
-        public string KullanıcıSifre { get; set; }
-        public string KullanıcıAraçBilgisi { get; set; }
+        public string? KullanıcıIsım { get; set; }
+        public string? KullanıcıSoyisim { get; set; }
+        public string? KullanıcıTCNo { get; set; }
+        public string? KullanıcıTelefonNo { get; set; }
+        public string? KullanıcıEmail { get; set; }
+        public string? KullanıcıSifre { get; set; }
+        public string? KullanıcıAraçBilgisi { get; set; }
         public List<Fatura> KullanıcıFaturalar { get; set; }
         public List<Aidat> KullanıcıAidatlar { get; set; }
 

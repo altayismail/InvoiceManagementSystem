@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace EntityLayer.Concrete
 {
@@ -13,7 +12,7 @@ namespace EntityLayer.Concrete
         public bool AidatOdendiMi { get; set; } = false;
 
         public int AidatKullanıcıId { get; set; }
-        public Kullanıcı AidatKullanıcı { get; set; }
+        public Kullanıcı? AidatKullanıcı { get; set; }
 
     }
 }
