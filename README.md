@@ -22,20 +22,6 @@
 3-Arayüz dışında kullanıcıların kredi kartı ile ödeme yapabilmesi için ayrı bir servis bulunmaktadır. Bu servisde sistemde ki her bir kullanıcı için banka bilgileri(bakiye, kredi kartı no vb.) kontrol edilerek ödeme yapılması sağlanır.
 
 ## Teknolojiler
-- Çok Katmanlı Mimari
-- ASP.NET Core MVC
-- .NET Core - Kredi Kartı Ödeme Servisi için
-- Uygulama için veri tabanı => MS SQL Server
-### Paketler
-- FluentValidation 10.4.0
-- FluentValidation.AspNetCore 10.4.0
-- Microsoft.EntityFrameworkCore 5.0.15
-- Microsoft.EntityFrameworkCore.Design 5.0.15
-- Microsoft.EntityFrameworkCore.SqlServer 5.0.15
-- Microsoft.EntityFrameworkCoreTools 5.0.15
-- X.PagedList 8.1.0
-- X.PageList.Mvc.Core 8.1.0
-- ClosedXML 0.95.4
-- AutoMapper.Extensions.Microsoft.DependencyInjection 8.1.1
-- Microsoft.AspNetCore.Identity 2.2.0
-- Microsoft.AspNetCore.Identity.EntityFrameworkCore 5.0.15
+- ASP.NET 5 MVC -> ASP.NET 6 MVC (Target Framework Update)
+- .NET 5 -> .NET 6 (Target Framework Update) - Kredi Kartı Ödeme Servisi için
+- Uygulama ve Ödeme Servisi için veri tabanı => MS SQL Server
