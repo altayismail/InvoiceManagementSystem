@@ -2,8 +2,9 @@
 
 namespace EntityLayer.Concrete
 {
-    public class AppUser : IdentityUser<int>
+    public class AppUser : IdentityUser
     {
-        public string? NameSurname { get; set; }
+        public string? FirstName { get; set; }
+        public string? LastName { get; set; }  
     }
 }

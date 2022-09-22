@@ -42,11 +42,6 @@ namespace FaturaYönetimSistemi.Areas.Admin.Controllers
                                                 }).ToList();
             ViewBag.kullanıcılar = kullanıcılar;
 
-            if (!daire.DaireDurumu)
-            {
-                daire.DaireKullanıcı = null;
-            }
-
             DaireValidator validator = new DaireValidator();
             ValidationResult validationResult = validator.Validate(daire);
             if (validationResult.IsValid)
@@ -100,11 +95,6 @@ namespace FaturaYönetimSistemi.Areas.Admin.Controllers
                                                     Value = x.KullanıcıId.ToString()
                                                 }).ToList();
             ViewBag.kullanıcılar = kullanıcılar;
-
-            if (!daire.DaireDurumu)
-            {
-                daire.DaireKullanıcı = null;
-            }
 
             List<SelectListItem> daireDurumu = new List<SelectListItem>()
             {
