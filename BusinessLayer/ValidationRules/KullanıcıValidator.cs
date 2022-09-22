@@ -19,9 +19,9 @@ namespace BusinessLayer.ValidationRules
                 Matches("@").WithMessage("Email '@' sembolünü içermelidir.").
                 Matches(".com").WithMessage("Email '.com' kısmını içermelidir.").
                 MaximumLength(50).WithMessage("Email en fazla 50 karakterden oluşmalıdır.").
-                MinimumLength(15).WithMessage("Email en az 15 karakterden oluşmalıdır.");
+                MinimumLength(10).WithMessage("Email en az 10 karakterden oluşmalıdır.");
 
-            RuleFor(x => x.KullanıcıTCNo).NotEmpty().WithMessage("Kullanıcı şifresi boş geçilemez.").
+            RuleFor(x => x.KullanıcıTCNo).NotEmpty().WithMessage("TC Kimlik numarası boş geçilemez.").
                 Length(11).WithMessage("TC kimlik numarası 11 haneli olmalıdır.").
                 Matches("[0-9]").WithMessage("TC kimlik numarası sadece rakamlardan oluşmalı.");
 

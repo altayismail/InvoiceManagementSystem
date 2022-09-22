@@ -31,6 +31,7 @@ namespace OdemeSistemi.Application.OdemeOperation.Commands
             if (bankaHesabı.BankaHesabıBakiye < Model.OdemeNetTutarı)
                 throw new InvalidOperationException("Bakiyeniz yetersiz");
 
+            bankaHesabı.BankaHesabıBakiye -= Model.OdemeNetTutarı;
 
             var odeme = _mapper.Map<Odeme>(Model);
             odeme.OdemeBasariliMi = true;

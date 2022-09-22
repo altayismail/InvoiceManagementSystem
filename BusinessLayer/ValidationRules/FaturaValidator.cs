@@ -7,8 +7,7 @@ namespace BusinessLayer.ValidationRules
     {
         public FaturaValidator()
         {
-            RuleFor(x => x.FaturaTarihi).GreaterThan(DateTime.Today.AddDays(-10)).WithMessage("Fatura günü, 10 gün veya daha öncesine atanamaz")
-                .NotEmpty().WithMessage("Fatura tarihi boş geçilemez.");
+            RuleFor(x => x.FaturaTarihi).NotEmpty().WithMessage("Fatura tarihi boş geçilemez.");
 
             RuleFor(x => x.FaturaSonOdemeTarihi).NotEmpty().WithMessage("Fatura son ödeme tarihi boş geçilemez.");
 

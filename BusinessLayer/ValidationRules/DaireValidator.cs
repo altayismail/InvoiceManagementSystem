@@ -11,7 +11,7 @@ namespace BusinessLayer.ValidationRules
 
             RuleFor(x => x.DaireDurumu).NotNull().WithMessage("Daire durum bilgisi boş bırakılamaz.");
 
-            RuleFor(x => x.DaireKatı).NotEmpty().WithMessage("Daire kart bilgisi boş bırakılamaz.");
+            RuleFor(x => x.DaireKatı).NotEmpty().WithMessage("Daire kat bilgisi boş bırakılamaz.");
 
             RuleFor(x => x.DaireNo).NotEmpty().WithMessage("Daire No bilgisi boş bırakılamaz.")
                 .GreaterThan(0).WithMessage("Daire No sıfırdan büyük olmalıdır.");
