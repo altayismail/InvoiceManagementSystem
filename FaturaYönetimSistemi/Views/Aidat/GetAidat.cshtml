@@ -18,9 +18,12 @@
     <div class="w3-container pl-3 pt-3 mt-3 mb-3 bg-success text-white" id="aidatSayısı">
         <p>Toplamda @ViewBag.toplamAidatSayısı adet aidat listelendi.</p>
     </div>
-    <div class="w3-container pl-3 pt-3 mt-3 mb-3 bg-danger text-white" id="!aidatSayısı">
+    if (@ViewBag.odenmemisAidatSayısı != 0)
+    {
+        <div class="w3-container pl-3 pt-3 mt-3 mb-3 bg-danger text-white" id="!aidatSayısı">
         <p>@ViewBag.odenmemisAidatSayısı adet ödenmemiş aidatınız bulunmaktadır.</p>
-    </div>
+        </div>
+    }
 }
 else
 {

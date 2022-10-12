@@ -27,7 +27,7 @@
     <div class="d-flex flex-row col-md-12">
         @Html.HiddenFor(model => model.OdemeFaturaId, new { @class = "form-control" })
         <div class="col-md-12">
-            @Html.Label("Net Ödeme Ücreti")
+            @Html.Label("Net Ödeme Ücreti (TL)")
             @Html.TextBoxFor(model => model.OdemeNetTutarı, new { @class = "form-control", @readonly = "readonly"})
         </div>
     </div>
@@ -42,12 +42,12 @@
     <div class="d-flex flex-row col-md-12">
         <div class="col-md-6">
             @Html.LabelFor(model => model.OdemeKartNumarası, "Kart Numarası")
-            @Html.TextBoxFor(model => model.OdemeKartNumarası, new { @class = "form-control"})
+            @Html.TextBoxFor(model => model.OdemeKartNumarası, new { @class = "form-control", @onkeypress="return /[0-9]/i.test(event.key)", @maxlength = "16"})
             @Html.ValidationMessageFor(model => model.OdemeKartNumarası, "", new { @class = "text-danger" })
         </div>
         <div class="col-md-6">
             @Html.LabelFor(model => model.OdemeKrediKartıUzerindekiIsim, "Kart Üzerindeki İsim")
-            @Html.TextBoxFor(model => model.OdemeKrediKartıUzerindekiIsim, new { @class = "form-control" })
+            @Html.TextBoxFor(model => model.OdemeKrediKartıUzerindekiIsim, new { @class = "form-control", @onkeypress="return /[A-Za-z]/i.test(event.key)" })
             @Html.ValidationMessageFor(model => model.OdemeKrediKartıUzerindekiIsim, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -55,12 +55,12 @@
     <div class="d-flex flex-row col-md-12">
         <div class="col-md-6">
             @Html.LabelFor(model => model.OdemeKartNumarasıSonKullanımAy, "Kart Son Kullanım Tarihi - Ay")
-            @Html.TextBoxFor(model => model.OdemeKartNumarasıSonKullanımAy, new { @class = "form-control" })
+            @Html.TextBoxFor(model => model.OdemeKartNumarasıSonKullanımAy, new { @class = "form-control", @onkeypress="return /[0-9]/i.test(event.key)", @maxlength = "2" })
             @Html.ValidationMessageFor(model => model.OdemeKartNumarasıSonKullanımAy, "", new { @class = "text-danger" })
         </div>
         <div class="col-md-6">
             @Html.LabelFor(model => model.OdemeKartNumarasıSonKullanımYıl, "Kart Son Kullanım Tarihi- Yıl")
-            @Html.TextBoxFor(model => model.OdemeKartNumarasıSonKullanımYıl, new { @class = "form-control" })
+            @Html.TextBoxFor(model => model.OdemeKartNumarasıSonKullanımYıl, new { @class = "form-control",@onkeypress="return /[0-9]/i.test(event.key)", @maxlength = "4" })
             @Html.ValidationMessageFor(model => model.OdemeKartNumarasıSonKullanımYıl, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -68,7 +68,7 @@
     <div class="d-flex flex-row col-md-12">
         <div class="col-md-12">
             @Html.LabelFor(model => model.OdemeKrediKartıCVV, "CVV")
-            @Html.TextBoxFor(model => model.OdemeKrediKartıCVV, new { @class = "form-control" })
+            @Html.TextBoxFor(model => model.OdemeKrediKartıCVV, new { @class = "form-control", @onkeypress="return /[0-9]/i.test(event.key)", @maxlength = "3" })
             @Html.ValidationMessageFor(model => model.OdemeKrediKartıCVV, "", new { @class = "text-danger" })
         </div>
     </div>
