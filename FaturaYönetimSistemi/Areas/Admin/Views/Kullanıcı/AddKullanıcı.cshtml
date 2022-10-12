@@ -17,12 +17,12 @@
     <div class="row">
         <div class="col">
             <label for="formGroupExampleInput">İsim</label>
-            @Html.TextBoxFor(x => x.KullanıcıIsım, new { @class = "form-control" })
+            @Html.TextBoxFor(x => x.KullanıcıIsım, new { @class = "form-control" , @onkeypress="return /[A-Za-z]/i.test(event.key)" })
             @Html.ValidationMessageFor(x => x.KullanıcıIsım, "", new { @class = "text-danger" })
         </div>
         <div class="col">
             <label for="formGroupExampleInput">Soyisim</label>
-            @Html.TextBoxFor(x => x.KullanıcıSoyisim, new { @class = "form-control" })
+            @Html.TextBoxFor(x => x.KullanıcıSoyisim, new { @class = "form-control", @onkeypress="return /[A-Za-z]/i.test(event.key)" })
             @Html.ValidationMessageFor(x => x.KullanıcıSoyisim, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -30,12 +30,12 @@
     <div class="row">
         <div class="col">
             <label for="formGroupExampleInput">TC Kimlik No</label>
-            @Html.TextBoxFor(x => x.KullanıcıTCNo, new { @class = "form-control" })
+            @Html.TextBoxFor(x => x.KullanıcıTCNo, new { @class = "form-control", @onkeypress="return /[0-9]/i.test(event.key)", @maxlength = "11" })
             @Html.ValidationMessageFor(x => x.KullanıcıTCNo, "", new { @class = "text-danger" })
         </div>
         <div class="col">
             <label for="formGroupExampleInput">Telefon No</label>
-            @Html.TextBoxFor(x => x.KullanıcıTelefonNo, new { @class = "form-control" })
+            @Html.TextBoxFor(x => x.KullanıcıTelefonNo, new { @class = "form-control", @onkeypress="return /[0-9]/i.test(event.key)", @maxlength = "10" })
             @Html.ValidationMessageFor(x => x.KullanıcıTelefonNo, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -52,7 +52,7 @@
     </div>
     <div class="form-group">
         <label for="formGroupExampleInput2">Daire No</label>
-        @Html.TextBoxFor(x => x.KullanıcıDaireNo, new { @class = "form-control" })
+        @Html.TextBoxFor(x => x.KullanıcıDaireNo, new { @class = "form-control", @onkeypress="return /[0-9]/i.test(event.key)" })
         @Html.ValidationMessageFor(x => x.KullanıcıDaireNo, "", new { @class = "text-danger" })
     </div>
     <button id="AddButton" onclick="return confirm('Kullanıcı kaydediliyor, onaylıyor musunuz?');" type="submit" class="btn btn-primary mb-3">Kullanıcıyı Kaydet<i class="icon-save ml-2"></i></button>

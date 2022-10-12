@@ -31,7 +31,7 @@
     <div class="d-flex flex-row col-md-12">
         <div class="col-md-6">
             @Html.LabelFor(model => model.FaturaTutarı, "Fatura Tutarı")
-            @Html.TextBoxFor(model => model.FaturaTutarı, new { @class = "form-control" })
+            @Html.TextBoxFor(model => model.FaturaTutarı, new { @class = "form-control", @onkeypress="return /[0-9]/i.test(event.key)" })
             @Html.ValidationMessageFor(model => model.FaturaTutarı, "", new { @class = "text-danger" })
         </div>
         <div class="col-md-6">

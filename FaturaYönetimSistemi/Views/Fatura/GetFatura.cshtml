@@ -18,9 +18,12 @@
     <div class="w3-container pl-3 pt-3 mt-3 mb-3 bg-success text-white" id="faturaSayısı">
         <p>Toplamda @ViewBag.toplamFaturaSayısı adet fatura listelendi.</p>
     </div>
-    <div class="w3-container pl-3 pt-3 mt-3 mb-3 bg-danger text-white" id="!faturaSayısı">
+    if(@ViewBag.odenmemisFaturaSayısı != 0)
+    {
+        <div class="w3-container pl-3 pt-3 mt-3 mb-3 bg-danger text-white" id="!faturaSayısı">
         <p>@ViewBag.odenmemisFaturaSayısı adet ödenmemiş faturanız bulunmaktadır.</p>
-    </div>
+        </div>
+    }
 }
 else
 {

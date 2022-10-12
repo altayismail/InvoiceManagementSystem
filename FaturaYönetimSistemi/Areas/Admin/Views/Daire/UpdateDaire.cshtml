@@ -24,10 +24,10 @@
     @Html.HiddenFor(x => x.DaireBlok, new { @class = "form-control" })
     @Html.ValidationMessageFor(x => x.DaireBlok, "", new { @class = "text-danger" })
 
-    @Html.HiddenFor(x => x.DaireKatı, new { @class = "form-control" })
+    @Html.HiddenFor(x => x.DaireKatı, new { @class = "form-control", @onkeypress="return /[0-9]/i.test(event.key)" })
     @Html.ValidationMessageFor(x => x.DaireKatı, "", new { @class = "text-danger" })
 
-    @Html.HiddenFor(x => x.DaireNo, new { @class = "form-control " })
+    @Html.HiddenFor(x => x.DaireNo, new { @class = "form-control ", @onkeypress="return /[0-9]/i.test(event.key)" })
     @Html.ValidationMessageFor(x => x.DaireNo, "", new { @class = "text-danger" })
 
     @Html.HiddenFor(x => x.DaireTipi, new { @class = "form-control " })

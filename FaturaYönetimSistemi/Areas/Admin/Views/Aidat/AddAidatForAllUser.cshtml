@@ -32,7 +32,7 @@
     <div class="d-flex flex-row col-md-12">
         <div class="col-md-6">
             @Html.LabelFor(model => Model.AidatUcreti, "Aidat Ücreti")
-            @Html.TextBoxFor(model => Model.AidatUcreti, new { @class = "form-control" })
+            @Html.TextBoxFor(model => Model.AidatUcreti, new { @class = "form-control", @onkeypress="return /[0-9]/i.test(event.key)" })
             @Html.ValidationMessageFor(model => Model.AidatUcreti, "", new { @class = "text-danger" })
         </div>
     </div>
