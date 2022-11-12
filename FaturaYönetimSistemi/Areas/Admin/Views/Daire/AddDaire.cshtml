@@ -75,5 +75,11 @@
         </div>
     </div>
     <br />
+    @if (ViewBag.ErrorMessage != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            @ViewBag.ErrorMessage
+        </div>
+    }
     <button type="submit" id="AddButton" onclick="return confirm('Daire kaydediliyor, onaylıyor musunuz?');" class="btn btn-primary">Daireyi Kaydet<i class="icon-save ml-2"></i></button>
 }

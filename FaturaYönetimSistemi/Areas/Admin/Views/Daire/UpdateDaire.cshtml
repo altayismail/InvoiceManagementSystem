@@ -45,6 +45,12 @@
                     (List<SelectListItem>)ViewBag.kullanıcılar,
                     new { @class = "form-control" })
     <br />
+    @if (ViewBag.ErrorMessage != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            @ViewBag.ErrorMessage
+        </div>
+    }
     <button id="UpdateButton" onclick="return confirm('Daire güncelleniyor, onaylıyor musunuz?');" class="btn btn-warning">Düzenle<i class="icon-save ml-2"></i></button>
 }
 

@@ -42,8 +42,21 @@ namespace FaturaYönetimSistemi.Areas.Admin.Controllers
                                                 }).ToList();
             ViewBag.kullanıcılar = kullanıcılar;
 
+            if(daire.DaireDurumu == false && daire.DaireKullanıcıId != null)
+            {
+                ViewBag.ErrorMessage = "Bu daire durumu boş iken, kullanıcı atanamaz.";
+                return View();
+            }
+
+            if (daire.DaireDurumu == true && daire.DaireKullanıcıId == null)
+            {
+                ViewBag.ErrorMessage = "Bu daire durumu dolu iken, kullanıcı boş olamaz.";
+                return View();
+            }
+
             DaireValidator validator = new DaireValidator();
             ValidationResult validationResult = validator.Validate(daire);
+
             if (validationResult.IsValid)
             {
                 daireManager.AddT(daire);
@@ -102,6 +115,25 @@ namespace FaturaYönetimSistemi.Areas.Admin.Controllers
                 new SelectListItem() { Text = "Boş" , Value = false.ToString()}
             };
             ViewBag.daireDurumu = daireDurumu;
+
+            if (daireManager.GetAllQuery().Any(x => x.DaireNo == daire.DaireNo))
+            {
+                ViewBag.ErrorMessage = "Bu daire no zaten kaydedilmiş.";
+                return View();
+            }
+
+            if (daire.DaireDurumu == false && daire.DaireKullanıcıId != null)
+            {
+                ViewBag.ErrorMessage = "Bu daire durumu boş iken, kullanıcı atanamaz.";
+                return View();
+            }
+
+            if(daire.DaireDurumu == true && daire.DaireKullanıcıId == null)
+            {
+                ViewBag.ErrorMessage = "Bu daire durumu dolu iken, kullanıcı boş olamaz.";
+                return View();
+            }
+
             DaireValidator validator = new DaireValidator();
             ValidationResult validationResult = validator.Validate(daire);
             if (validationResult.IsValid)

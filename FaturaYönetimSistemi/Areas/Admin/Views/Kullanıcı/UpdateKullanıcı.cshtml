@@ -49,6 +49,12 @@
     @Html.TextBoxFor(x => x.KullanıcıDaireNo, new { @class = "form-control", @onkeypress="return /[0-9]/i.test(event.key)" })
     @Html.ValidationMessageFor(x => x.KullanıcıDaireNo, "", new { @class = "text-danger" })
     <br />
+    @if(ViewBag.ErrorMessage != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            @ViewBag.ErrorMessage
+        </div>
+    } 
     <button id="UpdateButton" onclick="return confirm('Kullanıcı güncelleniyor, onaylıyor musunuz?');" class="btn btn-warning mb-3">Kaydet<i class="icon-save ml-2"></i></button>
 }
 

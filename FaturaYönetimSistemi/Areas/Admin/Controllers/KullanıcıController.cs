@@ -30,6 +30,18 @@ namespace FaturaYönetimSistemi.Areas.Admin.Controllers
         {
             KullanıcıValidator validator = new();
             ValidationResult validationResult = validator.Validate(kullanıcı);
+            if(kullanıcıManager.GetAllQuery().Any(x => x.KullanıcıDaireNo == kullanıcı.KullanıcıDaireNo))
+            {
+                ViewBag.ErrorMessage = "Bu dairede kullanıcı bulunmaktadır.";
+                return View();
+            }
+
+            if (kullanıcıManager.GetAllQuery().Any(x => x.KullanıcıEmail == kullanıcı.KullanıcıEmail))
+            {
+                ViewBag.ErrorMessage = "Bu emaile sahip başka bir kullanıcı bulunmaktadır.";
+                return View();
+            }
+
             if (validationResult.IsValid)
             {
                 kullanıcı.KullanıcıSifre = PasswordGenerator();
@@ -63,6 +75,18 @@ namespace FaturaYönetimSistemi.Areas.Admin.Controllers
         {
             KullanıcıValidator validator = new KullanıcıValidator();
             ValidationResult validationResult = validator.Validate(kullanıcı);
+            if (kullanıcıManager.GetAllQuery().Any(x => x.KullanıcıDaireNo == kullanıcı.KullanıcıDaireNo))
+            {
+                ViewBag.ErrorMessage = "Bu dairede kullanıcı bulunmaktadır.";
+                return View();
+            }
+
+            if (kullanıcıManager.GetAllQuery().Any(x => x.KullanıcıEmail == kullanıcı.KullanıcıEmail))
+            {
+                ViewBag.ErrorMessage = "Bu emaile sahip başka bir kullanıcı bulunmaktadır.";
+                return View();
+            }
+
             if (validationResult.IsValid)
             {
                 kullanıcıManager.UpdateT(kullanıcı);
