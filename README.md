@@ -23,6 +23,6 @@
 - Apart from the interface, there is a separate service for users to pay by credit card. In this service, payment is made by checking the bank information (balance, credit card number, etc.) for each user in the system.
 
 ## Technologies
-- ASP.NET 5 MVC -> ASP.NET 6 MVC (Target Framework Update)
+- ASP.NET 5 MVC -> ASP.NET 6 MVC (Target Framework Update) - Used for Application
 - .NET 5 API -> .NET 6 API (Target Framework Update) - Used for Payments Service
 - Database for both Invoice Management System and Paymen Service => Microsoft SQL Server
