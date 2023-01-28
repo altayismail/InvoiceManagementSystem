@@ -1,27 +1,28 @@
-# Fatura Yonetim Sistemi (In Progress)
--Bir sitede yöneticisiniz. Sitenizde yer alan dairelerin aidat ve ortak kullanım elektrik, su ve doğalgaz faturalarının yönetimini bir sistem üzerinden yapacaksınız. İki tip kullanıcınız var.
+# Invoice Management System
+- You are a site administrator. You will manage the utility and common use electricity, water and natural gas bills of the apartments on your site through a system. You have two types of users.
 
-1-Admin/Yönetici
--Daire bilgilerini girebilir.
--İkamet eden kullanıcı bilgilerini girer.
--Daire başına ödenmesi gereken aidat ve fatura bilgilerini girer(Aylık olarak). Toplu veya tek tek atama yapılabilir.
--Gelen ödeme bilgilerini görür.
--Gelen mesajları görür.
--Aylık olarak borç-alacak listesini görür.
--Kişileri listeler, düzenler, siler.
--Daire/konut bilgilerini listeler, düzenler siler.
--Daire, fatura, aidat ve kullanıcı bilgilerinin excel çıkıtısını sistemden alabilir.
+1. Admin
+- Can enter apartment information.
+- Enter the resident user information.
+- Inputs the dues and billing information to be paid per flat (Monthly). Assignments can be made collectively or individually.
+- See incoming payment information.
+- See incoming messages.
+- See monthly debt-credit list.
+- Lists, edits, deletes contacts.
+- Lists, edits and deletes flat/housing information.
+- Can get the excel output of the flat, invoice, dues and user information from the system.
 
-2-Kullanıcı
--Kendisine atanan fatura ve aidat bilgilerini görür ve bu faturaları her hangi bir bilgiye göre filtereleyerek görür.
--Kredi kartı ile ödeme yapabilir.
--Yöneticiye mesaj gönderebilir.
--Daire/Konut bilgilerinde, Hangi blokda, Durumu (Dolu-boş), Tipi (2+1 vb.), Bulunduğu kat, Daire numarası, Daire sahibi veya kiracı,
--Kullanıcı bilgilerinde; Ad-soyad, TCNo, E-Mail, Telefon No, Araç bilgisi(varsa plaka no).
+2. User
+- He sees the invoice and dues information assigned to him, and sees these invoices by filtering them according to any information.
+- Can pay by credit card.
+- Can send a message to the administrator.
+- In the flat/residence information, In which block, Status (Full-empty), Type (2+1 etc.), Floor where it is located, Flat number, Flat owner or tenant,
+- In user information; Name-surname, TC No, E-Mail, Telephone No, Vehicle information (plate number, if any).
 
-3-Arayüz dışında kullanıcıların kredi kartı ile ödeme yapabilmesi için ayrı bir servis bulunmaktadır. Bu servisde sistemde ki her bir kullanıcı için banka bilgileri(bakiye, kredi kartı no vb.) kontrol edilerek ödeme yapılması sağlanır.
+3. Payment Service
+- Apart from the interface, there is a separate service for users to pay by credit card. In this service, payment is made by checking the bank information (balance, credit card number, etc.) for each user in the system.
 
-## Teknolojiler
+## Technologies
 - ASP.NET 5 MVC -> ASP.NET 6 MVC (Target Framework Update)
-- .NET 5 -> .NET 6 (Target Framework Update) - Kredi Kartı Ödeme Servisi için
-- Uygulama ve Ödeme Servisi için veri tabanı => MS SQL Server
+- .NET 5 API -> .NET 6 API (Target Framework Update) - Used for Payments Service
+- Database for both Invoice Management System and Paymen Service => Microsoft SQL Server
